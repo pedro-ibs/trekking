@@ -22,5 +22,7 @@ Porcas M3               | Porcas M3
 
 ### *Imagens*
 
-![tracker](./img/IMG-20220526-WA0026.jpeg)
-![tracker](./img/IMG_20220526_191718.jpg)
+![tracker vista superior](./img/IMG-20220526-WA0026.jpeg)
+![tracker vista da roda e acoplamento](./img/IMG_20220526_191718.jpg)
+![tracker vista vista do driver/ponte-H fixado](IMG_20220529_171038.jpg)
+![tracker vista vista do sendor de distância fixado](IMG_20220529_171410.jpg)
