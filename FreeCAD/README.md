@@ -1,5 +1,5 @@
 # tracker - peças
-Todas as peças do projeto foram desenvovidas utilizado o softrware [FreeCad](https://www.freecadweb.org/).
+Todas as peças do projeto foram desenvolvidas utilizado o software [FreeCad](https://www.freecadweb.org/).
 
  * *[Medidas](./medidas)*
  * *[Peças 3D](./stl)*
@@ -13,6 +13,7 @@ Algumas peças já existentes utilizadas no projeto
 
 
 <hr><br><br>
+
 # Fabricação
 
 Todas as peças foram fabricadas utilizando uma prototipadora Creality Ender-3, e fatiados pelo programa Ultimaker Cura.
@@ -30,7 +31,7 @@ Parâmetro               | Valor
 :---------------------- | :-------------------------------------
 Adesão                  | Ativado
 Nozzle                  | 0.4 mm
-Dencidade               | 30 %
+Densidade               | 30 %
 Resolução               | 0.12
 
 <br>
@@ -41,5 +42,5 @@ Parâmetro               | Valor
 :---------------------- | :-------------------------------------
 Adesão                  | Ativado
 Nozzle                  | 0.4 mm
-Dencidade               | 30 %
+Densidade               | 30 %
 Resolução               | 0.16
