@@ -24,7 +24,7 @@ As especificações *gerais* correspondem ao todas as peças fabricadas, as exce
 
 <br>
 
-#### Especificações de Fabricação ( Gerais ):
+#### Especificações do Fatiamento Para Fabricação ( Gerais ):
 
 
 Parâmetro               | Valor
@@ -36,7 +36,7 @@ Resolução               | 0.12
 
 <br>
 
-#### Especificações de Fabricação ( Exceção 1 ):
+#### Especificações do Fatiamento Para Fabricação ( Exceção 1 ):
 
 Parâmetro               | Valor
 :---------------------- | :-------------------------------------
