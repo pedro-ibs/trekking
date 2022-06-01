@@ -22,6 +22,10 @@ As especificações *gerais* correspondem ao todas as peças fabricadas, as exce
   * mesa-base
   * suporte-mesa-base
 
+##### Exceção 2:
+  * case-camera-frente
+  * case-camera-tras
+
 <br>
 
 #### Especificações do Fatiamento Para Fabricação ( Gerais ):
@@ -44,3 +48,12 @@ Adesão                  | Ativado
 Nozzle                  | 0.4 mm
 Densidade               | 30 %
 Resolução               | 0.16
+
+#### Especificações do Fatiamento Para Fabricação ( Exceção 2 ):
+
+Parâmetro               | Valor
+:---------------------- | :-------------------------------------
+Adesão                  | Ativado
+Nozzle                  | 0.4 mm
+Densidade               | 30 %
+Resolução               | 0.2
