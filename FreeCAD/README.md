@@ -26,6 +26,7 @@ As especificações *gerais* correspondem ao todas as peças fabricadas, as exce
   * case-camera-frente
   * case-camera-tras
   * case-camera-suporte
+  * suporte-raspberrypi
 
 <br>
 
@@ -38,8 +39,6 @@ Adesão                  | Ativado
 Nozzle                  | 0.4 mm
 Densidade               | 30 %
 Resolução               | 0.12
-
-<br>
 
 #### Especificações do Fatiamento Para Fabricação ( Exceção 1 ):
 
