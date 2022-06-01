@@ -4,9 +4,10 @@ Desenvolvimento de um robô rádio-controlado/autônomo da moralidade “tracker
 
 <br>
 
+
 ## *Materiais Básicos*
 
-Peças		         	| Descrição
+Peças			| Descrição
 :---------------------- | :-------------------------------------
 Acoplamento D19 L25     | Acoplamento de eixo de 8mm para 6mm
 Mancal Kp08             | Mancal com rolamento para eixo/fuso de 8mm
