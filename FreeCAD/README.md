@@ -8,7 +8,7 @@ Todas as peças do projeto foram desenvolvidas utilizado o software [FreeCad](ht
 
 Algumas peças já existentes utilizadas no projeto
 
-  * [Case para camera de Visão noturna da Raspberry P](https://www.thingiverse.com/thing:4930949)
+  * [Case para camera de Visão noturna da Raspberry P](https://www.thingiverse.com/thing:2626835)
   * [Porca para perfil V-slot 20x20](https://www.thingiverse.com/thing:3050607)
 
 
