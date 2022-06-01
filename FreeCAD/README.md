@@ -25,6 +25,7 @@ As especificações *gerais* correspondem ao todas as peças fabricadas, as exce
 ##### Exceção 2:
   * case-camera-frente
   * case-camera-tras
+  * case-camera-suporte
 
 <br>
 
