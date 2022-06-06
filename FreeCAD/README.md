@@ -29,6 +29,7 @@ As especificações *gerais* correspondem ao todas as peças fabricadas, as exce
   * suporte-raspberrypi
   * suporte-alca
   * suporte-NANO-BLE33S
+  * suporte-gps
 
 <br>
 
