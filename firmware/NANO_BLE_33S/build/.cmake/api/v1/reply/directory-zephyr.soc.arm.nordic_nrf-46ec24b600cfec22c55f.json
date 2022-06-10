@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/soc/arm/nordic_nrf",
+		"source" : "/home/pibs/zephyrproject/zephyr/soc/arm/nordic_nrf"
+	}
+}

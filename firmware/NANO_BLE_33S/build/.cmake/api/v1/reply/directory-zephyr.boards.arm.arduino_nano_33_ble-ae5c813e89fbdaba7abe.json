@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/boards/arm/arduino_nano_33_ble",
+		"source" : "/home/pibs/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble"
+	}
+}

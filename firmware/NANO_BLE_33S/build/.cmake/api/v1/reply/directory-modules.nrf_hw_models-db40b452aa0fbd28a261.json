@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/nrf_hw_models",
+		"source" : "/home/pibs/zephyrproject/modules/bsim_hw_models/nrf_hw_models"
+	}
+}

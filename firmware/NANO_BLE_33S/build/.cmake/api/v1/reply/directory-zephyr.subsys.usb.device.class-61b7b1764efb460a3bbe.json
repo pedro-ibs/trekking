@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/subsys/usb/device/class",
+		"source" : "/home/pibs/zephyrproject/zephyr/subsys/usb/device/class"
+	}
+}

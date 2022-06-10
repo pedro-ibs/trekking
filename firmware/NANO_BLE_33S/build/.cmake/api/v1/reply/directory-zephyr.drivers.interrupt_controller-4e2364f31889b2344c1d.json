@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/drivers/interrupt_controller",
+		"source" : "/home/pibs/zephyrproject/zephyr/drivers/interrupt_controller"
+	}
+}

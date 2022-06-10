@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/tinycbor",
+		"source" : "/home/pibs/zephyrproject/modules/lib/tinycbor/zephyr"
+	}
+}

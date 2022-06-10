@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/lz4",
+		"source" : "/home/pibs/zephyrproject/zephyr/modules/lz4"
+	}
+}

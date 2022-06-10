@@ -15,6 +15,7 @@ perfil v-slot 20x20     | Perfil estrutural de alumínio v-slot de 20mm x 20mm
 Motor JGY               | Micro motor 12V; 210 rpm; 2kgm.cm; 6 mA à 2A
 Roda  5.9"              | Roda  The X LPR Hong Nor de 5.9" x 2.68"
 Barra Roscada M4        | 1000mm de barra roscada M4
+Barra Roscada M8        | 1000mm de barra roscada M8
 Parafusos M3            | Parafusos M3 tipo torque de 10mm de comprimento 
 Parafusos M3            | Parafusos M3 tipo torque de 5mm de comprimento
 Porcas M3               | Porcas M3
