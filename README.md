@@ -1,5 +1,5 @@
-# tracker project
-Desenvolvimento de um robô rádio-controlado/autônomo da moralidade “tracker”
+# Trekking project
+Desenvolvimento de um robô rádio-controlado/autônomo da moralidade “trekking”
 
 
 <br>
@@ -24,8 +24,8 @@ Porcas M3               | Porcas M3
 
 ### *Imagens*
 
-![tracker vista superior](./img/IMG-20220526-WA0026.jpeg)
-![tracker vista da roda e acoplamento](./img/IMG_20220526_191718.jpg)
-![tracker vista vista do driver/ponte-H fixado](./img/IMG_20220529_171038.jpg)
-![tracker vista do sensor de distância fixado](./img/IMG_20220529_171410.jpg)
-![tracker vista da base e suporte da base](./img/photo_2022-06-01_01-18-52.jpg)
+![trekking vista superior](./img/IMG-20220526-WA0026.jpeg)
+![trekking vista da roda e acoplamento](./img/IMG_20220526_191718.jpg)
+![trekking vista vista do driver/ponte-H fixado](./img/IMG_20220529_171038.jpg)
+![trekking vista do sensor de distância fixado](./img/IMG_20220529_171410.jpg)
+![trekking vista da base e suporte da base](./img/photo_2022-06-01_01-18-52.jpg)
