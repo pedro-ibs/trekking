@@ -1,4 +1,4 @@
-# tracker - peças
+# Trekking - peças
 Todas as peças do projeto foram desenvolvidas utilizado o software [FreeCad](https://www.freecadweb.org/).
 
  * *[Medidas](./medidas)*
