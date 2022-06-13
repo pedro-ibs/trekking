@@ -1,0 +1,302 @@
+# 1 "/home/pibs/zephyrproject/zephyr/misc/empty_file.c"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "/home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 1
+
+
+
+
+
+
+/dts-v1/;
+
+# 1 "/home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 1 3 4
+
+
+
+
+
+
+# 1 "/home/pibs/zephyrproject/zephyr/dts/arm/armv6-m.dtsi" 1 3 4
+
+
+# 1 "/home/pibs/zephyrproject/zephyr/dts/common/skeleton.dtsi" 1 3 4
+# 9 "/home/pibs/zephyrproject/zephyr/dts/common/skeleton.dtsi" 3 4
+/ {
+ #address-cells = <1>;
+ #size-cells = <1>;
+ chosen { };
+ aliases { };
+};
+# 4 "/home/pibs/zephyrproject/zephyr/dts/arm/armv6-m.dtsi" 2 3 4
+
+/ {
+ soc {
+  #address-cells = <1>;
+  #size-cells = <1>;
+  compatible = "simple-bus";
+  interrupt-parent = <&nvic>;
+  ranges;
+
+  nvic: interrupt-controller@e000e100 {
+   #address-cells = <1>;
+   compatible = "arm,v6m-nvic";
+   reg = <0xe000e100 0xc00>;
+   interrupt-controller;
+   #interrupt-cells = <2>;
+  };
+
+  systick: timer@e000e010 {
+   compatible = "arm,armv6m-systick";
+   reg = <0xe000e010 0x10>;
+  };
+ };
+};
+# 8 "/home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/pibs/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
+# 9 "/home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/pibs/zephyrproject/zephyr/include/zephyr/dt-bindings/i2c/i2c.h" 1 3 4
+# 10 "/home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/pibs/zephyrproject/zephyr/dts/common/mem.h" 1 3 4
+# 11 "/home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+
+# 1 "/home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rpi_pico_common.dtsi" 1 3 4
+# 13 "/home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+
+/ {
+ cpus {
+  #address-cells = <1>;
+  #size-cells = <0>;
+
+  cpu0: cpu@0 {
+   compatible = "arm,cortex-m0+";
+   reg = <0>;
+  };
+
+  cpu1: cpu@1 {
+   compatible = "arm,cortex-m0+";
+   reg = <1>;
+  };
+ };
+
+ soc {
+  sram0: memory@20000000 {
+   compatible = "mmio-sram";
+   reg = <0x20000000 ((264) * 1024)>;
+  };
+
+  flash0: flash@10000000 {
+   compatible = "soc-nv-flash";
+   label = "FLASH_RP2";
+
+   write-block-size = <1>;
+  };
+
+  peripheral_clk: peripheral-clk {
+   compatible = "fixed-clock";
+   clock-frequency = <125000000>;
+   #clock-cells = <0>;
+  };
+
+  system_clk: system-clk {
+   compatible = "fixed-clock";
+   clock-frequency = <125000000>;
+   #clock-cells = <0>;
+  };
+
+  reset: reset-controller@4000c000 {
+   compatible = "raspberrypi,pico-reset";
+   reg = <0x4000c000 ((4) * 1024)>;
+   reg-width = <4>;
+   active-low = <0>;
+   #reset-cells = <1>;
+   label = "RESET";
+  };
+
+  pinctrl: pin-controller@40014000 {
+   compatible = "raspberrypi,pico-pinctrl";
+   reg = <0x40014000 ((4) * 1024)>;
+   status = "okay";
+   label = "PINCTRL";
+  };
+
+  gpio0: gpio@40014000 {
+   compatible = "raspberrypi,pico-gpio";
+   reg = <0x40014000 ((4) * 1024)>;
+   interrupts = <13 3>;
+   gpio-controller;
+   #gpio-cells = <2>;
+   label = "GPIO_0";
+   status = "disabled";
+   ngpios = <30>;
+  };
+
+  uart0: uart@40034000 {
+   compatible = "raspberrypi,pico-uart";
+   reg = <0x40034000 ((4) * 1024)>;
+   clocks = <&peripheral_clk>;
+   resets = <&reset 22>;
+   interrupts = <20 3>;
+   interrupt-names = "uart0";
+   label = "UART_0";
+   status = "disabled";
+  };
+
+  uart1: uart@40038000 {
+   compatible = "raspberrypi,pico-uart";
+   reg = <0x40038000 ((4) * 1024)>;
+   clocks = <&peripheral_clk>;
+   resets = <&reset 23>;
+   interrupts = <21 3>;
+   interrupt-names = "uart1";
+   label = "UART_1";
+   status = "disabled";
+  };
+
+  i2c0: i2c@40044000 {
+   compatible = "snps,designware-i2c";
+   #address-cells = <1>;
+   #size-cells = <0>;
+   reg = <0x40044000 ((4) * 1024)>;
+   clocks = <&system_clk>;
+   interrupts = <23 3>;
+   interrupt-names = "i2c0";
+   label = "I2C_0";
+   status = "disabled";
+  };
+
+  i2c1: i2c@40048000 {
+   compatible = "snps,designware-i2c";
+   #address-cells = <1>;
+   #size-cells = <0>;
+   reg = <0x40048000 ((4) * 1024)>;
+   clocks = <&system_clk>;
+   interrupts = <24 3>;
+   interrupt-names = "i2c1";
+   label = "I2C_1";
+   status = "disabled";
+  };
+ };
+};
+
+&nvic {
+ arm,num-irq-priority-bits = <3>;
+};
+# 10 "/home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
+# 1 "/home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi" 1
+
+
+
+
+
+# 1 "/home/pibs/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h" 1 3 4
+# 7 "/home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi" 2
+
+&pinctrl {
+ uart0_default: uart0_default {
+  group1 {
+   pinmux = <(0 << 4 | 2 << 0)>;
+  };
+  group2 {
+   pinmux = <(1 << 4 | 2 << 0)>;
+   input-enable;
+  };
+ };
+
+ i2c0_default: i2c0_default {
+  group1 {
+   pinmux = <(4 << 4 | 3 << 0)>, <(5 << 4 | 3 << 0)>;
+   input-enable;
+   input-schmitt-enable;
+  };
+ };
+
+ i2c1_default: i2c1_default {
+  group1 {
+   pinmux = <(14 << 4 | 3 << 0)>, <(15 << 4 | 3 << 0)>;
+   input-enable;
+   input-schmitt-enable;
+  };
+ };
+};
+# 11 "/home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
+
+
+
+/ {
+ chosen {
+  zephyr,sram = &sram0;
+  zephyr,flash = &flash0;
+  zephyr,console = &uart0;
+  zephyr,shell-uart = &uart0;
+  zephyr,code-partition = &code_partition;
+ };
+
+ leds {
+  compatible = "gpio-leds";
+  led0: led_0 {
+   gpios = <&gpio0 25 (0 << 0)>;
+   label = "LED";
+  };
+ };
+
+ aliases {
+  led0 = &led0;
+ };
+};
+
+&flash0 {
+ reg = <0x10000000 ((2) * 1024 * 1024)>;
+
+ partitions {
+  compatible = "fixed-partitions";
+  #address-cells = <1>;
+  #size-cells = <1>;
+
+
+  second_stage_bootloader: partition@0 {
+   label = "second_stage_bootloader";
+   reg = <0x00000000 0x100>;
+   read-only;
+  };
+
+
+
+
+
+  code_partition: partition@100 {
+   label = "code-partition";
+   reg = <0x100 (((2) * 1024 * 1024) - 0x100)>;
+   read-only;
+  };
+ };
+};
+
+&uart0 {
+ current-speed = <115200>;
+ status = "okay";
+ pinctrl-0 = <&uart0_default>;
+ pinctrl-names = "default";
+};
+
+&gpio0 {
+ status = "okay";
+};
+
+&i2c0 {
+ clock-frequency = <100000>;
+ status = "okay";
+ pinctrl-0 = <&i2c0_default>;
+ pinctrl-names = "default";
+};
+
+&i2c1 {
+ clock-frequency = <100000>;
+ status = "okay";
+ pinctrl-0 = <&i2c1_default>;
+ pinctrl-names = "default";
+};
+# 1 "<command-line>" 2
+# 1 "/home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay" 1
+# 1 "<command-line>" 2
+# 1 "/home/pibs/zephyrproject/zephyr/misc/empty_file.c"

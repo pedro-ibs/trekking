@@ -16,6 +16,8 @@ sudo systemctl disable gpsd.socket
 sudo gpsd /dev/ttyACM1 -F /var/run/gpsd.sock
 sudo systemctl stop serial-getty@serial0.service
 
+sudo apt install apache2 install php php-mbstring -y
+
 mkdir -p $HOME/.local/opt
 cd $HOME/.local/opt
 wget https://raw.githubusercontent.com/raspberrypi/pico-setup/master/pico_setup.sh

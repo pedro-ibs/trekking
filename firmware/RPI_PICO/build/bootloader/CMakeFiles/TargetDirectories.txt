@@ -1,0 +1,3 @@
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/CMakeFiles/boot_stage2.dir
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/CMakeFiles/edit_cache.dir
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/CMakeFiles/rebuild_cache.dir

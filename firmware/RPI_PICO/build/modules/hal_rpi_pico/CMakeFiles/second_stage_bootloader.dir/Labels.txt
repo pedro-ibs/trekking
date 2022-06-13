@@ -1,0 +1,13 @@
+# Target labels
+ second_stage_bootloader
+# Source files and their labels
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/CMakeFiles/second_stage_bootloader
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/CMakeFiles/second_stage_bootloader.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/CMakeFiles/second_stage_bootloader-complete.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/second_stage_bootloader-build.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/second_stage_bootloader-configure.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/second_stage_bootloader-download.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/second_stage_bootloader-install.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/second_stage_bootloader-mkdir.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/second_stage_bootloader-patch.rule
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/second_stage_bootloader-update.rule

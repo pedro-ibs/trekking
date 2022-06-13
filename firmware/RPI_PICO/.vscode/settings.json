@@ -1,0 +1,13 @@
+{
+	"cSpell.words": [
+		"gpio",
+		"gpios",
+		"NODELABEL",
+		"printk"
+	],
+	"kconfig.zephyr.board": {
+		"board": "arduino_nano_33_ble_sense",
+		"arch": "arm",
+		"dir": "/home/pibs/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble"
+	}
+}

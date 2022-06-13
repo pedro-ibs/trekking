@@ -55,9 +55,6 @@
 #define LED0_NODE			DT_ALIAS(led3)
 #define I2C_NODE			DT_NODELABEL(i2c1)
 #define UART_NODE 			DT_NODELABEL(uart0)
-
-#define APP_WORK_QUEUE_STACK_SIZE	4096
-#define APP_WORK_PRIORITY		5
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
 void blink( void );
 void usb_setup(void);
