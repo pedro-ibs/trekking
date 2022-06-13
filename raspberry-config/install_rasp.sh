@@ -1,7 +1,5 @@
 #! /bin/bash
 
-
-
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install bossa bossa-cli -y
@@ -29,7 +27,6 @@ cd pico/openocd
 ./configure --enable-ftdi --enable-sysfsgpio --enable-bcm2835gpio
 make -j3
 sudo make install
-
 
 cd $HOME
 
