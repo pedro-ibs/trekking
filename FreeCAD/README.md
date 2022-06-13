@@ -9,6 +9,7 @@ Todas as peças do projeto foram desenvolvidas utilizado o software [FreeCad](ht
 Algumas peças já existentes utilizadas no projeto
 
   * [Porca para perfil V-slot 20x20](https://www.thingiverse.com/thing:3050607)
+  * [Star Trek Pin](https://www.thingiverse.com/thing:2798431)
 
 
 <hr><br><br>
