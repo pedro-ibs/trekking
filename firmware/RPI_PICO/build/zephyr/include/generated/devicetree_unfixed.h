@@ -14,32 +14,43 @@
  *   3   /cpus
  *   4   /cpus/cpu@0
  *   5   /cpus/cpu@1
- *   6   /leds
+ *   6   /gprs
  *   7   /soc
  *   8   /soc/interrupt-controller@e000e100
  *   9   /soc/gpio@40014000
- *   10  /leds/led_0
- *   11  /soc/system-clk
- *   12  /soc/pin-controller@40014000
- *   13  /soc/pin-controller@40014000/i2c0_default
- *   14  /soc/i2c@40044000
- *   15  /soc/pin-controller@40014000/i2c1_default
- *   16  /soc/i2c@40048000
- *   17  /soc/memory@20000000
- *   18  /soc/timer@e000e010
- *   19  /soc/peripheral-clk
- *   20  /soc/reset-controller@4000c000
- *   21  /soc/pin-controller@40014000/uart0_default
- *   22  /soc/uart@40034000
- *   23  /soc/uart@40038000
- *   24  /soc/flash@10000000
- *   25  /soc/flash@10000000/partitions
- *   26  /soc/flash@10000000/partitions/partition@0
- *   27  /soc/flash@10000000/partitions/partition@100
- *   28  /soc/pin-controller@40014000/i2c0_default/group1
- *   29  /soc/pin-controller@40014000/i2c1_default/group1
- *   30  /soc/pin-controller@40014000/uart0_default/group1
- *   31  /soc/pin-controller@40014000/uart0_default/group2
+ *   10  /gprs/gprs_reset
+ *   11  /leds
+ *   12  /leds/led_0
+ *   13  /motors
+ *   14  /motors/m_1a
+ *   15  /motors/m_1b
+ *   16  /motors/m_2a
+ *   17  /motors/m_2b
+ *   18  /motors/m_3a
+ *   19  /motors/m_3b
+ *   20  /motors/m_4a
+ *   21  /motors/m_4b
+ *   22  /soc/system-clk
+ *   23  /soc/pin-controller@40014000
+ *   24  /soc/pin-controller@40014000/i2c0_default
+ *   25  /soc/i2c@40044000
+ *   26  /soc/pin-controller@40014000/i2c1_default
+ *   27  /soc/i2c@40048000
+ *   28  /soc/memory@20000000
+ *   29  /soc/timer@e000e010
+ *   30  /soc/peripheral-clk
+ *   31  /soc/reset-controller@4000c000
+ *   32  /soc/pin-controller@40014000/uart0_default
+ *   33  /soc/uart@40034000
+ *   34  /soc/uart@40038000
+ *   35  /soc/flash@10000000
+ *   36  /soc/flash@10000000/partitions
+ *   37  /soc/flash@10000000/partitions/partition@0
+ *   38  /soc/flash@10000000/partitions/partition@100
+ *   39  /soc/pin-controller@40014000/i2c0_default/group1
+ *   40  /soc/pin-controller@40014000/i2c1_default/group1
+ *   41  /soc/pin-controller@40014000/uart0_default/group1
+ *   42  /soc/pin-controller@40014000/uart0_default/group2
  *
  * Definitions derived from these nodes in dependency order are next,
  * followed by /chosen nodes.
@@ -56,10 +67,10 @@
 
 /* Node's name with unit-address: */
 #define DT_N_FULL_NAME "/"
-#define DT_N_FOREACH_CHILD(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_leds)
-#define DT_N_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__)
-#define DT_N_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_leds) 
-#define DT_N_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) 
+#define DT_N_FOREACH_CHILD(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_leds) fn(DT_N_S_gprs) fn(DT_N_S_motors)
+#define DT_N_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_gprs, __VA_ARGS__) fn(DT_N_S_motors, __VA_ARGS__)
+#define DT_N_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_leds) fn(DT_N_S_gprs) fn(DT_N_S_motors) 
+#define DT_N_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_gprs, __VA_ARGS__) fn(DT_N_S_motors, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
 #define DT_N_ORD 0
@@ -72,8 +83,10 @@
 	1, /* /aliases */ \
 	2, /* /chosen */ \
 	3, /* /cpus */ \
-	6, /* /leds */ \
-	7, /* /soc */
+	6, /* /gprs */ \
+	7, /* /soc */ \
+	11, /* /leds */ \
+	13, /* /motors */
 
 /* Existence and alternate IDs: */
 #define DT_N_EXISTS 1
@@ -380,9 +393,9 @@
 #define DT_N_S_cpus_S_cpu_1_P_wakeup_source_EXISTS 1
 
 /*
- * Devicetree node: /leds
+ * Devicetree node: /gprs
  *
- * Node identifier: DT_N_S_leds
+ * Node identifier: DT_N_S_gprs
  *
  * Binding (compatible = gpio-leds):
  *   $ZEPHYR_BASE/dts/bindings/gpio/gpio-leds.yaml
@@ -392,46 +405,46 @@
  */
 
 /* Node's full path: */
-#define DT_N_S_leds_PATH "/leds"
+#define DT_N_S_gprs_PATH "/gprs"
 
 /* Node's name with unit-address: */
-#define DT_N_S_leds_FULL_NAME "leds"
+#define DT_N_S_gprs_FULL_NAME "gprs"
 
 /* Node parent (/) identifier: */
-#define DT_N_S_leds_PARENT DT_N
+#define DT_N_S_gprs_PARENT DT_N
 
 /* Node's index in its parent's list of children: */
-#define DT_N_S_leds_CHILD_IDX 4
-#define DT_N_S_leds_FOREACH_CHILD(fn) fn(DT_N_S_leds_S_led_0)
-#define DT_N_S_leds_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_leds_S_led_0, __VA_ARGS__)
-#define DT_N_S_leds_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_leds_S_led_0) 
-#define DT_N_S_leds_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_leds_S_led_0, __VA_ARGS__) 
+#define DT_N_S_gprs_CHILD_IDX 5
+#define DT_N_S_gprs_FOREACH_CHILD(fn) fn(DT_N_S_gprs_S_gprs_reset)
+#define DT_N_S_gprs_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_gprs_S_gprs_reset, __VA_ARGS__)
+#define DT_N_S_gprs_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_gprs_S_gprs_reset) 
+#define DT_N_S_gprs_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_gprs_S_gprs_reset, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_leds_ORD 6
+#define DT_N_S_gprs_ORD 6
 
 /* Ordinals for what this node depends on directly: */
-#define DT_N_S_leds_REQUIRES_ORDS \
+#define DT_N_S_gprs_REQUIRES_ORDS \
 	0, /* / */
 
 /* Ordinals for what depends directly on this node: */
-#define DT_N_S_leds_SUPPORTS_ORDS \
-	10, /* /leds/led_0 */
+#define DT_N_S_gprs_SUPPORTS_ORDS \
+	10, /* /gprs/gprs_reset */
 
 /* Existence and alternate IDs: */
-#define DT_N_S_leds_EXISTS 1
-#define DT_N_INST_0_gpio_leds DT_N_S_leds
+#define DT_N_S_gprs_EXISTS 1
+#define DT_N_INST_1_gpio_leds DT_N_S_gprs
 
 /* Macros for properties that are special in the specification: */
-#define DT_N_S_leds_REG_NUM 0
-#define DT_N_S_leds_RANGES_NUM 0
-#define DT_N_S_leds_FOREACH_RANGE(fn) 
-#define DT_N_S_leds_IRQ_NUM 0
-#define DT_N_S_leds_COMPAT_MATCHES_gpio_leds 1
-#define DT_N_S_leds_STATUS_okay 1
+#define DT_N_S_gprs_REG_NUM 0
+#define DT_N_S_gprs_RANGES_NUM 0
+#define DT_N_S_gprs_FOREACH_RANGE(fn) 
+#define DT_N_S_gprs_IRQ_NUM 0
+#define DT_N_S_gprs_COMPAT_MATCHES_gpio_leds 1
+#define DT_N_S_gprs_STATUS_okay 1
 
 /* Pin control (pinctrl-<i>, pinctrl-names) properties: */
-#define DT_N_S_leds_PINCTRL_NUM 0
+#define DT_N_S_gprs_PINCTRL_NUM 0
 
 /* (No generic property macros) */
 
@@ -468,17 +481,17 @@
 #define DT_N_S_soc_SUPPORTS_ORDS \
 	8, /* /soc/interrupt-controller@e000e100 */ \
 	9, /* /soc/gpio@40014000 */ \
-	11, /* /soc/system-clk */ \
-	12, /* /soc/pin-controller@40014000 */ \
-	14, /* /soc/i2c@40044000 */ \
-	16, /* /soc/i2c@40048000 */ \
-	17, /* /soc/memory@20000000 */ \
-	18, /* /soc/timer@e000e010 */ \
-	19, /* /soc/peripheral-clk */ \
-	20, /* /soc/reset-controller@4000c000 */ \
-	22, /* /soc/uart@40034000 */ \
-	23, /* /soc/uart@40038000 */ \
-	24, /* /soc/flash@10000000 */
+	22, /* /soc/system-clk */ \
+	23, /* /soc/pin-controller@40014000 */ \
+	25, /* /soc/i2c@40044000 */ \
+	27, /* /soc/i2c@40048000 */ \
+	28, /* /soc/memory@20000000 */ \
+	29, /* /soc/timer@e000e010 */ \
+	30, /* /soc/peripheral-clk */ \
+	31, /* /soc/reset-controller@4000c000 */ \
+	33, /* /soc/uart@40034000 */ \
+	34, /* /soc/uart@40038000 */ \
+	35, /* /soc/flash@10000000 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_EXISTS 1
@@ -542,10 +555,10 @@
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_interrupt_controller_e000e100_SUPPORTS_ORDS \
 	9, /* /soc/gpio@40014000 */ \
-	14, /* /soc/i2c@40044000 */ \
-	16, /* /soc/i2c@40048000 */ \
-	22, /* /soc/uart@40034000 */ \
-	23, /* /soc/uart@40038000 */
+	25, /* /soc/i2c@40044000 */ \
+	27, /* /soc/i2c@40048000 */ \
+	33, /* /soc/uart@40034000 */ \
+	34, /* /soc/uart@40038000 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_interrupt_controller_e000e100_EXISTS 1
@@ -629,7 +642,16 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_gpio_40014000_SUPPORTS_ORDS \
-	10, /* /leds/led_0 */
+	10, /* /gprs/gprs_reset */ \
+	12, /* /leds/led_0 */ \
+	14, /* /motors/m_1a */ \
+	15, /* /motors/m_1b */ \
+	16, /* /motors/m_2a */ \
+	17, /* /motors/m_2b */ \
+	18, /* /motors/m_3a */ \
+	19, /* /motors/m_3b */ \
+	20, /* /motors/m_4a */ \
+	21, /* /motors/m_4b */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_gpio_40014000_EXISTS 1
@@ -723,6 +745,149 @@
 #define DT_N_S_soc_S_gpio_40014000_P_wakeup_source_EXISTS 1
 
 /*
+ * Devicetree node: /gprs/gprs_reset
+ *
+ * Node identifier: DT_N_S_gprs_S_gprs_reset
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_gprs_S_gprs_reset_PATH "/gprs/gprs_reset"
+
+/* Node's name with unit-address: */
+#define DT_N_S_gprs_S_gprs_reset_FULL_NAME "gprs_reset"
+
+/* Node parent (/gprs) identifier: */
+#define DT_N_S_gprs_S_gprs_reset_PARENT DT_N_S_gprs
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_gprs_S_gprs_reset_CHILD_IDX 0
+#define DT_N_S_gprs_S_gprs_reset_FOREACH_CHILD(fn) 
+#define DT_N_S_gprs_S_gprs_reset_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_gprs_S_gprs_reset_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_gprs_S_gprs_reset_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_gprs_S_gprs_reset_ORD 10
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_gprs_S_gprs_reset_REQUIRES_ORDS \
+	6, /* /gprs */ \
+	9, /* /soc/gpio@40014000 */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_gprs_S_gprs_reset_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_gprs_S_gprs_reset_EXISTS 1
+#define DT_N_ALIAS_gprs_rst     DT_N_S_gprs_S_gprs_reset
+#define DT_N_NODELABEL_gprs_rst DT_N_S_gprs_S_gprs_reset
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_gprs_S_gprs_reset_REG_NUM 0
+#define DT_N_S_gprs_S_gprs_reset_RANGES_NUM 0
+#define DT_N_S_gprs_S_gprs_reset_FOREACH_RANGE(fn) 
+#define DT_N_S_gprs_S_gprs_reset_IRQ_NUM 0
+#define DT_N_S_gprs_S_gprs_reset_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_gprs_S_gprs_reset_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_IDX_0_VAL_pin 27
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_gprs_S_gprs_reset, gpios, 0)
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_gprs_S_gprs_reset, gpios, 0, __VA_ARGS__)
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_LEN 1
+#define DT_N_S_gprs_S_gprs_reset_P_gpios_EXISTS 1
+#define DT_N_S_gprs_S_gprs_reset_P_label "GPRS RESET"
+#define DT_N_S_gprs_S_gprs_reset_P_label_STRING_TOKEN GPRS_RESET
+#define DT_N_S_gprs_S_gprs_reset_P_label_STRING_UPPER_TOKEN GPRS_RESET
+#define DT_N_S_gprs_S_gprs_reset_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_gprs_S_gprs_reset, label, 0) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 1) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 2) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 3) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 4) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 5) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 6) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 7) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 8) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 9)
+#define DT_N_S_gprs_S_gprs_reset_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_gprs_S_gprs_reset, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_gprs_S_gprs_reset, label, 9, __VA_ARGS__)
+#define DT_N_S_gprs_S_gprs_reset_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /leds
+ *
+ * Node identifier: DT_N_S_leds
+ *
+ * Binding (compatible = gpio-leds):
+ *   $ZEPHYR_BASE/dts/bindings/gpio/gpio-leds.yaml
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_leds_PATH "/leds"
+
+/* Node's name with unit-address: */
+#define DT_N_S_leds_FULL_NAME "leds"
+
+/* Node parent (/) identifier: */
+#define DT_N_S_leds_PARENT DT_N
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_leds_CHILD_IDX 4
+#define DT_N_S_leds_FOREACH_CHILD(fn) fn(DT_N_S_leds_S_led_0)
+#define DT_N_S_leds_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_leds_S_led_0, __VA_ARGS__)
+#define DT_N_S_leds_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_leds_S_led_0) 
+#define DT_N_S_leds_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_leds_S_led_0, __VA_ARGS__) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_leds_ORD 11
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_leds_REQUIRES_ORDS \
+	0, /* / */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_leds_SUPPORTS_ORDS \
+	12, /* /leds/led_0 */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_leds_EXISTS 1
+#define DT_N_INST_0_gpio_leds DT_N_S_leds
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_leds_REG_NUM 0
+#define DT_N_S_leds_RANGES_NUM 0
+#define DT_N_S_leds_FOREACH_RANGE(fn) 
+#define DT_N_S_leds_IRQ_NUM 0
+#define DT_N_S_leds_COMPAT_MATCHES_gpio_leds 1
+#define DT_N_S_leds_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_leds_PINCTRL_NUM 0
+
+/* (No generic property macros) */
+
+/*
  * Devicetree node: /leds/led_0
  *
  * Node identifier: DT_N_S_leds_S_led_0
@@ -748,12 +913,12 @@
 #define DT_N_S_leds_S_led_0_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_leds_S_led_0_ORD 10
+#define DT_N_S_leds_S_led_0_ORD 12
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_leds_S_led_0_REQUIRES_ORDS \
-	6, /* /leds */ \
-	9, /* /soc/gpio@40014000 */
+	9, /* /soc/gpio@40014000 */ \
+	11, /* /leds */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_leds_S_led_0_SUPPORTS_ORDS /* nothing */
@@ -796,6 +961,813 @@
 #define DT_N_S_leds_S_led_0_P_label_EXISTS 1
 
 /*
+ * Devicetree node: /motors
+ *
+ * Node identifier: DT_N_S_motors
+ *
+ * Binding (compatible = gpio-leds):
+ *   $ZEPHYR_BASE/dts/bindings/gpio/gpio-leds.yaml
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_PATH "/motors"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_FULL_NAME "motors"
+
+/* Node parent (/) identifier: */
+#define DT_N_S_motors_PARENT DT_N
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_CHILD_IDX 6
+#define DT_N_S_motors_FOREACH_CHILD(fn) fn(DT_N_S_motors_S_m_1a) fn(DT_N_S_motors_S_m_1b) fn(DT_N_S_motors_S_m_2a) fn(DT_N_S_motors_S_m_2b) fn(DT_N_S_motors_S_m_3a) fn(DT_N_S_motors_S_m_3b) fn(DT_N_S_motors_S_m_4a) fn(DT_N_S_motors_S_m_4b)
+#define DT_N_S_motors_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_motors_S_m_1a, __VA_ARGS__) fn(DT_N_S_motors_S_m_1b, __VA_ARGS__) fn(DT_N_S_motors_S_m_2a, __VA_ARGS__) fn(DT_N_S_motors_S_m_2b, __VA_ARGS__) fn(DT_N_S_motors_S_m_3a, __VA_ARGS__) fn(DT_N_S_motors_S_m_3b, __VA_ARGS__) fn(DT_N_S_motors_S_m_4a, __VA_ARGS__) fn(DT_N_S_motors_S_m_4b, __VA_ARGS__)
+#define DT_N_S_motors_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_motors_S_m_1a) fn(DT_N_S_motors_S_m_1b) fn(DT_N_S_motors_S_m_2a) fn(DT_N_S_motors_S_m_2b) fn(DT_N_S_motors_S_m_3a) fn(DT_N_S_motors_S_m_3b) fn(DT_N_S_motors_S_m_4a) fn(DT_N_S_motors_S_m_4b) 
+#define DT_N_S_motors_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_motors_S_m_1a, __VA_ARGS__) fn(DT_N_S_motors_S_m_1b, __VA_ARGS__) fn(DT_N_S_motors_S_m_2a, __VA_ARGS__) fn(DT_N_S_motors_S_m_2b, __VA_ARGS__) fn(DT_N_S_motors_S_m_3a, __VA_ARGS__) fn(DT_N_S_motors_S_m_3b, __VA_ARGS__) fn(DT_N_S_motors_S_m_4a, __VA_ARGS__) fn(DT_N_S_motors_S_m_4b, __VA_ARGS__) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_ORD 13
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_REQUIRES_ORDS \
+	0, /* / */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_SUPPORTS_ORDS \
+	14, /* /motors/m_1a */ \
+	15, /* /motors/m_1b */ \
+	16, /* /motors/m_2a */ \
+	17, /* /motors/m_2b */ \
+	18, /* /motors/m_3a */ \
+	19, /* /motors/m_3b */ \
+	20, /* /motors/m_4a */ \
+	21, /* /motors/m_4b */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_EXISTS 1
+#define DT_N_INST_2_gpio_leds DT_N_S_motors
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_REG_NUM 0
+#define DT_N_S_motors_RANGES_NUM 0
+#define DT_N_S_motors_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_IRQ_NUM 0
+#define DT_N_S_motors_COMPAT_MATCHES_gpio_leds 1
+#define DT_N_S_motors_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_PINCTRL_NUM 0
+
+/* (No generic property macros) */
+
+/*
+ * Devicetree node: /motors/m_1a
+ *
+ * Node identifier: DT_N_S_motors_S_m_1a
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_1a_PATH "/motors/m_1a"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_1a_FULL_NAME "m_1a"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_1a_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_1a_CHILD_IDX 0
+#define DT_N_S_motors_S_m_1a_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_1a_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_1a_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_1a_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_1a_ORD 14
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_1a_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_1a_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_1a_EXISTS 1
+#define DT_N_ALIAS_m1a     DT_N_S_motors_S_m_1a
+#define DT_N_NODELABEL_m1a DT_N_S_motors_S_m_1a
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_1a_REG_NUM 0
+#define DT_N_S_motors_S_m_1a_RANGES_NUM 0
+#define DT_N_S_motors_S_m_1a_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_1a_IRQ_NUM 0
+#define DT_N_S_motors_S_m_1a_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_1a_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_1a_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_1a_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_1a_P_gpios_IDX_0_VAL_pin 17
+#define DT_N_S_motors_S_m_1a_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_1a_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_1a_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_1a_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_1a, gpios, 0)
+#define DT_N_S_motors_S_m_1a_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_1a, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_1a_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_1a_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_1a_P_label "MOROT1-A GPIO"
+#define DT_N_S_motors_S_m_1a_P_label_STRING_TOKEN MOROT1_A_GPIO
+#define DT_N_S_motors_S_m_1a_P_label_STRING_UPPER_TOKEN MOROT1_A_GPIO
+#define DT_N_S_motors_S_m_1a_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_1a, label, 0) \
+	fn(DT_N_S_motors_S_m_1a, label, 1) \
+	fn(DT_N_S_motors_S_m_1a, label, 2) \
+	fn(DT_N_S_motors_S_m_1a, label, 3) \
+	fn(DT_N_S_motors_S_m_1a, label, 4) \
+	fn(DT_N_S_motors_S_m_1a, label, 5) \
+	fn(DT_N_S_motors_S_m_1a, label, 6) \
+	fn(DT_N_S_motors_S_m_1a, label, 7) \
+	fn(DT_N_S_motors_S_m_1a, label, 8) \
+	fn(DT_N_S_motors_S_m_1a, label, 9) \
+	fn(DT_N_S_motors_S_m_1a, label, 10) \
+	fn(DT_N_S_motors_S_m_1a, label, 11) \
+	fn(DT_N_S_motors_S_m_1a, label, 12)
+#define DT_N_S_motors_S_m_1a_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_1a, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1a, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_1a_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /motors/m_1b
+ *
+ * Node identifier: DT_N_S_motors_S_m_1b
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_1b_PATH "/motors/m_1b"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_1b_FULL_NAME "m_1b"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_1b_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_1b_CHILD_IDX 1
+#define DT_N_S_motors_S_m_1b_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_1b_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_1b_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_1b_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_1b_ORD 15
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_1b_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_1b_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_1b_EXISTS 1
+#define DT_N_ALIAS_m1b     DT_N_S_motors_S_m_1b
+#define DT_N_NODELABEL_m1b DT_N_S_motors_S_m_1b
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_1b_REG_NUM 0
+#define DT_N_S_motors_S_m_1b_RANGES_NUM 0
+#define DT_N_S_motors_S_m_1b_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_1b_IRQ_NUM 0
+#define DT_N_S_motors_S_m_1b_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_1b_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_1b_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_1b_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_1b_P_gpios_IDX_0_VAL_pin 16
+#define DT_N_S_motors_S_m_1b_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_1b_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_1b_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_1b_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_1b, gpios, 0)
+#define DT_N_S_motors_S_m_1b_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_1b, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_1b_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_1b_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_1b_P_label "MOROT1-B GPIO"
+#define DT_N_S_motors_S_m_1b_P_label_STRING_TOKEN MOROT1_B_GPIO
+#define DT_N_S_motors_S_m_1b_P_label_STRING_UPPER_TOKEN MOROT1_B_GPIO
+#define DT_N_S_motors_S_m_1b_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_1b, label, 0) \
+	fn(DT_N_S_motors_S_m_1b, label, 1) \
+	fn(DT_N_S_motors_S_m_1b, label, 2) \
+	fn(DT_N_S_motors_S_m_1b, label, 3) \
+	fn(DT_N_S_motors_S_m_1b, label, 4) \
+	fn(DT_N_S_motors_S_m_1b, label, 5) \
+	fn(DT_N_S_motors_S_m_1b, label, 6) \
+	fn(DT_N_S_motors_S_m_1b, label, 7) \
+	fn(DT_N_S_motors_S_m_1b, label, 8) \
+	fn(DT_N_S_motors_S_m_1b, label, 9) \
+	fn(DT_N_S_motors_S_m_1b, label, 10) \
+	fn(DT_N_S_motors_S_m_1b, label, 11) \
+	fn(DT_N_S_motors_S_m_1b, label, 12)
+#define DT_N_S_motors_S_m_1b_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_1b, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_1b, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_1b_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /motors/m_2a
+ *
+ * Node identifier: DT_N_S_motors_S_m_2a
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_2a_PATH "/motors/m_2a"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_2a_FULL_NAME "m_2a"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_2a_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_2a_CHILD_IDX 2
+#define DT_N_S_motors_S_m_2a_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_2a_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_2a_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_2a_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_2a_ORD 16
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_2a_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_2a_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_2a_EXISTS 1
+#define DT_N_ALIAS_m2a     DT_N_S_motors_S_m_2a
+#define DT_N_NODELABEL_m2a DT_N_S_motors_S_m_2a
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_2a_REG_NUM 0
+#define DT_N_S_motors_S_m_2a_RANGES_NUM 0
+#define DT_N_S_motors_S_m_2a_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_2a_IRQ_NUM 0
+#define DT_N_S_motors_S_m_2a_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_2a_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_2a_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_2a_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_2a_P_gpios_IDX_0_VAL_pin 19
+#define DT_N_S_motors_S_m_2a_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_2a_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_2a_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_2a_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_2a, gpios, 0)
+#define DT_N_S_motors_S_m_2a_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_2a, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_2a_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_2a_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_2a_P_label "MOROT2-A GPIO"
+#define DT_N_S_motors_S_m_2a_P_label_STRING_TOKEN MOROT2_A_GPIO
+#define DT_N_S_motors_S_m_2a_P_label_STRING_UPPER_TOKEN MOROT2_A_GPIO
+#define DT_N_S_motors_S_m_2a_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_2a, label, 0) \
+	fn(DT_N_S_motors_S_m_2a, label, 1) \
+	fn(DT_N_S_motors_S_m_2a, label, 2) \
+	fn(DT_N_S_motors_S_m_2a, label, 3) \
+	fn(DT_N_S_motors_S_m_2a, label, 4) \
+	fn(DT_N_S_motors_S_m_2a, label, 5) \
+	fn(DT_N_S_motors_S_m_2a, label, 6) \
+	fn(DT_N_S_motors_S_m_2a, label, 7) \
+	fn(DT_N_S_motors_S_m_2a, label, 8) \
+	fn(DT_N_S_motors_S_m_2a, label, 9) \
+	fn(DT_N_S_motors_S_m_2a, label, 10) \
+	fn(DT_N_S_motors_S_m_2a, label, 11) \
+	fn(DT_N_S_motors_S_m_2a, label, 12)
+#define DT_N_S_motors_S_m_2a_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_2a, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2a, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_2a_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /motors/m_2b
+ *
+ * Node identifier: DT_N_S_motors_S_m_2b
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_2b_PATH "/motors/m_2b"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_2b_FULL_NAME "m_2b"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_2b_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_2b_CHILD_IDX 3
+#define DT_N_S_motors_S_m_2b_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_2b_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_2b_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_2b_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_2b_ORD 17
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_2b_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_2b_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_2b_EXISTS 1
+#define DT_N_ALIAS_m2b     DT_N_S_motors_S_m_2b
+#define DT_N_NODELABEL_m2b DT_N_S_motors_S_m_2b
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_2b_REG_NUM 0
+#define DT_N_S_motors_S_m_2b_RANGES_NUM 0
+#define DT_N_S_motors_S_m_2b_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_2b_IRQ_NUM 0
+#define DT_N_S_motors_S_m_2b_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_2b_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_2b_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_2b_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_2b_P_gpios_IDX_0_VAL_pin 18
+#define DT_N_S_motors_S_m_2b_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_2b_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_2b_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_2b_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_2b, gpios, 0)
+#define DT_N_S_motors_S_m_2b_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_2b, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_2b_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_2b_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_2b_P_label "MOROT2-B GPIO"
+#define DT_N_S_motors_S_m_2b_P_label_STRING_TOKEN MOROT2_B_GPIO
+#define DT_N_S_motors_S_m_2b_P_label_STRING_UPPER_TOKEN MOROT2_B_GPIO
+#define DT_N_S_motors_S_m_2b_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_2b, label, 0) \
+	fn(DT_N_S_motors_S_m_2b, label, 1) \
+	fn(DT_N_S_motors_S_m_2b, label, 2) \
+	fn(DT_N_S_motors_S_m_2b, label, 3) \
+	fn(DT_N_S_motors_S_m_2b, label, 4) \
+	fn(DT_N_S_motors_S_m_2b, label, 5) \
+	fn(DT_N_S_motors_S_m_2b, label, 6) \
+	fn(DT_N_S_motors_S_m_2b, label, 7) \
+	fn(DT_N_S_motors_S_m_2b, label, 8) \
+	fn(DT_N_S_motors_S_m_2b, label, 9) \
+	fn(DT_N_S_motors_S_m_2b, label, 10) \
+	fn(DT_N_S_motors_S_m_2b, label, 11) \
+	fn(DT_N_S_motors_S_m_2b, label, 12)
+#define DT_N_S_motors_S_m_2b_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_2b, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_2b, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_2b_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /motors/m_3a
+ *
+ * Node identifier: DT_N_S_motors_S_m_3a
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_3a_PATH "/motors/m_3a"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_3a_FULL_NAME "m_3a"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_3a_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_3a_CHILD_IDX 4
+#define DT_N_S_motors_S_m_3a_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_3a_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_3a_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_3a_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_3a_ORD 18
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_3a_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_3a_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_3a_EXISTS 1
+#define DT_N_ALIAS_m3a     DT_N_S_motors_S_m_3a
+#define DT_N_NODELABEL_m3a DT_N_S_motors_S_m_3a
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_3a_REG_NUM 0
+#define DT_N_S_motors_S_m_3a_RANGES_NUM 0
+#define DT_N_S_motors_S_m_3a_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_3a_IRQ_NUM 0
+#define DT_N_S_motors_S_m_3a_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_3a_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_3a_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_3a_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_3a_P_gpios_IDX_0_VAL_pin 20
+#define DT_N_S_motors_S_m_3a_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_3a_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_3a_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_3a_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_3a, gpios, 0)
+#define DT_N_S_motors_S_m_3a_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_3a, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_3a_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_3a_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_3a_P_label "MOROT3-A GPIO"
+#define DT_N_S_motors_S_m_3a_P_label_STRING_TOKEN MOROT3_A_GPIO
+#define DT_N_S_motors_S_m_3a_P_label_STRING_UPPER_TOKEN MOROT3_A_GPIO
+#define DT_N_S_motors_S_m_3a_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_3a, label, 0) \
+	fn(DT_N_S_motors_S_m_3a, label, 1) \
+	fn(DT_N_S_motors_S_m_3a, label, 2) \
+	fn(DT_N_S_motors_S_m_3a, label, 3) \
+	fn(DT_N_S_motors_S_m_3a, label, 4) \
+	fn(DT_N_S_motors_S_m_3a, label, 5) \
+	fn(DT_N_S_motors_S_m_3a, label, 6) \
+	fn(DT_N_S_motors_S_m_3a, label, 7) \
+	fn(DT_N_S_motors_S_m_3a, label, 8) \
+	fn(DT_N_S_motors_S_m_3a, label, 9) \
+	fn(DT_N_S_motors_S_m_3a, label, 10) \
+	fn(DT_N_S_motors_S_m_3a, label, 11) \
+	fn(DT_N_S_motors_S_m_3a, label, 12)
+#define DT_N_S_motors_S_m_3a_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_3a, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3a, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_3a_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /motors/m_3b
+ *
+ * Node identifier: DT_N_S_motors_S_m_3b
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_3b_PATH "/motors/m_3b"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_3b_FULL_NAME "m_3b"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_3b_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_3b_CHILD_IDX 5
+#define DT_N_S_motors_S_m_3b_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_3b_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_3b_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_3b_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_3b_ORD 19
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_3b_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_3b_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_3b_EXISTS 1
+#define DT_N_ALIAS_m3b     DT_N_S_motors_S_m_3b
+#define DT_N_NODELABEL_m3b DT_N_S_motors_S_m_3b
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_3b_REG_NUM 0
+#define DT_N_S_motors_S_m_3b_RANGES_NUM 0
+#define DT_N_S_motors_S_m_3b_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_3b_IRQ_NUM 0
+#define DT_N_S_motors_S_m_3b_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_3b_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_3b_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_3b_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_3b_P_gpios_IDX_0_VAL_pin 21
+#define DT_N_S_motors_S_m_3b_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_3b_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_3b_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_3b_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_3b, gpios, 0)
+#define DT_N_S_motors_S_m_3b_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_3b, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_3b_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_3b_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_3b_P_label "MOROT3-B GPIO"
+#define DT_N_S_motors_S_m_3b_P_label_STRING_TOKEN MOROT3_B_GPIO
+#define DT_N_S_motors_S_m_3b_P_label_STRING_UPPER_TOKEN MOROT3_B_GPIO
+#define DT_N_S_motors_S_m_3b_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_3b, label, 0) \
+	fn(DT_N_S_motors_S_m_3b, label, 1) \
+	fn(DT_N_S_motors_S_m_3b, label, 2) \
+	fn(DT_N_S_motors_S_m_3b, label, 3) \
+	fn(DT_N_S_motors_S_m_3b, label, 4) \
+	fn(DT_N_S_motors_S_m_3b, label, 5) \
+	fn(DT_N_S_motors_S_m_3b, label, 6) \
+	fn(DT_N_S_motors_S_m_3b, label, 7) \
+	fn(DT_N_S_motors_S_m_3b, label, 8) \
+	fn(DT_N_S_motors_S_m_3b, label, 9) \
+	fn(DT_N_S_motors_S_m_3b, label, 10) \
+	fn(DT_N_S_motors_S_m_3b, label, 11) \
+	fn(DT_N_S_motors_S_m_3b, label, 12)
+#define DT_N_S_motors_S_m_3b_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_3b, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_3b, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_3b_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /motors/m_4a
+ *
+ * Node identifier: DT_N_S_motors_S_m_4a
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_4a_PATH "/motors/m_4a"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_4a_FULL_NAME "m_4a"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_4a_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_4a_CHILD_IDX 6
+#define DT_N_S_motors_S_m_4a_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_4a_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_4a_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_4a_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_4a_ORD 20
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_4a_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_4a_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_4a_EXISTS 1
+#define DT_N_ALIAS_m4a     DT_N_S_motors_S_m_4a
+#define DT_N_NODELABEL_m4a DT_N_S_motors_S_m_4a
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_4a_REG_NUM 0
+#define DT_N_S_motors_S_m_4a_RANGES_NUM 0
+#define DT_N_S_motors_S_m_4a_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_4a_IRQ_NUM 0
+#define DT_N_S_motors_S_m_4a_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_4a_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_4a_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_4a_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_4a_P_gpios_IDX_0_VAL_pin 26
+#define DT_N_S_motors_S_m_4a_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_4a_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_4a_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_4a_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_4a, gpios, 0)
+#define DT_N_S_motors_S_m_4a_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_4a, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_4a_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_4a_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_4a_P_label "MOROT4-A GPIO"
+#define DT_N_S_motors_S_m_4a_P_label_STRING_TOKEN MOROT4_A_GPIO
+#define DT_N_S_motors_S_m_4a_P_label_STRING_UPPER_TOKEN MOROT4_A_GPIO
+#define DT_N_S_motors_S_m_4a_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_4a, label, 0) \
+	fn(DT_N_S_motors_S_m_4a, label, 1) \
+	fn(DT_N_S_motors_S_m_4a, label, 2) \
+	fn(DT_N_S_motors_S_m_4a, label, 3) \
+	fn(DT_N_S_motors_S_m_4a, label, 4) \
+	fn(DT_N_S_motors_S_m_4a, label, 5) \
+	fn(DT_N_S_motors_S_m_4a, label, 6) \
+	fn(DT_N_S_motors_S_m_4a, label, 7) \
+	fn(DT_N_S_motors_S_m_4a, label, 8) \
+	fn(DT_N_S_motors_S_m_4a, label, 9) \
+	fn(DT_N_S_motors_S_m_4a, label, 10) \
+	fn(DT_N_S_motors_S_m_4a, label, 11) \
+	fn(DT_N_S_motors_S_m_4a, label, 12)
+#define DT_N_S_motors_S_m_4a_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_4a, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4a, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_4a_P_label_EXISTS 1
+
+/*
+ * Devicetree node: /motors/m_4b
+ *
+ * Node identifier: DT_N_S_motors_S_m_4b
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_motors_S_m_4b_PATH "/motors/m_4b"
+
+/* Node's name with unit-address: */
+#define DT_N_S_motors_S_m_4b_FULL_NAME "m_4b"
+
+/* Node parent (/motors) identifier: */
+#define DT_N_S_motors_S_m_4b_PARENT DT_N_S_motors
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_motors_S_m_4b_CHILD_IDX 7
+#define DT_N_S_motors_S_m_4b_FOREACH_CHILD(fn) 
+#define DT_N_S_motors_S_m_4b_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_motors_S_m_4b_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_motors_S_m_4b_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_motors_S_m_4b_ORD 21
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_motors_S_m_4b_REQUIRES_ORDS \
+	9, /* /soc/gpio@40014000 */ \
+	13, /* /motors */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_motors_S_m_4b_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_motors_S_m_4b_EXISTS 1
+#define DT_N_ALIAS_m4b     DT_N_S_motors_S_m_4b
+#define DT_N_NODELABEL_m4b DT_N_S_motors_S_m_4b
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_motors_S_m_4b_REG_NUM 0
+#define DT_N_S_motors_S_m_4b_RANGES_NUM 0
+#define DT_N_S_motors_S_m_4b_FOREACH_RANGE(fn) 
+#define DT_N_S_motors_S_m_4b_IRQ_NUM 0
+#define DT_N_S_motors_S_m_4b_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_motors_S_m_4b_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_motors_S_m_4b_P_gpios_IDX_0_EXISTS 1
+#define DT_N_S_motors_S_m_4b_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
+#define DT_N_S_motors_S_m_4b_P_gpios_IDX_0_VAL_pin 22
+#define DT_N_S_motors_S_m_4b_P_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_motors_S_m_4b_P_gpios_IDX_0_VAL_flags 0
+#define DT_N_S_motors_S_m_4b_P_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_motors_S_m_4b_P_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_4b, gpios, 0)
+#define DT_N_S_motors_S_m_4b_P_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_4b, gpios, 0, __VA_ARGS__)
+#define DT_N_S_motors_S_m_4b_P_gpios_LEN 1
+#define DT_N_S_motors_S_m_4b_P_gpios_EXISTS 1
+#define DT_N_S_motors_S_m_4b_P_label "MOROT4-B GPIO"
+#define DT_N_S_motors_S_m_4b_P_label_STRING_TOKEN MOROT4_B_GPIO
+#define DT_N_S_motors_S_m_4b_P_label_STRING_UPPER_TOKEN MOROT4_B_GPIO
+#define DT_N_S_motors_S_m_4b_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_motors_S_m_4b, label, 0) \
+	fn(DT_N_S_motors_S_m_4b, label, 1) \
+	fn(DT_N_S_motors_S_m_4b, label, 2) \
+	fn(DT_N_S_motors_S_m_4b, label, 3) \
+	fn(DT_N_S_motors_S_m_4b, label, 4) \
+	fn(DT_N_S_motors_S_m_4b, label, 5) \
+	fn(DT_N_S_motors_S_m_4b, label, 6) \
+	fn(DT_N_S_motors_S_m_4b, label, 7) \
+	fn(DT_N_S_motors_S_m_4b, label, 8) \
+	fn(DT_N_S_motors_S_m_4b, label, 9) \
+	fn(DT_N_S_motors_S_m_4b, label, 10) \
+	fn(DT_N_S_motors_S_m_4b, label, 11) \
+	fn(DT_N_S_motors_S_m_4b, label, 12)
+#define DT_N_S_motors_S_m_4b_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_motors_S_m_4b, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 4, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 5, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 6, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 7, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 8, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 9, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 10, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 11, __VA_ARGS__) \
+	fn(DT_N_S_motors_S_m_4b, label, 12, __VA_ARGS__)
+#define DT_N_S_motors_S_m_4b_P_label_EXISTS 1
+
+/*
  * Devicetree node: /soc/system-clk
  *
  * Node identifier: DT_N_S_soc_S_system_clk
@@ -824,7 +1796,7 @@
 #define DT_N_S_soc_S_system_clk_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_system_clk_ORD 11
+#define DT_N_S_soc_S_system_clk_ORD 22
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_system_clk_REQUIRES_ORDS \
@@ -832,8 +1804,8 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_system_clk_SUPPORTS_ORDS \
-	14, /* /soc/i2c@40044000 */ \
-	16, /* /soc/i2c@40048000 */
+	25, /* /soc/i2c@40044000 */ \
+	27, /* /soc/i2c@40048000 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_system_clk_EXISTS 1
@@ -884,7 +1856,7 @@
 #define DT_N_S_soc_S_pin_controller_40014000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default, __VA_ARGS__) fn(DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default, __VA_ARGS__) fn(DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_ORD 12
+#define DT_N_S_soc_S_pin_controller_40014000_ORD 23
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_REQUIRES_ORDS \
@@ -892,9 +1864,9 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_SUPPORTS_ORDS \
-	13, /* /soc/pin-controller@40014000/i2c0_default */ \
-	15, /* /soc/pin-controller@40014000/i2c1_default */ \
-	21, /* /soc/pin-controller@40014000/uart0_default */
+	24, /* /soc/pin-controller@40014000/i2c0_default */ \
+	26, /* /soc/pin-controller@40014000/i2c1_default */ \
+	32, /* /soc/pin-controller@40014000/uart0_default */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_pin_controller_40014000_EXISTS 1
@@ -995,16 +1967,16 @@
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_ORD 13
+#define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_ORD 24
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_REQUIRES_ORDS \
-	12, /* /soc/pin-controller@40014000 */
+	23, /* /soc/pin-controller@40014000 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_SUPPORTS_ORDS \
-	14, /* /soc/i2c@40044000 */ \
-	28, /* /soc/pin-controller@40014000/i2c0_default/group1 */
+	25, /* /soc/i2c@40044000 */ \
+	39, /* /soc/pin-controller@40014000/i2c0_default/group1 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_EXISTS 1
@@ -1051,14 +2023,14 @@
 #define DT_N_S_soc_S_i2c_40044000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_i2c_40044000_ORD 14
+#define DT_N_S_soc_S_i2c_40044000_ORD 25
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_i2c_40044000_REQUIRES_ORDS \
 	7, /* /soc */ \
 	8, /* /soc/interrupt-controller@e000e100 */ \
-	11, /* /soc/system-clk */ \
-	13, /* /soc/pin-controller@40014000/i2c0_default */
+	22, /* /soc/system-clk */ \
+	24, /* /soc/pin-controller@40014000/i2c0_default */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_i2c_40044000_SUPPORTS_ORDS /* nothing */
@@ -1213,16 +2185,16 @@
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_ORD 15
+#define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_ORD 26
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_REQUIRES_ORDS \
-	12, /* /soc/pin-controller@40014000 */
+	23, /* /soc/pin-controller@40014000 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_SUPPORTS_ORDS \
-	16, /* /soc/i2c@40048000 */ \
-	29, /* /soc/pin-controller@40014000/i2c1_default/group1 */
+	27, /* /soc/i2c@40048000 */ \
+	40, /* /soc/pin-controller@40014000/i2c1_default/group1 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_EXISTS 1
@@ -1269,14 +2241,14 @@
 #define DT_N_S_soc_S_i2c_40048000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_i2c_40048000_ORD 16
+#define DT_N_S_soc_S_i2c_40048000_ORD 27
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_i2c_40048000_REQUIRES_ORDS \
 	7, /* /soc */ \
 	8, /* /soc/interrupt-controller@e000e100 */ \
-	11, /* /soc/system-clk */ \
-	15, /* /soc/pin-controller@40014000/i2c1_default */
+	22, /* /soc/system-clk */ \
+	26, /* /soc/pin-controller@40014000/i2c1_default */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_i2c_40048000_SUPPORTS_ORDS /* nothing */
@@ -1434,7 +2406,7 @@
 #define DT_N_S_soc_S_memory_20000000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_memory_20000000_ORD 17
+#define DT_N_S_soc_S_memory_20000000_ORD 28
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_memory_20000000_REQUIRES_ORDS \
@@ -1506,7 +2478,7 @@
 #define DT_N_S_soc_S_timer_e000e010_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_timer_e000e010_ORD 18
+#define DT_N_S_soc_S_timer_e000e010_ORD 29
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_timer_e000e010_REQUIRES_ORDS \
@@ -1582,7 +2554,7 @@
 #define DT_N_S_soc_S_peripheral_clk_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_peripheral_clk_ORD 19
+#define DT_N_S_soc_S_peripheral_clk_ORD 30
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_peripheral_clk_REQUIRES_ORDS \
@@ -1590,8 +2562,8 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_peripheral_clk_SUPPORTS_ORDS \
-	22, /* /soc/uart@40034000 */ \
-	23, /* /soc/uart@40038000 */
+	33, /* /soc/uart@40034000 */ \
+	34, /* /soc/uart@40038000 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_peripheral_clk_EXISTS 1
@@ -1642,7 +2614,7 @@
 #define DT_N_S_soc_S_reset_controller_4000c000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_reset_controller_4000c000_ORD 20
+#define DT_N_S_soc_S_reset_controller_4000c000_ORD 31
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_reset_controller_4000c000_REQUIRES_ORDS \
@@ -1650,8 +2622,8 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_reset_controller_4000c000_SUPPORTS_ORDS \
-	22, /* /soc/uart@40034000 */ \
-	23, /* /soc/uart@40038000 */
+	33, /* /soc/uart@40034000 */ \
+	34, /* /soc/uart@40038000 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_reset_controller_4000c000_EXISTS 1
@@ -1737,17 +2709,17 @@
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1, __VA_ARGS__) fn(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_ORD 21
+#define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_ORD 32
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_REQUIRES_ORDS \
-	12, /* /soc/pin-controller@40014000 */
+	23, /* /soc/pin-controller@40014000 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_SUPPORTS_ORDS \
-	22, /* /soc/uart@40034000 */ \
-	30, /* /soc/pin-controller@40014000/uart0_default/group1 */ \
-	31, /* /soc/pin-controller@40014000/uart0_default/group2 */
+	33, /* /soc/uart@40034000 */ \
+	41, /* /soc/pin-controller@40014000/uart0_default/group1 */ \
+	42, /* /soc/pin-controller@40014000/uart0_default/group2 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_EXISTS 1
@@ -1794,15 +2766,15 @@
 #define DT_N_S_soc_S_uart_40034000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_uart_40034000_ORD 22
+#define DT_N_S_soc_S_uart_40034000_ORD 33
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_uart_40034000_REQUIRES_ORDS \
 	7, /* /soc */ \
 	8, /* /soc/interrupt-controller@e000e100 */ \
-	19, /* /soc/peripheral-clk */ \
-	20, /* /soc/reset-controller@4000c000 */ \
-	21, /* /soc/pin-controller@40014000/uart0_default */
+	30, /* /soc/peripheral-clk */ \
+	31, /* /soc/reset-controller@4000c000 */ \
+	32, /* /soc/pin-controller@40014000/uart0_default */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_uart_40034000_SUPPORTS_ORDS /* nothing */
@@ -1972,14 +2944,14 @@
 #define DT_N_S_soc_S_uart_40038000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_uart_40038000_ORD 23
+#define DT_N_S_soc_S_uart_40038000_ORD 34
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_uart_40038000_REQUIRES_ORDS \
 	7, /* /soc */ \
 	8, /* /soc/interrupt-controller@e000e100 */ \
-	19, /* /soc/peripheral-clk */ \
-	20, /* /soc/reset-controller@4000c000 */
+	30, /* /soc/peripheral-clk */ \
+	31, /* /soc/reset-controller@4000c000 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_uart_40038000_SUPPORTS_ORDS /* nothing */
@@ -2135,7 +3107,7 @@
 #define DT_N_S_soc_S_flash_10000000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_10000000_S_partitions, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_flash_10000000_ORD 24
+#define DT_N_S_soc_S_flash_10000000_ORD 35
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_flash_10000000_REQUIRES_ORDS \
@@ -2143,7 +3115,7 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_flash_10000000_SUPPORTS_ORDS \
-	25, /* /soc/flash@10000000/partitions */
+	36, /* /soc/flash@10000000/partitions */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_flash_10000000_EXISTS 1
@@ -2238,16 +3210,16 @@
 #define DT_N_S_soc_S_flash_10000000_S_partitions_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0, __VA_ARGS__) fn(DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_flash_10000000_S_partitions_ORD 25
+#define DT_N_S_soc_S_flash_10000000_S_partitions_ORD 36
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_flash_10000000_S_partitions_REQUIRES_ORDS \
-	24, /* /soc/flash@10000000 */
+	35, /* /soc/flash@10000000 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_flash_10000000_S_partitions_SUPPORTS_ORDS \
-	26, /* /soc/flash@10000000/partitions/partition@0 */ \
-	27, /* /soc/flash@10000000/partitions/partition@100 */
+	37, /* /soc/flash@10000000/partitions/partition@0 */ \
+	38, /* /soc/flash@10000000/partitions/partition@100 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_flash_10000000_S_partitions_EXISTS 1
@@ -2292,11 +3264,11 @@
 #define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0_ORD 26
+#define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0_ORD 37
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0_REQUIRES_ORDS \
-	25, /* /soc/flash@10000000/partitions */
+	36, /* /soc/flash@10000000/partitions */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0_SUPPORTS_ORDS /* nothing */
@@ -2411,11 +3383,11 @@
 #define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100_ORD 27
+#define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100_ORD 38
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100_REQUIRES_ORDS \
-	25, /* /soc/flash@10000000/partitions */
+	36, /* /soc/flash@10000000/partitions */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100_SUPPORTS_ORDS /* nothing */
@@ -2512,11 +3484,11 @@
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1_ORD 28
+#define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1_ORD 39
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1_REQUIRES_ORDS \
-	13, /* /soc/pin-controller@40014000/i2c0_default */
+	24, /* /soc/pin-controller@40014000/i2c0_default */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1_SUPPORTS_ORDS /* nothing */
@@ -2589,11 +3561,11 @@
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1_ORD 29
+#define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1_ORD 40
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1_REQUIRES_ORDS \
-	15, /* /soc/pin-controller@40014000/i2c1_default */
+	26, /* /soc/pin-controller@40014000/i2c1_default */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1_SUPPORTS_ORDS /* nothing */
@@ -2666,11 +3638,11 @@
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1_ORD 30
+#define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1_ORD 41
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1_REQUIRES_ORDS \
-	21, /* /soc/pin-controller@40014000/uart0_default */
+	32, /* /soc/pin-controller@40014000/uart0_default */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1_SUPPORTS_ORDS /* nothing */
@@ -2739,11 +3711,11 @@
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2_ORD 31
+#define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2_ORD 42
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2_REQUIRES_ORDS \
-	21, /* /soc/pin-controller@40014000/uart0_default */
+	32, /* /soc/pin-controller@40014000/uart0_default */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2_SUPPORTS_ORDS /* nothing */
@@ -2838,7 +3810,7 @@
 #define DT_N_INST_raspberrypi_pico_uart_NUM_OKAY 1
 #define DT_N_INST_snps_designware_i2c_NUM_OKAY 2
 #define DT_N_INST_arm_cortex_m0__NUM_OKAY 2
-#define DT_N_INST_gpio_leds_NUM_OKAY 1
+#define DT_N_INST_gpio_leds_NUM_OKAY 3
 #define DT_FOREACH_OKAY_simple_bus(fn) fn(DT_N_S_soc)
 #define DT_FOREACH_OKAY_VARGS_simple_bus(fn, ...) fn(DT_N_S_soc, __VA_ARGS__)
 #define DT_FOREACH_OKAY_INST_simple_bus(fn) fn(0)
@@ -2891,10 +3863,10 @@
 #define DT_FOREACH_OKAY_VARGS_arm_cortex_m0_(fn, ...) fn(DT_N_S_cpus_S_cpu_0, __VA_ARGS__) fn(DT_N_S_cpus_S_cpu_1, __VA_ARGS__)
 #define DT_FOREACH_OKAY_INST_arm_cortex_m0_(fn) fn(0) fn(1)
 #define DT_FOREACH_OKAY_INST_VARGS_arm_cortex_m0_(fn, ...) fn(0, __VA_ARGS__) fn(1, __VA_ARGS__)
-#define DT_FOREACH_OKAY_gpio_leds(fn) fn(DT_N_S_leds)
-#define DT_FOREACH_OKAY_VARGS_gpio_leds(fn, ...) fn(DT_N_S_leds, __VA_ARGS__)
-#define DT_FOREACH_OKAY_INST_gpio_leds(fn) fn(0)
-#define DT_FOREACH_OKAY_INST_VARGS_gpio_leds(fn, ...) fn(0, __VA_ARGS__)
+#define DT_FOREACH_OKAY_gpio_leds(fn) fn(DT_N_S_leds) fn(DT_N_S_gprs) fn(DT_N_S_motors)
+#define DT_FOREACH_OKAY_VARGS_gpio_leds(fn, ...) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_gprs, __VA_ARGS__) fn(DT_N_S_motors, __VA_ARGS__)
+#define DT_FOREACH_OKAY_INST_gpio_leds(fn) fn(0) fn(1) fn(2)
+#define DT_FOREACH_OKAY_INST_VARGS_gpio_leds(fn, ...) fn(0, __VA_ARGS__) fn(1, __VA_ARGS__) fn(2, __VA_ARGS__)
 
 /*
  * Bus information for status "okay" nodes of each compatible

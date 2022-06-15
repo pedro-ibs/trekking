@@ -12,6 +12,15 @@
 	};
 	aliases {
 		led0 = &led0;
+		gprs-rst = &gprs_rst;
+		m1a = &m1a;
+		m1b = &m1b;
+		m2a = &m2a;
+		m2b = &m2b;
+		m3a = &m3a;
+		m3b = &m3b;
+		m4a = &m4a;
+		m4b = &m4b;
 	};
 	soc {
 		#address-cells = < 0x1 >;
@@ -190,6 +199,48 @@
 		led0: led_0 {
 			gpios = < &gpio0 0x19 0x0 >;
 			label = "LED";
+		};
+	};
+	gprs {
+		compatible = "gpio-leds";
+		gprs_rst: gprs_reset {
+			gpios = < &gpio0 0x1b 0x0 >;
+			label = "GPRS RESET";
+		};
+	};
+	motors {
+		compatible = "gpio-leds";
+		m1a: m_1a {
+			gpios = < &gpio0 0x11 0x0 >;
+			label = "MOROT1-A GPIO";
+		};
+		m1b: m_1b {
+			gpios = < &gpio0 0x10 0x0 >;
+			label = "MOROT1-B GPIO";
+		};
+		m2a: m_2a {
+			gpios = < &gpio0 0x13 0x0 >;
+			label = "MOROT2-A GPIO";
+		};
+		m2b: m_2b {
+			gpios = < &gpio0 0x12 0x0 >;
+			label = "MOROT2-B GPIO";
+		};
+		m3a: m_3a {
+			gpios = < &gpio0 0x14 0x0 >;
+			label = "MOROT3-A GPIO";
+		};
+		m3b: m_3b {
+			gpios = < &gpio0 0x15 0x0 >;
+			label = "MOROT3-B GPIO";
+		};
+		m4a: m_4a {
+			gpios = < &gpio0 0x1a 0x0 >;
+			label = "MOROT4-A GPIO";
+		};
+		m4b: m_4b {
+			gpios = < &gpio0 0x16 0x0 >;
+			label = "MOROT4-B GPIO";
 		};
 	};
 };
