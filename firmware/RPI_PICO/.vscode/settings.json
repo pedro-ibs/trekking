@@ -13,6 +13,7 @@
 	"files.associations": {
 		"atomic": "cpp",
 		"cstdint": "cpp",
-		"motor.h": "c"
+		"motor.h": "c",
+		"printk.h": "c"
 	}
 }

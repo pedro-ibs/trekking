@@ -44,7 +44,8 @@
 #include <drivers/gpio.h>
 #include <drivers/uart.h>
 
-#include "motor.c"
+#include "modules/motor/motor.h"
+
 
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
 #define LED0_NODE			DT_ALIAS( led0		)
@@ -73,31 +74,13 @@ void main(void) {
 	gpio_pin_configure_dt(&gprs_reset, GPIO_OUTPUT_HIGH);
 
 	motor_uSetup();
+	motor_vTurnoff(M1A, M1B);
+	motor_vTurnoff(M2A, M2B);
+	motor_vTurnoff(M3A, M3B);
+	motor_vTurnoff(M4A, M4B);
 
 	k_timer_start(&app_timer, K_NO_WAIT, K_MSEC(500));
 	printk("started \r\n");
-
-
-	while (true){
-
-		motor_vToFront(M1A, M1B);
-		motor_vToFront(M2A, M2B);
-		motor_vToBack(M3A, M3B);
-		motor_vToBack(M4A, M4B);
-
-		k_sleep(K_MSEC(3000));	
-
-		motor_vTurnoff(M1A, M1B);
-		motor_vTurnoff(M2A, M2B);
-		motor_vTurnoff(M3A, M3B);
-		motor_vTurnoff(M4A, M4B);
-
-		
-		k_sleep(K_MSEC(10000));	
-
-
-	}
-	
 }
 
 /*########################################################################################################################################################*/

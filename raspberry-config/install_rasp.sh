@@ -7,7 +7,7 @@ sudo apt install default-jre default-jdk -y
 sudo apt install gcc make cmake dkms gcc-arm-none-eabi -y
 sudo apt install automake autoconf build-essential texinfo libtool libftdi-dev -y
 sudo apt install libusb-dev libusb-1.0-0 libusb-1.0-0-dev -y
-sudo apt install git net-tools ht cutecom minicom putty unzip transmission gparted nmap -y
+sudo apt install git net-tools ht cutecom minicom putty socat unzip transmission gparted nmap -y
 sudo apt install python3-pip -y
 
 sudo apt install gpsd gpsd-clients -y
@@ -17,6 +17,7 @@ sudo gpsd /dev/ttyACM1 -F /var/run/gpsd.sock
 sudo systemctl stop serial-getty@serial0.service
 
 sudo apt install apache2 install php php-mbstring -y
+
 
 mkdir -p $HOME/.local/opt
 cd $HOME/.local/opt
