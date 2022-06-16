@@ -10,8 +10,22 @@ find_package(Zephyr REQUIRED HINTS {ZEPHYR_BASE})
 
 project(RPI_PICO)
 
-target_sources(app PRIVATE 
-src/modules/motor/motor.c
+include_directories( 
+includes
+lib
+lib/motor
+lib/led
+lib/gprs
+src
+)
+
+target_sources(app PRIVATE
 src/main.c
-src/modules/motor/motor.h
+includes/hardware.h
+lib/motor/motor.h
+lib/led/led.h
+lib/gprs/gprs.h
+lib/motor/motor.c
+lib/led/led.c
+lib/gprs/gprs.c
 ) 

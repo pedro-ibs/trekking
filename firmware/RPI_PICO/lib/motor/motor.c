@@ -48,20 +48,9 @@
 
 #include <drivers/gpio.h>
 
-
+#include <hardware.h>
 
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
-#define M1A_NODE	DT_ALIAS( m1a )
-#define M1B_NODE	DT_ALIAS( m1b )
-
-#define M2A_NODE	DT_ALIAS( m2a )
-#define M2B_NODE	DT_ALIAS( m2b )
-
-#define M3A_NODE	DT_ALIAS( m3a )
-#define M3B_NODE	DT_ALIAS( m3b )
-
-#define M4A_NODE	DT_ALIAS( m4a )
-#define M4B_NODE	DT_ALIAS( m4b )
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
 

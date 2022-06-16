@@ -1,13 +1,13 @@
 /**
- * mam.c
+ * led.c
  *
- *  @date Created at:	09/05/2022 11:50:04
+ *  @date Created at:	16/06/2022 13:18:30
  *	@author:	Pedro Igor B. S.
  *	@email:		pedro.igor.ifsp@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
  * 	tabSize:	8
  *
- * ####################################################################### *
+ * #######################################################################
  *   Copyright (C) Pedro Igor B. S 2021
  * -------------------------------------------------------------------
  *
@@ -26,14 +26,14 @@
  * #######################################################################
  *
  *
- * PISCA TIMER
+ * TODO: documentation or resume or Abstract
  *
  */
 
+
+
 /* Includes ----------------------------------------------------------------------------------------------------------------------------------------------*/
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "led.h"
 
 #include <zephyr.h>
 #include <device.h>
@@ -42,34 +42,37 @@
 #include <sys/printk.h>
 
 #include <drivers/gpio.h>
-#include <drivers/uart.h>
 
-#include <motor.h>
-#include <gprs.h>
-#include <led.h>
+#include <hardware.h>
 
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
+void led_timer_handler(struct k_timer *timer_id);
+void ping_work_handler( struct k_work *work );
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
+static const struct gpio_dt_spec led		= GPIO_DT_SPEC_GET(LED0_NODE,		gpios);
+K_TIMER_DEFINE(led_timer, led_timer_handler, NULL);
+K_WORK_DEFINE(ping_work, ping_work_handler);
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-void main(void) {	
-
-	motor_uSetup();
-	gprs_vSetup();
-	led_vSetup();
-
-
-	motor_vTurnoff(M1A, M1B);
-	motor_vTurnoff(M2A, M2B);
-	motor_vTurnoff(M3A, M3B);
-	motor_vTurnoff(M4A, M4B);
-
-	printk("started \r\n");
-
-	led_vPeriodicPingStart(K_MSEC(1000));
+void led_vSetup(void){
+	if (!device_is_ready(led.port))	 return;
+	gpio_pin_configure_dt(&led, GPIO_OUTPUT_HIGH);
 }
+
+void led_vPeriodicPingStart(k_timeout_t timeout){
+	k_timer_start(&led_timer, K_NO_WAIT, timeout);
+}
+
+
+void led_vPeriodicPingStop(void){
+	k_timer_stop(&led_timer);
+}
+
+void led_vPing(void){
+	k_work_submit(&ping_work);
+}
+
 
 /*########################################################################################################################################################*/
 /*########################################################################################################################################################*/
@@ -77,3 +80,13 @@ void main(void) {
 /*-------------------------------------------------------------------- Local Functions -------------------------------------------------------------------*/
 /*########################################################################################################################################################*/
 
+void led_timer_handler(struct k_timer *timer_id) {
+	led_vPing();
+
+}
+
+void ping_work_handler( struct k_work *work ){
+	gpio_pin_set_dt(&led, true);
+	k_sleep(K_MSEC(20));
+	gpio_pin_set_dt(&led, false);
+}
