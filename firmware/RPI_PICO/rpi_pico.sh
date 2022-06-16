@@ -25,7 +25,6 @@ $FIND_FILES_C
 $FIND_FILES_H
 ) " > CMakeLists.txt
 
-
 west build -b rpi_pico $1
 cd build
 ninja hardenconfig
