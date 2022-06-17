@@ -21,6 +21,7 @@
 		m3b = &m3b;
 		m4a = &m4a;
 		m4b = &m4b;
+		uart0 = &uart0;
 	};
 	soc {
 		#address-cells = < 0x1 >;

@@ -15,17 +15,21 @@ includes
 lib
 lib/motor
 lib/led
+lib/comm
 lib/gprs
 src
 )
 
 target_sources(app PRIVATE
 src/main.c
+includes/config.h
 includes/hardware.h
 lib/motor/motor.h
 lib/led/led.h
+lib/comm/comm.h
 lib/gprs/gprs.h
 lib/motor/motor.c
 lib/led/led.c
+lib/comm/comm.c
 lib/gprs/gprs.c
 ) 

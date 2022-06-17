@@ -1,7 +1,7 @@
 /**
- * hardware.h
+ * comm.h
  *
- *  @date Created at:	16/06/2022 12:57:19
+ *  @date Created at:	16/06/2022 17:13:42
  *	@author:	Pedro Igor B. S.
  *	@email:		pedro.igor.ifsp@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
@@ -24,54 +24,33 @@
  *   GNU General Public License for more details.
  * -------------------------------------------------------------------
  * #######################################################################
- * 
- * As definições de hardware  utilizada na aplicação
+ *
+ *
+ * TODO: documentation or resume or Abstract
  *
  */
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
 #include <zephyr.h>
-#include <device.h>
-#include <devicetree.h>
-
-#include <drivers/gpio.h>
 
 
-#ifndef hardware_H_
-#define hardware_H_
+#ifndef comm_H_
+#define comm_H_
 
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+typedef enum{
+	UART0 = 0,
+	UART1,
+	UART_QTY
+} uart_device;
+
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/**
- * Pinos de controle  dos motores
- */
-#define M1A_NODE		DT_ALIAS( m1a			)
-#define M1B_NODE		DT_ALIAS( m1b			)
+void comm_vSetup(void);
+void comm_vGetMessage(uart_device dev, char *msg, k_timeout_t timeout);
+void comm_uSendChar( uart_device dev, char c );
+void comm_uSendString( uart_device dev, const char *str );
+void comm_uSendStringLn( uart_device dev, const char *str );
 
-#define M2A_NODE		DT_ALIAS( m2a			)
-#define M2B_NODE		DT_ALIAS( m2b			)
-
-#define M3A_NODE		DT_ALIAS( m3a			)
-#define M3B_NODE		DT_ALIAS( m3b 			)
-
-#define M4A_NODE		DT_ALIAS( m4a 			)
-#define M4B_NODE		DT_ALIAS( m4b 			)
-
-
-/**
- *  GPRS
- */
-#define GPRS_RST_NODE		DT_ALIAS( gprs_rst 		)
-
-/**
- * Led -IHM
- */
-#define LED0_NODE		DT_ALIAS( led0			)
-
-/**
- * Comunicação serial raspberry - rpi_pico
- */
-#define UART_RASP_RPI_NODE 	DT_ALIAS( uart0 		)
-
-#endif /* hardware_H_ */
+#endif /* comm_H_ */

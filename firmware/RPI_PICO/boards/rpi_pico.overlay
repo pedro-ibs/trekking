@@ -24,6 +24,8 @@
 		m3b	= &m3b;
 		m4a	= &m4a;
 		m4b	= &m4b;
+
+		uart0	= &uart0;
 	};
 
 	leds {
@@ -89,5 +91,10 @@
 
 
 
-
+&uart0 {
+	current-speed = <115200>;
+	status = "okay";
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-names = "default";
+};
 

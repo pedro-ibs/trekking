@@ -1,7 +1,7 @@
 /**
- * hardware.h
+ * config.h
  *
- *  @date Created at:	16/06/2022 12:57:19
+ *  @date Created at:	16/06/2022 17:45:43
  *	@author:	Pedro Igor B. S.
  *	@email:		pedro.igor.ifsp@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
@@ -24,54 +24,29 @@
  *   GNU General Public License for more details.
  * -------------------------------------------------------------------
  * #######################################################################
- * 
- * As definições de hardware  utilizada na aplicação
+ *
+ * Configurações gerais do sistema e aplicação
  *
  */
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
+#include "hardware.h"
 #include <zephyr.h>
-#include <device.h>
-#include <devicetree.h>
 
-#include <drivers/gpio.h>
-
-
-#ifndef hardware_H_
-#define hardware_H_
+#ifndef config_H_
+#define config_H_
 
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/**
- * Pinos de controle  dos motores
- */
-#define M1A_NODE		DT_ALIAS( m1a			)
-#define M1B_NODE		DT_ALIAS( m1b			)
 
-#define M2A_NODE		DT_ALIAS( m2a			)
-#define M2B_NODE		DT_ALIAS( m2b			)
-
-#define M3A_NODE		DT_ALIAS( m3a			)
-#define M3B_NODE		DT_ALIAS( m3b 			)
-
-#define M4A_NODE		DT_ALIAS( m4a 			)
-#define M4B_NODE		DT_ALIAS( m4b 			)
+#endif /* config_H_ */
 
 
-/**
- *  GPRS
- */
-#define GPRS_RST_NODE		DT_ALIAS( gprs_rst 		)
 
-/**
- * Led -IHM
- */
-#define LED0_NODE		DT_ALIAS( led0			)
+/* ************************************************************************************************************ */
+/* CONFIGURAÇÕES DA COMUNICAÇÃO SERIAL comm.h 									*/
+/* ************************************************************************************************************ */
+#define UART_MESSAGE_SIZE		( 204		)
+#define UART_QUEUE_SIZE			( 10		)
 
-/**
- * Comunicação serial raspberry - rpi_pico
- */
-#define UART_RASP_RPI_NODE 	DT_ALIAS( uart0 		)
-
-#endif /* hardware_H_ */

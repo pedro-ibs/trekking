@@ -5,6 +5,7 @@ set_target_properties(devicetree_target PROPERTIES "DT_CHOSEN|zephyr,flash" "/so
 set_target_properties(devicetree_target PROPERTIES "DT_CHOSEN|zephyr,console" "/soc/uart@40034000")
 set_target_properties(devicetree_target PROPERTIES "DT_CHOSEN|zephyr,shell-uart" "/soc/uart@40034000")
 set_target_properties(devicetree_target PROPERTIES "DT_CHOSEN|zephyr,code-partition" "/soc/flash@10000000/partitions/partition@100")
+set_target_properties(devicetree_target PROPERTIES "DT_ALIAS|uart0" "/soc/uart@40034000")
 set_target_properties(devicetree_target PROPERTIES "DT_ALIAS|led0" "/leds/led_0")
 set_target_properties(devicetree_target PROPERTIES "DT_ALIAS|gprs-rst" "/gprs/gprs_reset")
 set_target_properties(devicetree_target PROPERTIES "DT_ALIAS|m1a" "/motors/m_1a")

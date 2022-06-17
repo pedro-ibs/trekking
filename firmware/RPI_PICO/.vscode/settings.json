@@ -19,6 +19,10 @@
 		"gprs.h": "c",
 		"uart.h": "c",
 		"hardware.h": "c",
-		"devicetree.h": "c"
+		"devicetree.h": "c",
+		"zephyr.h": "c",
+		"comm.h": "c",
+		"led.h": "c",
+		"config.h": "c"
 	}
 }

@@ -2781,6 +2781,7 @@
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_uart_40034000_EXISTS 1
+#define DT_N_ALIAS_uart0                  DT_N_S_soc_S_uart_40034000
 #define DT_N_INST_0_raspberrypi_pico_uart DT_N_S_soc_S_uart_40034000
 #define DT_N_NODELABEL_uart0              DT_N_S_soc_S_uart_40034000
 
