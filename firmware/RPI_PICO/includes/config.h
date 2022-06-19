@@ -49,4 +49,6 @@
 /* ************************************************************************************************************ */
 #define UART_MESSAGE_SIZE		( 204		)
 #define UART_QUEUE_SIZE			( 10		)
+#define UART_TIMEOUT			( K_MSEC(200)	)
+#define UART_END_MESSAGE		( ';'		)
 

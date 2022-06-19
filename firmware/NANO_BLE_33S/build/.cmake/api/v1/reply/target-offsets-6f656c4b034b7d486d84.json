@@ -1,0 +1,361 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "zephyr/CMakeFiles/offsets.dir/./arch/arm/core/offsets/offsets.c.obj"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"add_dependencies",
+			"target_link_libraries",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"/home/pibs/zephyrproject/zephyr/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 776,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 782,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 781,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 777,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"backtrace" : 3,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-imacros"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/include/generated/autoconf.h"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ffreestanding"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-common"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-gdwarf-4"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mcpu=cortex-m4"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mthumb"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mabi=aapcs"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mfp16-format=ieee"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-imacros"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/home/pibs/zephyrproject/zephyr/include/zephyr/toolchain/zephyr_stdint.h"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wformat"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wformat-security"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-format-zero-length"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-main"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-pointer-sign"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wpointer-arith"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wexpansion-to-defined"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-unused-but-set-variable"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Werror=implicit-int"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-asynchronous-unwind-tables"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-pie"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-pic"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-reorder-functions"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-defer-pop"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fmacro-prefix-map=/home/pibs/workspace/trekking/firmware/NANO_BLE_33S=CMAKE_SOURCE_DIR"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fmacro-prefix-map=/home/pibs/zephyrproject/zephyr=ZEPHYR_BASE"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fmacro-prefix-map=/home/pibs/zephyrproject=WEST_TOPDIR"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-std=c99"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-nostdinc"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "KERNEL"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NRF52840_XXAA"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "_FORTIFY_SOURCE=2"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "__PROGRAM_START"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "__ZEPHYR__=1"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/home/pibs/zephyrproject/zephyr/kernel/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/pibs/zephyrproject/zephyr/arch/arm/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/include/zephyr"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/include/generated"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/soc/arm/nordic_nrf/nrf52"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/soc/arm/nordic_nrf/common/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/subsys/usb/device"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/modules/hal/cmsis/CMSIS/Core/Include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/modules/hal/atmel/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/modules/hal/nordic/nrfx"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/modules/hal/nordic/nrfx/drivers/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/modules/hal/nordic/nrfx/mdk"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/modules/hal_nordic/nrfx/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/modules/hal_nxp/usb/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/modules/hal/st/sensor/vl53l0x/api/core/inc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/pibs/zephyrproject/zephyr/drivers/sensor/vl53l0x"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "/home/pibs/zephyrproject/zephyr/lib/libc/minimal/include"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/include"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/include-fixed"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "syscall_list_h_target::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "driver_validation_h_target::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "kobj_types_h_target::@d36e55b69c1b90fb26b2"
+		}
+	],
+	"id" : "offsets::@d36e55b69c1b90fb26b2",
+	"name" : "offsets",
+	"paths" : 
+	{
+		"build" : "zephyr",
+		"source" : "/home/pibs/zephyrproject/zephyr"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/home/pibs/zephyrproject/zephyr/arch/arm/core/offsets/offsets.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

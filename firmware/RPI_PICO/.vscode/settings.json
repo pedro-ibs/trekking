@@ -3,7 +3,8 @@
 		"gpio",
 		"gpios",
 		"NODELABEL",
-		"printk"
+		"printk",
+		"textp"
 	],
 	"kconfig.zephyr.board": {
 		"board": "arduino_nano_33_ble_sense",

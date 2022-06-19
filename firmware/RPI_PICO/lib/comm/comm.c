@@ -52,28 +52,33 @@ void comm_vMessageSubmit(uart_device dev);
 void comm_vCleanMessage(uart_device dev);
 void uart_vBuildMessage(uart_device dev, char data);
 void uart0_cb(const struct device *dev, void *user_data);
-void uart0_timeout_handler(struct k_timer *timer_id);
-void uart1_timeout_handler(struct k_timer *timer_id);
+// void uart0_timeout_handler(struct k_timer *timer_id);
+// void uart1_timeout_handler(struct k_timer *timer_id);
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
 K_MSGQ_DEFINE(uart0_msgq, UART_MESSAGE_SIZE, UART_QUEUE_SIZE, 4);
 K_MSGQ_DEFINE(uart1_msgq, UART_MESSAGE_SIZE, UART_QUEUE_SIZE, 4);
+
+// K_TIMER_DEFINE(uart0_timeout, uart0_timeout_handler, NULL);
+// K_TIMER_DEFINE(uart1_timeout, uart1_timeout_handler, NULL);
+
+
 
 typedef struct comm {
 	char message[UART_MESSAGE_SIZE];
 	size_t position;
 
 	struct k_msgq *msgq;
+	// struct k_timer *timeout;
 	const struct device *dev;
 } uart_data;
 
 
 static uart_data uart_d[UART_QTY] = {
-	{"", 0, &uart0_msgq, DEVICE_DT_GET( UART_RASP_RPI_NODE )},
-	{"", 0, &uart1_msgq, DEVICE_DT_GET( UART_RASP_RPI_NODE )}
+	{"", 0, &uart0_msgq, /*&uart0_timeout,*/ DEVICE_DT_GET( UART_RASP_RPI_NODE )},
+	{"", 0, &uart1_msgq, /*&uart1_timeout,*/ DEVICE_DT_GET( UART_RASP_RPI_NODE )}
 };
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 
 void comm_vSetup(void){
 
@@ -126,11 +131,22 @@ void comm_vCleanMessage(uart_device dev){
 	}
 }
 
+
+// void uart0_timeout_handler(struct k_timer *timer_id){
+
+// }
+
+// void uart1_timeout_handler(struct k_timer *timer_id){
+
+// }
+
 void uart_vBuildMessage(uart_device dev, char data){
 	
 	uart_d[dev].message[uart_d[dev].position++] = data;
 
-	if( ( uart_d[dev].position >= UART_MESSAGE_SIZE ) || ( data == '\n' ) || ( data == '\r' ) ){
+
+
+	if( ( uart_d[dev].position >= UART_MESSAGE_SIZE ) || ( data == '\n' ) || ( data == '\r' ) /*|| ( data == UART_END_MESSAGE )*/ ){
 
 		led_vPing();
 

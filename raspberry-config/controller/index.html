@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+		<meta http-equiv='x-ua-compatible' content='ie=edge'>
+		<meta name='controller' content='controle web do trekking' />
+		<meta name='author' content='Pedro Igor B. S.' />
+		<meta name='generator' content='visualCode'/>
+		<meta name='keywords' content='Iot, Sistemas, Embarcados, trekking, robótica' />
+		<title>trekking</title>
+			
+		<!-- bootstrap -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+		
+		
+		<!-- JS jquery -->
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		
+	</head>
+	<body>
+
+			<button class="btn btn-success p-5 mb-3 mt-3 w-100" onmousedown="wsSendMessage('toFront')"  onmouseup="wsSendMessage('--')" >Frente</button>
+			<button class="btn btn-success p-5 mb-3 mt-3 w-100" onmousedown="wsSendMessage('toBack')"  onmouseup="wsSendMessage('--')" >Trás</button>
+			<button class="btn btn-success p-5 mb-3 mt-3 w-100" onmousedown="wsSendMessage('turnLeft')"  onmouseup="wsSendMessage('--')" >Esquerda</button>
+			<button class="btn btn-success p-5 mb-3 mt-3 w-100" onmousedown="wsSendMessage('turnRight')"  onmouseup="wsSendMessage('--')" >Direita</button>
+
+
+
+		<script type='text/javascript' >
+			let websocket	= null;
+			// let gateway	= `ws://${window.location.hostname}:8765`;
+			let gateway	= `ws://tracker.local:8765`;
+
+
+			function wsSendMessage(message){
+				websocket.send(message);
+			}
+
+			function initWebSocket(){
+				websocket = new WebSocket(gateway);
+				websocket.onopen    = onOpen;
+				websocket.onclose   = onClose;
+				websocket.onmessage = onMessage; 
+			}
+
+			function onOpen(event) {
+				wsSendMessage("--");
+			}
+			
+			function onClose(event) {
+				setTimeout(initWebSocket, 2000);
+			}
+
+			function onMessage(event) {
+				// alert(event.data)
+			}
+
+			function onLoad(event) { initWebSocket(); }
+
+			window.addEventListener('load', onLoad);			
+		</script>
+
+	</body>
+</html>

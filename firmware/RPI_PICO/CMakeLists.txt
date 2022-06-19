@@ -17,6 +17,7 @@ lib/motor
 lib/led
 lib/comm
 lib/gprs
+lib/textProtocol
 src
 )
 
@@ -28,8 +29,10 @@ lib/motor/motor.h
 lib/led/led.h
 lib/comm/comm.h
 lib/gprs/gprs.h
+lib/textProtocol/textProtocol.h
 lib/motor/motor.c
 lib/led/led.c
 lib/comm/comm.c
 lib/gprs/gprs.c
+lib/textProtocol/textProtocol.c
 ) 

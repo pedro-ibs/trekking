@@ -18,6 +18,8 @@ sudo systemctl stop serial-getty@serial0.service
 
 sudo apt install apache2 install php php-mbstring -y
 
+pip3 install websockets
+pip3 install pyserial
 
 mkdir -p $HOME/.local/opt
 cd $HOME/.local/opt

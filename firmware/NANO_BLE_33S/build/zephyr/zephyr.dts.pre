@@ -1091,7 +1091,7 @@ dmic_dev: &pdm0 {
  clock-source = "PCLK32M_HFXO";
 };
 # 1 "<command-line>" 2
-# 1 "/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/boards/arduino_nano_33_ble_sense.overlay" 1
+# 1 "/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/boards/arduino_nano_33_ble_sense.overlay" 1
 
 
 

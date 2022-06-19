@@ -1,6 +1,6 @@
 /home/pibs/.local/opt/zephyr-sdk-0.14.1/cmake/zephyr/Kconfig
-/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/Kconfig
-/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/Kconfig/Kconfig.modules
+/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/Kconfig
+/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/Kconfig/Kconfig.modules
 /home/pibs/zephyrproject/modules/audio/sof/Kconfig.sof
 /home/pibs/zephyrproject/modules/audio/sof/Kconfig.xtos-build
 /home/pibs/zephyrproject/modules/audio/sof/Kconfig.xtos-dbg

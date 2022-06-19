@@ -39,86 +39,86 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/interrupt_controller/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/interrupt_controller/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/misc/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/misc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/pcie/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/pcie/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/disk/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/disk/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/usb/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/usb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/usbc/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/usbc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/clock_control/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/clock_control/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/console/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/console/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/gpio/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/gpio/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/i2c/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/i2c/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/sensor/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/sensor/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/spi/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/spi/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/hwinfo/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/hwinfo/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/regulator/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/regulator/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/serial/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/serial/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/timer/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/timer/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/tracker/firmware/NANO_BLE_33S/build/zephyr/drivers/pinctrl/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/NANO_BLE_33S/build/zephyr/drivers/pinctrl/cmake_install.cmake")
 endif()
 

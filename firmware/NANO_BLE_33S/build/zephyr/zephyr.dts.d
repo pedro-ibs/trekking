@@ -14,4 +14,4 @@ empty_file.o: /home/pibs/zephyrproject/zephyr/misc/empty_file.c \
  /home/pibs/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble/arduino_nano_33_ble-common.dtsi \
  /home/pibs/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble/arduino_nano_33_ble-pinctrl.dtsi \
  /home/pibs/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble/arduino_nano_r3_connector.dtsi \
- /home/pibs/workspace/tracker/firmware/NANO_BLE_33S/boards/arduino_nano_33_ble_sense.overlay
+ /home/pibs/workspace/trekking/firmware/NANO_BLE_33S/boards/arduino_nano_33_ble_sense.overlay
