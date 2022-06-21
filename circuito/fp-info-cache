@@ -1,4 +1,4 @@
-20412857274384575
+20416168771948729
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -60585,12 +60585,26 @@ RFM95
 16
 16
 MyFootprint
+RPI-PICO-SMD
+
+
+0
+43
+43
+MyFootprint
 RY5W-K
 
 
 0
 8
 8
+MyFootprint
+R_2512_6332Metric_Pad1.40x3.35mm_HandSolder
+Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor handsolder
+0
+2
+2
 MyFootprint
 Resistor_Vertical_RM3mm
 Resistor, Vertical, RM 5mm, 1/3W,
