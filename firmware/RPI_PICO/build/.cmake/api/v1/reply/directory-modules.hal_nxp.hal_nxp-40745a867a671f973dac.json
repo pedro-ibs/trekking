@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/hal_nxp/hal_nxp",
+		"source" : "/home/pibs/zephyrproject/modules/hal/nxp"
+	}
+}

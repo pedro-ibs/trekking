@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/atmel/asf/common/components",
+		"source" : "/home/pibs/zephyrproject/modules/hal/atmel/asf/common/components"
+	}
+}

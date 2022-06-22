@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/lib/libc/minimal",
+		"source" : "/home/pibs/zephyrproject/zephyr/lib/libc/minimal"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/liblc3codec",
+		"source" : "/home/pibs/zephyrproject/zephyr/modules/liblc3codec"
+	}
+}

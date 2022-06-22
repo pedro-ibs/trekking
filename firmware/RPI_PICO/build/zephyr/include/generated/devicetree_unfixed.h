@@ -5,7 +5,7 @@
  *   /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/zephyr.dts.pre
  *
  * Directories with bindings:
- *   $ZEPHYR_BASE/dts/bindings
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings
  *
  * Node dependency ordering (ordinal and path):
  *   0   /
@@ -252,7 +252,7 @@
  * Node identifier: DT_N_S_cpus_S_cpu_0
  *
  * Binding (compatible = arm,cortex-m0+):
- *   $ZEPHYR_BASE/dts/bindings/cpu/arm,cortex-m0+.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/cpu/arm,cortex-m0+.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -325,7 +325,7 @@
  * Node identifier: DT_N_S_cpus_S_cpu_1
  *
  * Binding (compatible = arm,cortex-m0+):
- *   $ZEPHYR_BASE/dts/bindings/cpu/arm,cortex-m0+.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/cpu/arm,cortex-m0+.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -398,7 +398,7 @@
  * Node identifier: DT_N_S_gprs
  *
  * Binding (compatible = gpio-leds):
- *   $ZEPHYR_BASE/dts/bindings/gpio/gpio-leds.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/gpio/gpio-leds.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -523,7 +523,7 @@
  * Node identifier: DT_N_S_soc_S_interrupt_controller_e000e100
  *
  * Binding (compatible = arm,v6m-nvic):
- *   $ZEPHYR_BASE/dts/bindings/interrupt-controller/arm,v6m-nvic.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/interrupt-controller/arm,v6m-nvic.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -610,7 +610,7 @@
  * Node identifier: DT_N_S_soc_S_gpio_40014000
  *
  * Binding (compatible = raspberrypi,pico-gpio):
- *   $ZEPHYR_BASE/dts/bindings/gpio/raspberrypi,pico-gpio.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/gpio/raspberrypi,pico-gpio.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -837,7 +837,7 @@
  * Node identifier: DT_N_S_leds
  *
  * Binding (compatible = gpio-leds):
- *   $ZEPHYR_BASE/dts/bindings/gpio/gpio-leds.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/gpio/gpio-leds.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -966,7 +966,7 @@
  * Node identifier: DT_N_S_motors
  *
  * Binding (compatible = gpio-leds):
- *   $ZEPHYR_BASE/dts/bindings/gpio/gpio-leds.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/gpio/gpio-leds.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1773,7 +1773,7 @@
  * Node identifier: DT_N_S_soc_S_system_clk
  *
  * Binding (compatible = fixed-clock):
- *   $ZEPHYR_BASE/dts/bindings/clock/fixed-clock.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/clock/fixed-clock.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -1833,7 +1833,7 @@
  * Node identifier: DT_N_S_soc_S_pin_controller_40014000
  *
  * Binding (compatible = raspberrypi,pico-pinctrl):
- *   $ZEPHYR_BASE/dts/bindings/pinctrl/raspberrypi,pico-pinctrl.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/pinctrl/raspberrypi,pico-pinctrl.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2000,7 +2000,7 @@
  * Node identifier: DT_N_S_soc_S_i2c_40044000
  *
  * Binding (compatible = snps,designware-i2c):
- *   $ZEPHYR_BASE/dts/bindings/i2c/snps,designware-i2c.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/i2c/snps,designware-i2c.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2218,7 +2218,7 @@
  * Node identifier: DT_N_S_soc_S_i2c_40048000
  *
  * Binding (compatible = snps,designware-i2c):
- *   $ZEPHYR_BASE/dts/bindings/i2c/snps,designware-i2c.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/i2c/snps,designware-i2c.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2383,7 +2383,7 @@
  * Node identifier: DT_N_S_soc_S_memory_20000000
  *
  * Binding (compatible = mmio-sram):
- *   $ZEPHYR_BASE/dts/bindings/sram/mmio-sram.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/sram/mmio-sram.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2531,7 +2531,7 @@
  * Node identifier: DT_N_S_soc_S_peripheral_clk
  *
  * Binding (compatible = fixed-clock):
- *   $ZEPHYR_BASE/dts/bindings/clock/fixed-clock.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/clock/fixed-clock.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2591,7 +2591,7 @@
  * Node identifier: DT_N_S_soc_S_reset_controller_4000c000
  *
  * Binding (compatible = raspberrypi,pico-reset):
- *   $ZEPHYR_BASE/dts/bindings/reset/raspberrypi,pico-reset.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/reset/raspberrypi,pico-reset.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2743,7 +2743,7 @@
  * Node identifier: DT_N_S_soc_S_uart_40034000
  *
  * Binding (compatible = raspberrypi,pico-uart):
- *   $ZEPHYR_BASE/dts/bindings/serial/raspberrypi,pico-uart.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/serial/raspberrypi,pico-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -2922,7 +2922,7 @@
  * Node identifier: DT_N_S_soc_S_uart_40038000
  *
  * Binding (compatible = raspberrypi,pico-uart):
- *   $ZEPHYR_BASE/dts/bindings/serial/raspberrypi,pico-uart.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/serial/raspberrypi,pico-uart.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3085,7 +3085,7 @@
  * Node identifier: DT_N_S_soc_S_flash_10000000
  *
  * Binding (compatible = soc-nv-flash):
- *   $ZEPHYR_BASE/dts/bindings/mtd/soc-nv-flash.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/mtd/soc-nv-flash.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)
@@ -3188,7 +3188,7 @@
  * Node identifier: DT_N_S_soc_S_flash_10000000_S_partitions
  *
  * Binding (compatible = fixed-partitions):
- *   $ZEPHYR_BASE/dts/bindings/mtd/fixed-partitions.yaml
+ *   /home/pibs/zephyrproject/zephyr/dts/bindings/mtd/fixed-partitions.yaml
  *
  * (Descriptions have moved to the Devicetree Bindings Index
  * in the documentation.)

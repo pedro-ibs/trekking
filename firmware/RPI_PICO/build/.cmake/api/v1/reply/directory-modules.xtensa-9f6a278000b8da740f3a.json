@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/xtensa",
+		"source" : "/home/pibs/zephyrproject/modules/hal/xtensa"
+	}
+}
