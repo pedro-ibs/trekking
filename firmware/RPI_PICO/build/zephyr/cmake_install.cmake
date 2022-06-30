@@ -79,11 +79,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/civetweb/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/cmsis/cmake_install.cmake")
 endif()
 
@@ -104,11 +99,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/cypress/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/espressif/cmake_install.cmake")
 endif()
 
@@ -119,7 +109,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/infineon/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_infineon/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -174,7 +164,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/telink/cmake_install.cmake")
+  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/hal_telink/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -250,6 +240,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/openthread/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/modules/picolibc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

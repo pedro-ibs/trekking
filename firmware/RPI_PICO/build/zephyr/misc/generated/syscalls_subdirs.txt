@@ -41,7 +41,6 @@
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_tracing
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_usb
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_xen
-/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_zephyr
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_arch_arc
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_arch_arm
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_arch_arm64
@@ -114,6 +113,7 @@
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_display
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_espi
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_ethernet
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_flash_controller
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_gpio
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_i2c
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_interrupt-controller
@@ -121,6 +121,7 @@
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_led
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_lora
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_memory-controller
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_mipi_dsi
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_pcie
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_pinctrl
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_dt-bindings_pm

@@ -52,6 +52,8 @@ void comm_vMessageSubmit(uart_device dev);
 void comm_vCleanMessage(uart_device dev);
 void uart_vBuildMessage(uart_device dev, char data);
 void uart0_cb(const struct device *dev, void *user_data);
+void uart1_cb(const struct device *dev, void *user_data);
+
 // void uart0_timeout_handler(struct k_timer *timer_id);
 // void uart1_timeout_handler(struct k_timer *timer_id);
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -74,8 +76,8 @@ typedef struct comm {
 
 
 static uart_data uart_d[UART_QTY] = {
-	{"", 0, &uart0_msgq, /*&uart0_timeout,*/ DEVICE_DT_GET( UART_RASP_RPI_NODE )},
-	{"", 0, &uart1_msgq, /*&uart1_timeout,*/ DEVICE_DT_GET( UART_RASP_RPI_NODE )}
+	{"", 0, &uart0_msgq, /*&uart0_timeout,*/ DEVICE_DT_GET( UART0_RASP_RPI_NODE )},
+	{"", 0, &uart1_msgq, /*&uart1_timeout,*/ DEVICE_DT_GET( UART1_RASP_RPI_NODE )}
 };
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -87,10 +89,14 @@ void comm_vSetup(void){
 
 	uart_irq_callback_user_data_set(uart_d[UART0].dev, uart0_cb, NULL);
 	uart_irq_rx_enable(uart_d[UART0].dev);
+
+
+	uart_irq_callback_user_data_set(uart_d[UART1].dev, uart1_cb, NULL);
+	uart_irq_rx_enable(uart_d[UART1].dev);
 }
 
 void comm_vGetMessage(uart_device dev, char *msg, k_timeout_t timeout){
-	k_msgq_get(uart_d[dev].msgq, msg, K_FOREVER);
+	k_msgq_get(uart_d[dev].msgq, msg, timeout);
 }
 
 void comm_uSendChar( uart_device dev, char c ){
@@ -169,5 +175,17 @@ void uart0_cb(const struct device *dev, void *user_data) {
 		uart_fifo_read(dev, &c, 1);
 		uart_vBuildMessage(UART0, c);
 	}
+}
 
+void uart1_cb(const struct device *dev, void *user_data) {
+	uint8_t c;
+
+	if (!uart_irq_update(dev)) {
+		return;
+	}
+
+	while (uart_irq_rx_ready(dev)) {
+		uart_fifo_read(dev, &c, 1);
+		uart_vBuildMessage(UART1, c);
+	}
 }

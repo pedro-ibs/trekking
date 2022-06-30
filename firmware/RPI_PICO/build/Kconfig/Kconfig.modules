@@ -16,6 +16,12 @@ config ZEPHYR_HAL_GIGADEVICE_MODULE
 	bool
 	default y
 endmenu
+menu "hal_infineon (/home/pibs/zephyrproject/modules/hal/infineon)"
+osource "$(ZEPHYR_HAL_INFINEON_KCONFIG)"
+config ZEPHYR_HAL_INFINEON_MODULE
+	bool
+	default y
+endmenu
 menu "hal_nordic (/home/pibs/zephyrproject/modules/hal/nordic)"
 osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
 config ZEPHYR_HAL_NORDIC_MODULE
@@ -31,6 +37,12 @@ endmenu
 menu "hal_rpi_pico (/home/pibs/zephyrproject/modules/hal/rpi_pico)"
 osource "$(ZEPHYR_HAL_RPI_PICO_KCONFIG)"
 config ZEPHYR_HAL_RPI_PICO_MODULE
+	bool
+	default y
+endmenu
+menu "hal_telink (/home/pibs/zephyrproject/modules/hal/telink)"
+osource "/home/pibs/zephyrproject/modules/hal/telink/Kconfig"
+config ZEPHYR_HAL_TELINK_MODULE
 	bool
 	default y
 endmenu
@@ -73,6 +85,12 @@ endmenu
 menu "nanopb (/home/pibs/zephyrproject/modules/lib/nanopb)"
 osource "$(ZEPHYR_NANOPB_KCONFIG)"
 config ZEPHYR_NANOPB_MODULE
+	bool
+	default y
+endmenu
+menu "picolibc (/home/pibs/zephyrproject/modules/lib/picolibc)"
+osource "/home/pibs/zephyrproject/modules/lib/picolibc/zephyr/Kconfig"
+config ZEPHYR_PICOLIBC_MODULE
 	bool
 	default y
 endmenu

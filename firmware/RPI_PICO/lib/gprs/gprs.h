@@ -46,4 +46,9 @@
 
 void gprs_vSetup(void);
 
+void gprs_vDisable(void);
+void gprs_vEnable(void);
+void gprs_vReset(void);
+
+
 #endif /* gprs_h_H_ */

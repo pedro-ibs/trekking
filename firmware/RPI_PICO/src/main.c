@@ -72,23 +72,26 @@ void main(void) {
 
 	printk("started \r\n");
 
-	// led_vPeriodicPingStart(K_MSEC(1000));
+	gprs_vDisable();
+
 
 	char bff[UART_MESSAGE_SIZE] = "";
 
 	while (true) {
+
 		comm_vGetMessage(UART0, bff, K_FOREVER);
 
 		comm_uSendStringLn(UART0, bff);
 
-		if (textp_bFindString(bff,"toFront") ) { 
+		if (textp_bFindString(bff, "toFront") ) { 
 
 			motor_vToFront(M1A, M1B);
 			motor_vToFront(M2A, M2B);
+
 			motor_vToFront(M3A, M3B);
 			motor_vToFront(M4A, M4B);
 		
-		} else if (textp_bFindString(bff,"toBack") ) {
+		} else if (textp_bFindString(bff, "toBack") ) {
 		
 			motor_vToBack(M1A, M1B);
 			motor_vToBack(M2A, M2B);
@@ -96,20 +99,21 @@ void main(void) {
 			motor_vToBack(M3A, M3B);
 			motor_vToBack(M4A, M4B);
 		
-		} else if (textp_bFindString(bff,"turnLeft") ) {
-		
-			motor_vToBack(M1A, M1B);
-			motor_vToBack(M3A, M3B);
-
-			motor_vToFront(M2A, M2B);
-			motor_vToFront(M4A, M4B);
-		
-		} else if (textp_bFindString(bff,"turnRight") ) {
+		} else if (textp_bFindString(bff, "turnLeft") ) {
 		
 			motor_vToFront(M1A, M1B);
-			motor_vToFront(M3A, M3B);
-			motor_vToBack(M2A, M2B);
+			motor_vToFront(M2A, M2B);
+
+			motor_vToBack(M3A, M3B);
 			motor_vToBack(M4A, M4B);
+		
+		} else if (textp_bFindString(bff, "turnRight") ) {
+		
+			motor_vToBack(M1A, M1B);
+			motor_vToBack(M2A, M2B);
+
+			motor_vToFront(M3A, M3B);
+			motor_vToFront(M4A, M4B);
 		
 		} else /*if (textp_bFindString(bff,"turnoff") )*/ {
 
@@ -128,4 +132,3 @@ void main(void) {
 /*########################################################################################################################################################*/
 /*-------------------------------------------------------------------- Local Functions -------------------------------------------------------------------*/
 /*########################################################################################################################################################*/
-alpacas                                                             

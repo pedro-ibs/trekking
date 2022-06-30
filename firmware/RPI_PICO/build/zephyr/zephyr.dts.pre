@@ -176,6 +176,17 @@
    label = "I2C_1";
    status = "disabled";
   };
+
+  usbd: usbd@50100000 {
+   compatible = "raspberrypi,pico-usbd";
+   reg = <0x50100000 0x10000>;
+   resets = <&reset 24>;
+   interrupts = <5 3>;
+   interrupt-names = "usbctrl";
+   num-bidir-endpoints = <16>;
+   label = "USBD";
+   status = "disabled";
+  };
  };
 };
 
@@ -296,17 +307,13 @@
  pinctrl-0 = <&i2c1_default>;
  pinctrl-names = "default";
 };
+
+zephyr_udc0: &usbd {
+ status = "okay";
+};
 # 1 "<command-line>" 2
 # 1 "/home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay" 1
-
-
-
-
-
-
-# 1 "/home/pibs/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
-# 8 "/home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay" 2
-
+# 9 "/home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay"
  / {
 
 
@@ -327,6 +334,7 @@
   m4b = &m4b;
 
   uart0 = &uart0;
+  uart1 = &uart1;
  };
 
  leds {
@@ -349,45 +357,46 @@
  motors {
   compatible = "gpio-leds";
   m1a: m_1a{
-   gpios = <&gpio0 17 (0 << 0)>;
+   gpios = <&gpio0 16 (0 << 0)>;
    label = "MOROT1-A GPIO";
   };
 
   m1b: m_1b{
-   gpios = <&gpio0 16 (0 << 0)>;
+   gpios = <&gpio0 17 (0 << 0)>;
    label = "MOROT1-B GPIO";
   };
 
   m2a: m_2a{
-   gpios = <&gpio0 19 (0 << 0)>;
+   gpios = <&gpio0 18 (0 << 0)>;
    label = "MOROT2-A GPIO";
   };
 
   m2b: m_2b{
-   gpios = <&gpio0 18 (0 << 0)>;
+   gpios = <&gpio0 19 (0 << 0)>;
    label = "MOROT2-B GPIO";
   };
 
   m3a: m_3a{
-   gpios = <&gpio0 20 (0 << 0)>;
+   gpios = <&gpio0 21 (0 << 0)>;
    label = "MOROT3-A GPIO";
   };
 
   m3b: m_3b{
-   gpios = <&gpio0 21 (0 << 0)>;
+   gpios = <&gpio0 20 (0 << 0)>;
    label = "MOROT3-B GPIO";
   };
 
   m4a: m_4a{
-   gpios = <&gpio0 26 (0 << 0)>;
+   gpios = <&gpio0 22 (0 << 0)>;
    label = "MOROT4-A GPIO";
   };
 
   m4b: m_4b{
-   gpios = <&gpio0 22 (0 << 0)>;
+   gpios = <&gpio0 26 (0 << 0)>;
    label = "MOROT4-B GPIO";
   };
  };
+# 100 "/home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay"
 };
 
 
@@ -397,6 +406,36 @@
  status = "okay";
  pinctrl-0 = <&uart0_default>;
  pinctrl-names = "default";
+};
+
+
+&uart1 {
+ current-speed = <9600>;
+ status = "okay";
+ pinctrl-0 = <&uart1_default>;
+ pinctrl-names = "default";
+};
+
+&pinctrl {
+ uart0_default: uart0_default {
+  group1 {
+   pinmux = <(0 << 4 | 2 << 0)>;
+  };
+  group2 {
+   pinmux = <(1 << 4 | 2 << 0)>;
+   input-enable;
+  };
+ };
+
+ uart1_default: uart1_default {
+  group1 {
+   pinmux = <(8 << 4 | 2 << 0)>;
+  };
+  group2 {
+   pinmux = <(9 << 4 | 2 << 0)>;
+   input-enable;
+  };
+ };
 };
 # 1 "<command-line>" 2
 # 1 "/home/pibs/zephyrproject/zephyr/misc/empty_file.c"

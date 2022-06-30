@@ -8,6 +8,8 @@ cmake_minimum_required(VERSION 3.20.0)
 
 find_package(Zephyr REQUIRED HINTS {ZEPHYR_BASE})
 
+zephyr_library_sources_ifdef(CONFIG_PWM_RPI_PICO	pwm_rpi_pico_slice.c)
+
 project(RPI_PICO)
 
 include_directories( 

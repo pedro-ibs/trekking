@@ -26,6 +26,7 @@
 		m4b	= &m4b;
 
 		uart0	= &uart0;
+		uart1	= &uart1;
 	};
 
 	leds {
@@ -48,45 +49,54 @@
 	motors {
 		compatible = "gpio-leds";
 		m1a: m_1a{
-			gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
 			label = "MOROT1-A GPIO";
 		};
 
 		m1b: m_1b{
-			gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
 			label = "MOROT1-B GPIO";
 		};
 
 		m2a: m_2a{
-			gpios = <&gpio0 19 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
 			label = "MOROT2-A GPIO";
 		};
 
 		m2b: m_2b{
-			gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 19 GPIO_ACTIVE_HIGH>;
 			label = "MOROT2-B GPIO";
 		};
 
 		m3a: m_3a{
-			gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 21 GPIO_ACTIVE_HIGH>;
 			label = "MOROT3-A GPIO";
 		};
 
 		m3b: m_3b{
-			gpios = <&gpio0 21 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>;
 			label = "MOROT3-B GPIO";
 		};
 
 		m4a: m_4a{
-			gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
 			label = "MOROT4-A GPIO";
 		};
 
 		m4b: m_4b{
-			gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;
 			label = "MOROT4-B GPIO";
 		};
 	};
+
+
+	// motors_pwm {
+	// 	compatible = "pwm-leds";
+	// 	mpt: mp_t{
+	// 		label	= "MOROT1-A GPIO-PWM";
+	// 		pwms	= <&gpio0 3 1000 PWM_POLARITY_NORMAL>;
+	// 	};
+	// };
 };
 
 
@@ -98,3 +108,32 @@
 	pinctrl-names = "default";
 };
 
+
+&uart1 {
+	current-speed = <9600>;
+	status = "okay";
+	pinctrl-0 = <&uart1_default>;
+	pinctrl-names = "default";
+};
+
+&pinctrl {
+	uart0_default: uart0_default {
+		group1 {
+			pinmux = <UART0_TX_P0>;
+		};
+		group2 {
+			pinmux = <UART0_RX_P1>;
+			input-enable;
+		};
+	};
+
+	uart1_default: uart1_default {
+		group1 {
+			pinmux = <UART1_TX_P8>;
+		};
+		group2 {
+			pinmux = <UART1_RX_P9>;
+			input-enable;
+		};
+	};
+};

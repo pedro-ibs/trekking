@@ -1,1 +1,1 @@
-/* Sort key: "default" */#include "linker/intlist.ld"
+/* Sort key: "default" */#include "zephyr/linker/intlist.ld"

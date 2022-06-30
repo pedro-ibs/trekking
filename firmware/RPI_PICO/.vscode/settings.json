@@ -24,6 +24,9 @@
 		"zephyr.h": "c",
 		"comm.h": "c",
 		"led.h": "c",
-		"config.h": "c"
+		"config.h": "c",
+		"device.h": "c",
+		"kernel.h": "c",
+		"kernel_includes.h": "c"
 	}
 }

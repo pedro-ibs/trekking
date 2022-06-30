@@ -22,6 +22,7 @@
 		m4a = &m4a;
 		m4b = &m4b;
 		uart0 = &uart0;
+		uart1 = &uart1;
 	};
 	soc {
 		#address-cells = < 0x1 >;
@@ -77,7 +78,7 @@
 			compatible = "fixed-clock";
 			clock-frequency = < 0x7735940 >;
 			#clock-cells = < 0x0 >;
-			phandle = < 0x5 >;
+			phandle = < 0x6 >;
 		};
 		reset: reset-controller@4000c000 {
 			compatible = "raspberrypi,pico-reset";
@@ -104,7 +105,7 @@
 				};
 			};
 			i2c0_default: i2c0_default {
-				phandle = < 0x6 >;
+				phandle = < 0x7 >;
 				group1 {
 					pinmux = < 0x43 >, < 0x53 >;
 					input-enable;
@@ -112,11 +113,21 @@
 				};
 			};
 			i2c1_default: i2c1_default {
-				phandle = < 0x7 >;
+				phandle = < 0x8 >;
 				group1 {
 					pinmux = < 0xe3 >, < 0xf3 >;
 					input-enable;
 					input-schmitt-enable;
+				};
+			};
+			uart1_default: uart1_default {
+				phandle = < 0x5 >;
+				group1 {
+					pinmux = < 0x82 >;
+				};
+				group2 {
+					pinmux = < 0x92 >;
+					input-enable;
 				};
 			};
 		};
@@ -129,7 +140,7 @@
 			label = "GPIO_0";
 			status = "okay";
 			ngpios = < 0x1e >;
-			phandle = < 0x8 >;
+			phandle = < 0x9 >;
 		};
 		uart0: uart@40034000 {
 			compatible = "raspberrypi,pico-uart";
@@ -152,7 +163,10 @@
 			interrupts = < 0x15 0x3 >;
 			interrupt-names = "uart1";
 			label = "UART_1";
-			status = "disabled";
+			status = "okay";
+			current-speed = < 0x2580 >;
+			pinctrl-0 = < &uart1_default >;
+			pinctrl-names = "default";
 		};
 		i2c0: i2c@40044000 {
 			compatible = "snps,designware-i2c";
@@ -181,6 +195,16 @@
 			clock-frequency = < 0x186a0 >;
 			pinctrl-0 = < &i2c1_default >;
 			pinctrl-names = "default";
+		};
+		usbd: zephyr_udc0: usbd@50100000 {
+			compatible = "raspberrypi,pico-usbd";
+			reg = < 0x50100000 0x10000 >;
+			resets = < &reset 0x18 >;
+			interrupts = < 0x5 0x3 >;
+			interrupt-names = "usbctrl";
+			num-bidir-endpoints = < 0x10 >;
+			label = "USBD";
+			status = "okay";
 		};
 	};
 	cpus {
@@ -212,35 +236,35 @@
 	motors {
 		compatible = "gpio-leds";
 		m1a: m_1a {
-			gpios = < &gpio0 0x11 0x0 >;
+			gpios = < &gpio0 0x10 0x0 >;
 			label = "MOROT1-A GPIO";
 		};
 		m1b: m_1b {
-			gpios = < &gpio0 0x10 0x0 >;
+			gpios = < &gpio0 0x11 0x0 >;
 			label = "MOROT1-B GPIO";
 		};
 		m2a: m_2a {
-			gpios = < &gpio0 0x13 0x0 >;
+			gpios = < &gpio0 0x12 0x0 >;
 			label = "MOROT2-A GPIO";
 		};
 		m2b: m_2b {
-			gpios = < &gpio0 0x12 0x0 >;
+			gpios = < &gpio0 0x13 0x0 >;
 			label = "MOROT2-B GPIO";
 		};
 		m3a: m_3a {
-			gpios = < &gpio0 0x14 0x0 >;
+			gpios = < &gpio0 0x15 0x0 >;
 			label = "MOROT3-A GPIO";
 		};
 		m3b: m_3b {
-			gpios = < &gpio0 0x15 0x0 >;
+			gpios = < &gpio0 0x14 0x0 >;
 			label = "MOROT3-B GPIO";
 		};
 		m4a: m_4a {
-			gpios = < &gpio0 0x1a 0x0 >;
+			gpios = < &gpio0 0x16 0x0 >;
 			label = "MOROT4-A GPIO";
 		};
 		m4b: m_4b {
-			gpios = < &gpio0 0x16 0x0 >;
+			gpios = < &gpio0 0x1a 0x0 >;
 			label = "MOROT4-B GPIO";
 		};
 	};

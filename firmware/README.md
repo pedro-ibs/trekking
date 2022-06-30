@@ -1,4 +1,15 @@
-# Firmware
+# **Firmware**
+
+
+1. [**`NANO_BLE_33S`**](./NANO_BLE_33S): Auxiliar na aquisição de dados dos sensores.
+
+2. [**`RPI_PICO`**](./RPI_PICO): Controle dos motores e possível modulo de expansão. Tem acesso aos drivers dos motores portando responsável pelo controle dos mesmos.
+
+2. [**`RPI_PICO_INO`**](./RPI_PICO_INO): igual ao [`RPI_PICO`](./RPI_PICO) porem implementado utilizando a plataforma de desenvolvimento Arduino, será utilizado enquanto o projeto Zephyr não tiver suporte a todos os recursos utilizados dassa arquitetura, como PWM.
+
+
+
+## **Componentes**
 
 O Trekking é composto por alguns dispositivo dentre sensores e computador e microcontroladores:
 
@@ -17,7 +28,7 @@ O Trekking é composto por alguns dispositivo dentre sensores e computador e mic
  
  
  
- Esses dispositivo estão interconectados atravez das comunicaçõs serias *usart*, *i2c* e *swd* como mostra o diagrama abaixo:
+ Esses dispositivo estão interconectados através das comunicações serias *usart*, *i2c* e *swd* como mostra o diagrama abaixo:
  
  
   ![Rede de conexão entre os sensores e dispositivos do trekking](conexao.drawio.png)

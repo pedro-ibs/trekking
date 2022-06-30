@@ -9,5 +9,4 @@ empty_file.o: /home/pibs/zephyrproject/zephyr/misc/empty_file.c \
  /home/pibs/zephyrproject/zephyr/dts/arm/rpi_pico/rpi_pico_common.dtsi \
  /home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi \
  /home/pibs/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h \
- /home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay \
- /home/pibs/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h
+ /home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay

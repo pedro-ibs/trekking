@@ -39,15 +39,19 @@ extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_peripheral_clk); /* d
 extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_reset_controller_4000c000); /* dts_ord_31 */
 extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default); /* dts_ord_32 */
 extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_uart_40034000); /* dts_ord_33 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_uart_40038000); /* dts_ord_34 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000); /* dts_ord_35 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000_S_partitions); /* dts_ord_36 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0); /* dts_ord_37 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100); /* dts_ord_38 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1); /* dts_ord_39 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1); /* dts_ord_40 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1); /* dts_ord_41 */
-extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2); /* dts_ord_42 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart1_default); /* dts_ord_34 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_uart_40038000); /* dts_ord_35 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_usbd_50100000); /* dts_ord_36 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000); /* dts_ord_37 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000_S_partitions); /* dts_ord_38 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_0); /* dts_ord_39 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_flash_10000000_S_partitions_S_partition_100); /* dts_ord_40 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_i2c0_default_S_group1); /* dts_ord_41 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_i2c1_default_S_group1); /* dts_ord_42 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group1); /* dts_ord_43 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart0_default_S_group2); /* dts_ord_44 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart1_default_S_group1); /* dts_ord_45 */
+extern const struct device DEVICE_DT_NAME_GET(DT_N_S_soc_S_pin_controller_40014000_S_uart1_default_S_group2); /* dts_ord_46 */
 
 #ifdef __cplusplus
 }

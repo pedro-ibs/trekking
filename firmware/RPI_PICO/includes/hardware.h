@@ -72,6 +72,8 @@
 /**
  * Comunicação serial raspberry - rpi_pico
  */
-#define UART_RASP_RPI_NODE 	DT_ALIAS( uart0 		)
+#define UART0_RASP_RPI_NODE 	DT_ALIAS( uart0 		)
+#define UART1_RASP_RPI_NODE 	DT_ALIAS( uart1 		)
+
 
 #endif /* hardware_H_ */

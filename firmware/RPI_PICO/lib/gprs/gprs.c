@@ -71,3 +71,17 @@ void gprs_vSetup(void){
 
 	gpio_pin_set_dt(&gprs_reset, true);
 }
+
+void gprs_vDisable(void) {
+	gpio_pin_set_dt(&gprs_reset, true);
+}
+
+void gprs_vEnable(void) {
+	gpio_pin_set_dt(&gprs_reset, false);
+}
+
+void gprs_vReset(void) {
+	gprs_vDisable();
+	k_sleep(K_MSEC(200));
+	gprs_vEnable();
+}
