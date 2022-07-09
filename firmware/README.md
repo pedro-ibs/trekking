@@ -5,8 +5,6 @@
 
 2. [**`RPI_PICO`**](./RPI_PICO): Controle dos motores e possível modulo de expansão. Tem acesso aos drivers dos motores portando responsável pelo controle dos mesmos.
 
-2. [**`RPI_PICO_INO`**](./RPI_PICO_INO): igual ao [`RPI_PICO`](./RPI_PICO) porem implementado utilizando a plataforma de desenvolvimento Arduino, será utilizado enquanto o projeto Zephyr não tiver suporte a todos os recursos utilizados dassa arquitetura, como PWM.
-
 
 
 ## **Componentes**
