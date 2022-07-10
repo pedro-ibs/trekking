@@ -9,9 +9,9 @@
 #ifndef _ASMLANGUAGE
 
 #include <syscall_list.h>
-#include <syscall.h>
+#include <zephyr/syscall.h>
 
-#include <linker/sections.h>
+#include <zephyr/linker/sections.h>
 
 
 #ifdef __cplusplus

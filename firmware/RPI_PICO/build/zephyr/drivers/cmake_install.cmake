@@ -84,6 +84,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/drivers/led/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/drivers/pwm/cmake_install.cmake")
 endif()
 

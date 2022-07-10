@@ -4,14 +4,14 @@
 #define Z_INCLUDE_SYSCALLS_RESET_H
 
 
-#include <tracing/tracing_syscall.h>
+#include <zephyr/tracing/tracing_syscall.h>
 
 #ifndef _ASMLANGUAGE
 
 #include <syscall_list.h>
-#include <syscall.h>
+#include <zephyr/syscall.h>
 
-#include <linker/sections.h>
+#include <zephyr/linker/sections.h>
 
 
 #ifdef __cplusplus
@@ -43,74 +43,74 @@ static inline int reset_status(const struct device * dev, uint32_t id, uint8_t *
 #endif
 
 
-extern int z_impl_reset_assert(const struct device * dev, uint32_t id);
+extern int z_impl_reset_line_assert(const struct device * dev, uint32_t id);
 
 __pinned_func
-static inline int reset_assert(const struct device * dev, uint32_t id)
+static inline int reset_line_assert(const struct device * dev, uint32_t id)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
 		union { uintptr_t x; const struct device * val; } parm0 = { .val = dev };
 		union { uintptr_t x; uint32_t val; } parm1 = { .val = id };
-		return (int) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_RESET_ASSERT);
+		return (int) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_RESET_LINE_ASSERT);
 	}
 #endif
 	compiler_barrier();
-	return z_impl_reset_assert(dev, id);
+	return z_impl_reset_line_assert(dev, id);
 }
 
 #if (CONFIG_TRACING_SYSCALL == 1)
 #ifndef DISABLE_SYSCALL_TRACING
 
-#define reset_assert(dev, id) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_RESET_ASSERT, reset_assert, dev, id); 	retval = reset_assert(dev, id); 	sys_port_trace_syscall_exit(K_SYSCALL_RESET_ASSERT, reset_assert, dev, id, retval); 	retval; })
+#define reset_line_assert(dev, id) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_RESET_LINE_ASSERT, reset_line_assert, dev, id); 	retval = reset_line_assert(dev, id); 	sys_port_trace_syscall_exit(K_SYSCALL_RESET_LINE_ASSERT, reset_line_assert, dev, id, retval); 	retval; })
 #endif
 #endif
 
 
-extern int z_impl_reset_deassert(const struct device * dev, uint32_t id);
+extern int z_impl_reset_line_deassert(const struct device * dev, uint32_t id);
 
 __pinned_func
-static inline int reset_deassert(const struct device * dev, uint32_t id)
+static inline int reset_line_deassert(const struct device * dev, uint32_t id)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
 		union { uintptr_t x; const struct device * val; } parm0 = { .val = dev };
 		union { uintptr_t x; uint32_t val; } parm1 = { .val = id };
-		return (int) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_RESET_DEASSERT);
+		return (int) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_RESET_LINE_DEASSERT);
 	}
 #endif
 	compiler_barrier();
-	return z_impl_reset_deassert(dev, id);
+	return z_impl_reset_line_deassert(dev, id);
 }
 
 #if (CONFIG_TRACING_SYSCALL == 1)
 #ifndef DISABLE_SYSCALL_TRACING
 
-#define reset_deassert(dev, id) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_RESET_DEASSERT, reset_deassert, dev, id); 	retval = reset_deassert(dev, id); 	sys_port_trace_syscall_exit(K_SYSCALL_RESET_DEASSERT, reset_deassert, dev, id, retval); 	retval; })
+#define reset_line_deassert(dev, id) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_RESET_LINE_DEASSERT, reset_line_deassert, dev, id); 	retval = reset_line_deassert(dev, id); 	sys_port_trace_syscall_exit(K_SYSCALL_RESET_LINE_DEASSERT, reset_line_deassert, dev, id, retval); 	retval; })
 #endif
 #endif
 
 
-extern int z_impl_reset_toggle(const struct device * dev, uint32_t id);
+extern int z_impl_reset_line_toggle(const struct device * dev, uint32_t id);
 
 __pinned_func
-static inline int reset_toggle(const struct device * dev, uint32_t id)
+static inline int reset_line_toggle(const struct device * dev, uint32_t id)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
 		union { uintptr_t x; const struct device * val; } parm0 = { .val = dev };
 		union { uintptr_t x; uint32_t val; } parm1 = { .val = id };
-		return (int) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_RESET_TOGGLE);
+		return (int) arch_syscall_invoke2(parm0.x, parm1.x, K_SYSCALL_RESET_LINE_TOGGLE);
 	}
 #endif
 	compiler_barrier();
-	return z_impl_reset_toggle(dev, id);
+	return z_impl_reset_line_toggle(dev, id);
 }
 
 #if (CONFIG_TRACING_SYSCALL == 1)
 #ifndef DISABLE_SYSCALL_TRACING
 
-#define reset_toggle(dev, id) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_RESET_TOGGLE, reset_toggle, dev, id); 	retval = reset_toggle(dev, id); 	sys_port_trace_syscall_exit(K_SYSCALL_RESET_TOGGLE, reset_toggle, dev, id, retval); 	retval; })
+#define reset_line_toggle(dev, id) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_RESET_LINE_TOGGLE, reset_line_toggle, dev, id); 	retval = reset_line_toggle(dev, id); 	sys_port_trace_syscall_exit(K_SYSCALL_RESET_LINE_TOGGLE, reset_line_toggle, dev, id, retval); 	retval; })
 #endif
 #endif
 

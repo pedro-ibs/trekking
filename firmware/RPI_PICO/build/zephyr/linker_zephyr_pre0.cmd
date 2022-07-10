@@ -61,9 +61,11 @@ SECTIONS
 _vector_start = .;
 KEEP(*(.exc_vector_table))
 KEEP(*(".exc_vector_table.*"))
-KEEP(*(.gnu.linkonce.irq_vector_table*))
 KEEP(*(.vectors))
 _vector_end = .;
+. = ALIGN(4);
+KEEP(*(.gnu.linkonce.irq_vector_table*))
+ _vector_end = .;
  } > FLASH
     text :
  {
@@ -104,7 +106,7 @@ _vector_end = .;
  } > FLASH
  sw_isr_table :
  {
-  . = ALIGN(0);
+  . = ALIGN(4);
   *(.gnu.linkonce.sw_isr_table*)
  } > FLASH
  initlevel_error :
@@ -125,6 +127,12 @@ __device_handles_start = .;
 KEEP(*(SORT(.__device_handles_pass1*)));
 __device_handles_end = .;
  } > FLASH
+ztest :
+{
+ _ztest_suite_node_list_start = .; KEEP(*(SORT_BY_NAME(._ztest_suite_node.static.*))); _ztest_suite_node_list_end = .;
+ _ztest_unit_test_list_start = .; KEEP(*(SORT_BY_NAME(._ztest_unit_test.static.*))); _ztest_unit_test_list_end = .;
+ _ztest_test_rule_list_start = .; KEEP(*(SORT_BY_NAME(._ztest_test_rule.static.*))); _ztest_test_rule_list_end = .;
+} > FLASH
  bt_l2cap_fixed_chan_area : SUBALIGN(4) { _bt_l2cap_fixed_chan_list_start = .; KEEP(*(SORT_BY_NAME(._bt_l2cap_fixed_chan.static.*))); _bt_l2cap_fixed_chan_list_end = .; } > FLASH
  bt_gatt_service_static_area : SUBALIGN(4) { _bt_gatt_service_static_list_start = .; KEEP(*(SORT_BY_NAME(._bt_gatt_service_static.static.*))); _bt_gatt_service_static_list_end = .; } > FLASH
  log_strings_sections : ALIGN_WITH_INPUT
@@ -149,6 +157,12 @@ __device_handles_end = .;
  zephyr_dbg_info : ALIGN_WITH_INPUT
  {
   KEEP(*(".dbg_thread_info"));
+ } > FLASH
+ symbol_to_keep : ALIGN_WITH_INPUT
+ {
+  __symbol_to_keep_start = .;
+  KEEP(*(SORT(.symbol_to_keep*)));
+  __symbol_to_keep_end = .;
  } > FLASH
  shell_area : SUBALIGN(4) { _shell_list_start = .; KEEP(*(SORT_BY_NAME(._shell.static.*))); _shell_list_end = .; } > FLASH
  shell_root_cmds_sections : ALIGN_WITH_INPUT

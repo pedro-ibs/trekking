@@ -743,14 +743,14 @@
     ],
     [
         [
-            "const struct can_timing *can_get_timing_min_data",
+            "const struct can_timing *can_get_timing_data_min",
             "const struct device *dev"
         ],
         "can.h"
     ],
     [
         [
-            "const struct can_timing *can_get_timing_max_data",
+            "const struct can_timing *can_get_timing_data_max",
             "const struct device *dev"
         ],
         "can.h"
@@ -764,22 +764,36 @@
     ],
     [
         [
+            "int can_set_timing_data",
+            "const struct device *dev,\n\t\t\t\t  const struct can_timing *timing_data"
+        ],
+        "can.h"
+    ],
+    [
+        [
+            "int can_set_bitrate_data",
+            "const struct device *dev, uint32_t bitrate_data"
+        ],
+        "can.h"
+    ],
+    [
+        [
             "int can_set_timing",
-            "const struct device *dev,\n\t\t\t     const struct can_timing *timing,\n\t\t\t     const struct can_timing *timing_data"
+            "const struct device *dev,\n\t\t\t     const struct can_timing *timing"
         ],
         "can.h"
     ],
     [
         [
             "int can_set_mode",
-            "const struct device *dev, enum can_mode mode"
+            "const struct device *dev, can_mode_t mode"
         ],
         "can.h"
     ],
     [
         [
             "int can_set_bitrate",
-            "const struct device *dev, uint32_t bitrate, uint32_t bitrate_data"
+            "const struct device *dev, uint32_t bitrate"
         ],
         "can.h"
     ],
@@ -1268,6 +1282,13 @@
     ],
     [
         [
+            "int gpio_port_get_direction",
+            "const struct device *port, gpio_port_pins_t map,\n\t\t\t\t      gpio_port_pins_t *inputs, gpio_port_pins_t *outputs"
+        ],
+        "gpio.h"
+    ],
+    [
+        [
             "int gpio_port_get_raw",
             "const struct device *port,\n\t\t\t\tgpio_port_value_t *value"
         ],
@@ -1366,14 +1387,14 @@
     ],
     [
         [
-            "int i2c_slave_driver_register",
+            "int i2c_target_driver_register",
             "const struct device *dev"
         ],
         "i2c.h"
     ],
     [
         [
-            "int i2c_slave_driver_unregister",
+            "int i2c_target_driver_unregister",
             "const struct device *dev"
         ],
         "i2c.h"
@@ -1688,21 +1709,21 @@
     ],
     [
         [
-            "int reset_assert",
+            "int reset_line_assert",
             "const struct device *dev, uint32_t id"
         ],
         "reset.h"
     ],
     [
         [
-            "int reset_deassert",
+            "int reset_line_deassert",
             "const struct device *dev, uint32_t id"
         ],
         "reset.h"
     ],
     [
         [
-            "int reset_toggle",
+            "int reset_line_toggle",
             "const struct device *dev, uint32_t id"
         ],
         "reset.h"
@@ -2003,6 +2024,83 @@
     ],
     [
         [
+            "int w1_change_bus_lock",
+            "const struct device *dev, bool lock"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_reset_bus",
+            "const struct device *dev"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_read_bit",
+            "const struct device *dev"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_write_bit",
+            "const struct device *dev, const bool bit"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_read_byte",
+            "const struct device *dev"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_write_byte",
+            "const struct device *dev, uint8_t byte"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_read_block",
+            "const struct device *dev, uint8_t *buffer, size_t len"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_write_block",
+            "const struct device *dev,\n\t\t\t     const uint8_t *buffer, size_t len"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "size_t w1_get_slave_count",
+            "const struct device *dev"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_configure",
+            "const struct device *dev,\n\t\t\t   enum w1_settings_type type, uint32_t value"
+        ],
+        "w1.h"
+    ],
+    [
+        [
+            "int w1_search_bus",
+            "const struct device *dev, uint8_t command,\n\t\t\t    uint8_t family, w1_search_callback_t callback,\n\t\t\t    void *user_data"
+        ],
+        "w1.h"
+    ],
+    [
+        [
             "int wdt_setup",
             "const struct device *dev, uint8_t options"
         ],
@@ -2094,20 +2192,6 @@
     ],
     [
         [
-            "void z_log_string_from_user",
-            "uint32_t src_level_val, const char *str"
-        ],
-        "log_core.h"
-    ],
-    [
-        [
-            "void z_log_hexdump_from_user",
-            "uint32_t src_level_val,\n\t\t\t\t       const char *metadata,\n\t\t\t\t       const uint8_t *data, uint32_t len"
-        ],
-        "log_core.h"
-    ],
-    [
-        [
             "void log_panic",
             "void"
         ],
@@ -2116,7 +2200,7 @@
     [
         [
             "bool log_process",
-            "bool bypass"
+            "void"
         ],
         "log_ctrl.h"
     ],
@@ -2136,17 +2220,17 @@
     ],
     [
         [
-            "void z_log_msg2_static_create",
-            "const void *source,\n\t\t\t\t\tconst struct log_msg2_desc desc,\n\t\t\t\t\tuint8_t *package, const void *data"
+            "void z_log_msg_static_create",
+            "const void *source,\n\t\t\t\t\tconst struct log_msg_desc desc,\n\t\t\t\t\tuint8_t *package, const void *data"
         ],
-        "log_msg2.h"
+        "log_msg.h"
     ],
     [
         [
-            "void z_log_msg2_runtime_vcreate",
+            "void z_log_msg_runtime_vcreate",
             "uint8_t domain_id, const void *source,\n\t\t\t\t\t  uint8_t level, const void *data,\n\t\t\t\t\t  size_t dlen, uint32_t package_flags,\n\t\t\t\t\t  const char *fmt,\n\t\t\t\t\t  va_list ap"
         ],
-        "log_msg2.h"
+        "log_msg.h"
     ],
     [
         [

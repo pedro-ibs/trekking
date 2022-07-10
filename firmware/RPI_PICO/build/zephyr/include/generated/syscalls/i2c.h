@@ -4,14 +4,14 @@
 #define Z_INCLUDE_SYSCALLS_I2C_H
 
 
-#include <tracing/tracing_syscall.h>
+#include <zephyr/tracing/tracing_syscall.h>
 
 #ifndef _ASMLANGUAGE
 
 #include <syscall_list.h>
-#include <syscall.h>
+#include <zephyr/syscall.h>
 
-#include <linker/sections.h>
+#include <zephyr/linker/sections.h>
 
 
 #ifdef __cplusplus
@@ -115,48 +115,48 @@ static inline int i2c_recover_bus(const struct device * dev)
 #endif
 
 
-extern int z_impl_i2c_slave_driver_register(const struct device * dev);
+extern int z_impl_i2c_target_driver_register(const struct device * dev);
 
 __pinned_func
-static inline int i2c_slave_driver_register(const struct device * dev)
+static inline int i2c_target_driver_register(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
 		union { uintptr_t x; const struct device * val; } parm0 = { .val = dev };
-		return (int) arch_syscall_invoke1(parm0.x, K_SYSCALL_I2C_SLAVE_DRIVER_REGISTER);
+		return (int) arch_syscall_invoke1(parm0.x, K_SYSCALL_I2C_TARGET_DRIVER_REGISTER);
 	}
 #endif
 	compiler_barrier();
-	return z_impl_i2c_slave_driver_register(dev);
+	return z_impl_i2c_target_driver_register(dev);
 }
 
 #if (CONFIG_TRACING_SYSCALL == 1)
 #ifndef DISABLE_SYSCALL_TRACING
 
-#define i2c_slave_driver_register(dev) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_I2C_SLAVE_DRIVER_REGISTER, i2c_slave_driver_register, dev); 	retval = i2c_slave_driver_register(dev); 	sys_port_trace_syscall_exit(K_SYSCALL_I2C_SLAVE_DRIVER_REGISTER, i2c_slave_driver_register, dev, retval); 	retval; })
+#define i2c_target_driver_register(dev) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_I2C_TARGET_DRIVER_REGISTER, i2c_target_driver_register, dev); 	retval = i2c_target_driver_register(dev); 	sys_port_trace_syscall_exit(K_SYSCALL_I2C_TARGET_DRIVER_REGISTER, i2c_target_driver_register, dev, retval); 	retval; })
 #endif
 #endif
 
 
-extern int z_impl_i2c_slave_driver_unregister(const struct device * dev);
+extern int z_impl_i2c_target_driver_unregister(const struct device * dev);
 
 __pinned_func
-static inline int i2c_slave_driver_unregister(const struct device * dev)
+static inline int i2c_target_driver_unregister(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
 		union { uintptr_t x; const struct device * val; } parm0 = { .val = dev };
-		return (int) arch_syscall_invoke1(parm0.x, K_SYSCALL_I2C_SLAVE_DRIVER_UNREGISTER);
+		return (int) arch_syscall_invoke1(parm0.x, K_SYSCALL_I2C_TARGET_DRIVER_UNREGISTER);
 	}
 #endif
 	compiler_barrier();
-	return z_impl_i2c_slave_driver_unregister(dev);
+	return z_impl_i2c_target_driver_unregister(dev);
 }
 
 #if (CONFIG_TRACING_SYSCALL == 1)
 #ifndef DISABLE_SYSCALL_TRACING
 
-#define i2c_slave_driver_unregister(dev) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_I2C_SLAVE_DRIVER_UNREGISTER, i2c_slave_driver_unregister, dev); 	retval = i2c_slave_driver_unregister(dev); 	sys_port_trace_syscall_exit(K_SYSCALL_I2C_SLAVE_DRIVER_UNREGISTER, i2c_slave_driver_unregister, dev, retval); 	retval; })
+#define i2c_target_driver_unregister(dev) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_I2C_TARGET_DRIVER_UNREGISTER, i2c_target_driver_unregister, dev); 	retval = i2c_target_driver_unregister(dev); 	sys_port_trace_syscall_exit(K_SYSCALL_I2C_TARGET_DRIVER_UNREGISTER, i2c_target_driver_unregister, dev, retval); 	retval; })
 #endif
 #endif
 

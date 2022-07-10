@@ -29,6 +29,7 @@
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_portability
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_posix
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_random
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_rtio
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_sd
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_settings
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_shell
@@ -103,7 +104,7 @@
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_usb
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_usbc
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_virtualization
-/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_i2c_slave
+/home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_i2c_target
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_misc_ft8xx
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_misc_grove_lcd
 /home/pibs/workspace/trekking/firmware/RPI_PICO/build/zephyr/misc/generated/syscalls_links/include_zephyr_drivers_pcie_endpoint

@@ -177,6 +177,14 @@
    status = "disabled";
   };
 
+  wdt0: watchdog@40058000 {
+   compatible = "raspberrypi,pico-watchdog";
+   reg = <0x40058000 ((4) * 1024)>;
+   clocks = <&xtal_clk>;
+   label = "WDT_0";
+   status = "disabled";
+  };
+
   usbd: usbd@50100000 {
    compatible = "raspberrypi,pico-usbd";
    reg = <0x50100000 0x10000>;
@@ -186,6 +194,18 @@
    num-bidir-endpoints = <16>;
    label = "USBD";
    status = "disabled";
+  };
+
+  pwm: pwm@40050000 {
+   compatible = "raspberrypi,pico-pwm";
+   reg = <0x40050000 ((4) * 1024)>;
+   resets = <&reset 14>;
+   clocks = <&system_clk>;
+   interrupts = <4 3>;
+   interrupt-names = "PWM_IRQ_WRAP";
+   label = "PWM_0";
+   status = "disabled";
+   #pwm-cells = <3>;
   };
  };
 };
@@ -229,8 +249,16 @@
    input-schmitt-enable;
   };
  };
+
+ pwm_ch4b_default: pwm_ch4b_default {
+  group1 {
+   pinmux = <(25 << 4 | 4 << 0)>;
+  };
+ };
 };
 # 11 "/home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
+# 1 "/home/pibs/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h" 1 3 4
+# 12 "/home/pibs/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
 
 
 
@@ -251,8 +279,25 @@
   };
  };
 
+ xtal_clk: xtal-clk {
+  compatible = "fixed-clock";
+  clock-frequency = <12000000>;
+  #clock-cells = <0>;
+ };
+
+ pwm_leds {
+  compatible = "pwm-leds";
+  pwm_led0: pwm_led_0 {
+   status = "disabled";
+   pwms = <&pwm 9 (((20) * 1000UL) * 1000UL) (0 << 0)>;
+   label = "PWM_LED";
+  };
+ };
+
  aliases {
   led0 = &led0;
+  watchdog0 = &wdt0;
+  pwm-led0 = &pwm_led0;
  };
 };
 
@@ -308,8 +353,18 @@
  pinctrl-names = "default";
 };
 
+&wdt0 {
+ status = "okay";
+};
+
 zephyr_udc0: &usbd {
  status = "okay";
+};
+
+&pwm {
+ pinctrl-0 = <&pwm_ch4b_default>;
+ pinctrl-names = "default";
+ divider-int-0 = <255>;
 };
 # 1 "<command-line>" 2
 # 1 "/home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay" 1
@@ -323,6 +378,7 @@ zephyr_udc0: &usbd {
   gprs-rst = &gprs_rst;
 
   led0 = &led0;
+
 
   m1a = &m1a;
   m1b = &m1b;
@@ -396,10 +452,27 @@ zephyr_udc0: &usbd {
    label = "MOROT4-B GPIO";
   };
  };
-# 100 "/home/pibs/workspace/trekking/firmware/RPI_PICO/boards/rpi_pico.overlay"
+
+
+ motors_pwm {
+  compatible = "pwm-leds";
+  m1a_p: pwm_m1a {
+   status = "okay";
+   pwms = < &pwm 0x9 0x1312d00 0x0 >;
+   label = "PWM_LED";
+  };
+ };
 };
 
+&pwm_led0 {
+ status = "okay";
+};
 
+&pwm {
+ status = "okay";
+ divider-frac-4 = <255>;
+ divider-int-4 = <255>;
+};
 
 &uart0 {
  current-speed = <115200>;

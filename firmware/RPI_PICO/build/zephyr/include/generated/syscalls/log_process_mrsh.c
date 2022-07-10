@@ -2,19 +2,18 @@
 
 #include <syscalls/log_ctrl.h>
 
-extern bool z_vrfy_log_process(bool bypass);
+extern bool z_vrfy_log_process();
 uintptr_t z_mrsh_log_process(uintptr_t arg0, uintptr_t arg1, uintptr_t arg2,
 		uintptr_t arg3, uintptr_t arg4, uintptr_t arg5, void *ssf)
 {
 	_current->syscall_frame = ssf;
+	(void) arg0;	/* unused */
 	(void) arg1;	/* unused */
 	(void) arg2;	/* unused */
 	(void) arg3;	/* unused */
 	(void) arg4;	/* unused */
 	(void) arg5;	/* unused */
-	union { uintptr_t x; bool val; } parm0;
-	parm0.x = arg0;
-	bool ret = z_vrfy_log_process(parm0.val);
+	bool ret = z_vrfy_log_process();
 	_current->syscall_frame = NULL;
 	return (uintptr_t) ret;
 }

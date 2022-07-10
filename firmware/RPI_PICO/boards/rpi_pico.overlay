@@ -15,6 +15,7 @@
 		gprs-rst	= &gprs_rst;
 
 		led0		= &led0;
+		// pwm_led0	= &pwm_led0;
 		
 		m1a	= &m1a;
 		m1b	= &m1b;
@@ -90,16 +91,25 @@
 	};
 
 
-	// motors_pwm {
-	// 	compatible = "pwm-leds";
-	// 	mpt: mp_t{
-	// 		label	= "MOROT1-A GPIO-PWM";
-	// 		pwms	= <&gpio0 3 1000 PWM_POLARITY_NORMAL>;
-	// 	};
-	// };
+	motors_pwm {
+		compatible = "pwm-leds";
+		m1a_p: pwm_m1a {
+			status = "okay";
+			pwms = < &pwm 0x9 0x1312d00 0x0 >;
+			label = "PWM_LED";
+		};
+	};
 };
 
+&pwm_led0 {
+	status = "okay";
+};
 
+&pwm {
+	status = "okay";
+	divider-frac-4 = <255>;
+	divider-int-4 = <255>;
+};
 
 &uart0 {
 	current-speed = <115200>;

@@ -4,14 +4,14 @@
 #define Z_INCLUDE_SYSCALLS_LOG_CTRL_H
 
 
-#include <tracing/tracing_syscall.h>
+#include <zephyr/tracing/tracing_syscall.h>
 
 #ifndef _ASMLANGUAGE
 
 #include <syscall_list.h>
-#include <syscall.h>
+#include <zephyr/syscall.h>
 
-#include <linker/sections.h>
+#include <zephyr/linker/sections.h>
 
 
 #ifdef __cplusplus
@@ -41,25 +41,24 @@ static inline void log_panic(void)
 #endif
 
 
-extern bool z_impl_log_process(bool bypass);
+extern bool z_impl_log_process(void);
 
 __pinned_func
-static inline bool log_process(bool bypass)
+static inline bool log_process(void)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
-		union { uintptr_t x; bool val; } parm0 = { .val = bypass };
-		return (bool) arch_syscall_invoke1(parm0.x, K_SYSCALL_LOG_PROCESS);
+		return (bool) arch_syscall_invoke0(K_SYSCALL_LOG_PROCESS);
 	}
 #endif
 	compiler_barrier();
-	return z_impl_log_process(bypass);
+	return z_impl_log_process();
 }
 
 #if (CONFIG_TRACING_SYSCALL == 1)
 #ifndef DISABLE_SYSCALL_TRACING
 
-#define log_process(bypass) ({ 	bool retval; 	sys_port_trace_syscall_enter(K_SYSCALL_LOG_PROCESS, log_process, bypass); 	retval = log_process(bypass); 	sys_port_trace_syscall_exit(K_SYSCALL_LOG_PROCESS, log_process, bypass, retval); 	retval; })
+#define log_process() ({ 	bool retval; 	sys_port_trace_syscall_enter(K_SYSCALL_LOG_PROCESS, log_process); 	retval = log_process(); 	sys_port_trace_syscall_exit(K_SYSCALL_LOG_PROCESS, log_process, retval); 	retval; })
 #endif
 #endif
 

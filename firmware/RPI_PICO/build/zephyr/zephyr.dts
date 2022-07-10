@@ -12,6 +12,8 @@
 	};
 	aliases {
 		led0 = &led0;
+		watchdog0 = &wdt0;
+		pwm-led0 = &pwm_led0;
 		gprs-rst = &gprs_rst;
 		m1a = &m1a;
 		m1b = &m1b;
@@ -120,6 +122,12 @@
 					input-schmitt-enable;
 				};
 			};
+			pwm_ch4b_default: pwm_ch4b_default {
+				phandle = < 0xa >;
+				group1 {
+					pinmux = < 0x194 >;
+				};
+			};
 			uart1_default: uart1_default {
 				phandle = < 0x5 >;
 				group1 {
@@ -140,7 +148,7 @@
 			label = "GPIO_0";
 			status = "okay";
 			ngpios = < 0x1e >;
-			phandle = < 0x9 >;
+			phandle = < 0xb >;
 		};
 		uart0: uart@40034000 {
 			compatible = "raspberrypi,pico-uart";
@@ -196,6 +204,13 @@
 			pinctrl-0 = < &i2c1_default >;
 			pinctrl-names = "default";
 		};
+		wdt0: watchdog@40058000 {
+			compatible = "raspberrypi,pico-watchdog";
+			reg = < 0x40058000 0x1000 >;
+			clocks = < &xtal_clk >;
+			label = "WDT_0";
+			status = "okay";
+		};
 		usbd: zephyr_udc0: usbd@50100000 {
 			compatible = "raspberrypi,pico-usbd";
 			reg = < 0x50100000 0x10000 >;
@@ -205,6 +220,23 @@
 			num-bidir-endpoints = < 0x10 >;
 			label = "USBD";
 			status = "okay";
+		};
+		pwm: pwm@40050000 {
+			compatible = "raspberrypi,pico-pwm";
+			reg = < 0x40050000 0x1000 >;
+			resets = < &reset 0xe >;
+			clocks = < &system_clk >;
+			interrupts = < 0x4 0x3 >;
+			interrupt-names = "PWM_IRQ_WRAP";
+			label = "PWM_0";
+			status = "okay";
+			#pwm-cells = < 0x3 >;
+			pinctrl-0 = < &pwm_ch4b_default >;
+			pinctrl-names = "default";
+			divider-int-0 = < 0xff >;
+			divider-frac-4 = < 0xff >;
+			divider-int-4 = < 0xff >;
+			phandle = < 0xc >;
 		};
 	};
 	cpus {
@@ -224,6 +256,20 @@
 		led0: led_0 {
 			gpios = < &gpio0 0x19 0x0 >;
 			label = "LED";
+		};
+	};
+	xtal_clk: xtal-clk {
+		compatible = "fixed-clock";
+		clock-frequency = < 0xb71b00 >;
+		#clock-cells = < 0x0 >;
+		phandle = < 0x9 >;
+	};
+	pwm_leds {
+		compatible = "pwm-leds";
+		pwm_led0: pwm_led_0 {
+			status = "okay";
+			pwms = < &pwm 0x9 0x1312d00 0x0 >;
+			label = "PWM_LED";
 		};
 	};
 	gprs {
@@ -266,6 +312,14 @@
 		m4b: m_4b {
 			gpios = < &gpio0 0x1a 0x0 >;
 			label = "MOROT4-B GPIO";
+		};
+	};
+	motors_pwm {
+		compatible = "pwm-leds";
+		m1a_p: pwm_m1a {
+			status = "okay";
+			pwms = < &pwm 0x9 0x1312d00 0x0 >;
+			label = "PWM_LED";
 		};
 	};
 };

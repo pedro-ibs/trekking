@@ -226,6 +226,9 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Path to a program.
 CMAKE_STRIP:FILEPATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-strip
 
+//No help, variable specified on the command line.
+CMAKE_SYSTEM_NAME:UNINITIALIZED=Generic
+
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
@@ -240,6 +243,9 @@ FLASH_TYPE:UNINITIALIZED=W25Q080
 
 //No help, variable specified on the command line.
 PYTHON_EXECUTABLE:UNINITIALIZED=/usr/bin/python3.8
+
+//No help, variable specified on the command line.
+RP2_BOOTLOADER_BYPRODUCT:UNINITIALIZED=/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/boot_stage2.S
 
 //No help, variable specified on the command line.
 ZEPHYR_BASE:UNINITIALIZED=/home/pibs/zephyrproject/zephyr
@@ -357,8 +363,6 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/pibs/zephyrproject/zephyr/modules/hal_rpi_pico/bootloader
-//Install .so files without execute permission.
-CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM

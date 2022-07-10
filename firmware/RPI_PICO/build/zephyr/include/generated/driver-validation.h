@@ -12,6 +12,8 @@
 
 #define Z_SYSCALL_DRIVER_CAN(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, can, CAN)
 
+#define Z_SYSCALL_DRIVER_COREDUMP(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, coredump, COREDUMP)
+
 #define Z_SYSCALL_DRIVER_COUNTER(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, counter, COUNTER)
 
 #define Z_SYSCALL_DRIVER_DAC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, dac, DAC)
@@ -52,6 +54,8 @@
 
 #define Z_SYSCALL_DRIVER_MDIO(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, mdio, MDIO)
 
+#define Z_SYSCALL_DRIVER_MIPI_DSI(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, mipi_dsi, MIPI_DSI)
+
 #define Z_SYSCALL_DRIVER_PINMUX(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, pinmux, PINMUX)
 
 #define Z_SYSCALL_DRIVER_PS2(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, ps2, PS2)
@@ -73,6 +77,8 @@
 #define Z_SYSCALL_DRIVER_SYSCON(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, syscon, SYSCON)
 
 #define Z_SYSCALL_DRIVER_UART(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, uart, UART)
+
+#define Z_SYSCALL_DRIVER_W1(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, w1, W1)
 
 #define Z_SYSCALL_DRIVER_WDT(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, wdt, WDT)
 

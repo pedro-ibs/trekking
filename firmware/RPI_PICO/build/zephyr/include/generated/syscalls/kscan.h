@@ -4,14 +4,14 @@
 #define Z_INCLUDE_SYSCALLS_KSCAN_H
 
 
-#include <tracing/tracing_syscall.h>
+#include <zephyr/tracing/tracing_syscall.h>
 
 #ifndef _ASMLANGUAGE
 
 #include <syscall_list.h>
-#include <syscall.h>
+#include <zephyr/syscall.h>
 
-#include <linker/sections.h>
+#include <zephyr/linker/sections.h>
 
 
 #ifdef __cplusplus

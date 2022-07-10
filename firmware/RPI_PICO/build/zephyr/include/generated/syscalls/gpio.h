@@ -4,14 +4,14 @@
 #define Z_INCLUDE_SYSCALLS_GPIO_H
 
 
-#include <tracing/tracing_syscall.h>
+#include <zephyr/tracing/tracing_syscall.h>
 
 #ifndef _ASMLANGUAGE
 
 #include <syscall_list.h>
-#include <syscall.h>
+#include <zephyr/syscall.h>
 
-#include <linker/sections.h>
+#include <zephyr/linker/sections.h>
 
 
 #ifdef __cplusplus
@@ -64,6 +64,32 @@ static inline int gpio_pin_configure(const struct device * port, gpio_pin_t pin,
 #ifndef DISABLE_SYSCALL_TRACING
 
 #define gpio_pin_configure(port, pin, flags) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_GPIO_PIN_CONFIGURE, gpio_pin_configure, port, pin, flags); 	retval = gpio_pin_configure(port, pin, flags); 	sys_port_trace_syscall_exit(K_SYSCALL_GPIO_PIN_CONFIGURE, gpio_pin_configure, port, pin, flags, retval); 	retval; })
+#endif
+#endif
+
+
+extern int z_impl_gpio_port_get_direction(const struct device * port, gpio_port_pins_t map, gpio_port_pins_t * inputs, gpio_port_pins_t * outputs);
+
+__pinned_func
+static inline int gpio_port_get_direction(const struct device * port, gpio_port_pins_t map, gpio_port_pins_t * inputs, gpio_port_pins_t * outputs)
+{
+#ifdef CONFIG_USERSPACE
+	if (z_syscall_trap()) {
+		union { uintptr_t x; const struct device * val; } parm0 = { .val = port };
+		union { uintptr_t x; gpio_port_pins_t val; } parm1 = { .val = map };
+		union { uintptr_t x; gpio_port_pins_t * val; } parm2 = { .val = inputs };
+		union { uintptr_t x; gpio_port_pins_t * val; } parm3 = { .val = outputs };
+		return (int) arch_syscall_invoke4(parm0.x, parm1.x, parm2.x, parm3.x, K_SYSCALL_GPIO_PORT_GET_DIRECTION);
+	}
+#endif
+	compiler_barrier();
+	return z_impl_gpio_port_get_direction(port, map, inputs, outputs);
+}
+
+#if (CONFIG_TRACING_SYSCALL == 1)
+#ifndef DISABLE_SYSCALL_TRACING
+
+#define gpio_port_get_direction(port, map, inputs, outputs) ({ 	int retval; 	sys_port_trace_syscall_enter(K_SYSCALL_GPIO_PORT_GET_DIRECTION, gpio_port_get_direction, port, map, inputs, outputs); 	retval = gpio_port_get_direction(port, map, inputs, outputs); 	sys_port_trace_syscall_exit(K_SYSCALL_GPIO_PORT_GET_DIRECTION, gpio_port_get_direction, port, map, inputs, outputs, retval); 	retval; })
 #endif
 #endif
 

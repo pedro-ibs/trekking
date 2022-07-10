@@ -18,11 +18,24 @@ case K_OBJ_CONDVAR: ret = "k_condvar"; break;
 #ifdef CONFIG_EVENTS
 case K_OBJ_EVENT: ret = "k_event"; break;
 #endif
+#ifdef CONFIG_ZTEST
+case K_OBJ_ZTEST_SUITE_NODE: ret = "ztest_suite_node"; break;
+#endif
+#ifdef CONFIG_ZTEST
+case K_OBJ_ZTEST_SUITE_STATS: ret = "ztest_suite_stats"; break;
+#endif
+#ifdef CONFIG_ZTEST_NEW_API
+case K_OBJ_ZTEST_UNIT_TEST: ret = "ztest_unit_test"; break;
+#endif
+#ifdef CONFIG_ZTEST_NEW_API
+case K_OBJ_ZTEST_TEST_RULE: ret = "ztest_test_rule"; break;
+#endif
 /* Driver subsystems */
 case K_OBJ_DRIVER_CRYPTO: ret = "crypto driver"; break;
 case K_OBJ_DRIVER_ADC: ret = "adc driver"; break;
 case K_OBJ_DRIVER_BBRAM: ret = "bbram driver"; break;
 case K_OBJ_DRIVER_CAN: ret = "can driver"; break;
+case K_OBJ_DRIVER_COREDUMP: ret = "coredump driver"; break;
 case K_OBJ_DRIVER_COUNTER: ret = "counter driver"; break;
 case K_OBJ_DRIVER_DAC: ret = "dac driver"; break;
 case K_OBJ_DRIVER_DAI: ret = "dai driver"; break;
@@ -43,6 +56,7 @@ case K_OBJ_DRIVER_KSCAN: ret = "kscan driver"; break;
 case K_OBJ_DRIVER_LED: ret = "led driver"; break;
 case K_OBJ_DRIVER_MBOX: ret = "mbox driver"; break;
 case K_OBJ_DRIVER_MDIO: ret = "mdio driver"; break;
+case K_OBJ_DRIVER_MIPI_DSI: ret = "mipi_dsi driver"; break;
 case K_OBJ_DRIVER_PINMUX: ret = "pinmux driver"; break;
 case K_OBJ_DRIVER_PS2: ret = "ps2 driver"; break;
 case K_OBJ_DRIVER_PTP_CLOCK: ret = "ptp_clock driver"; break;
@@ -54,6 +68,7 @@ case K_OBJ_DRIVER_SENSOR: ret = "sensor driver"; break;
 case K_OBJ_DRIVER_SPI: ret = "spi driver"; break;
 case K_OBJ_DRIVER_SYSCON: ret = "syscon driver"; break;
 case K_OBJ_DRIVER_UART: ret = "uart driver"; break;
+case K_OBJ_DRIVER_W1: ret = "w1 driver"; break;
 case K_OBJ_DRIVER_WDT: ret = "wdt driver"; break;
 case K_OBJ_DRIVER_CAN_TRANSCEIVER: ret = "can_transceiver driver"; break;
 case K_OBJ_DRIVER_UART_MUX: ret = "uart_mux driver"; break;
