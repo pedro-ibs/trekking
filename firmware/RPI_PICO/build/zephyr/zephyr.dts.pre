@@ -458,7 +458,7 @@ zephyr_udc0: &usbd {
   compatible = "pwm-leds";
   m1a_p: pwm_m1a {
    status = "okay";
-   pwms = < &pwm 0x9 0x1312d00 0x0 >;
+   pwms = < &pwm 22 0x1312d00 0x0 >;
    label = "PWM_LED";
   };
  };

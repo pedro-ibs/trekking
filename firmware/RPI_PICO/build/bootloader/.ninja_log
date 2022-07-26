@@ -1,7 +1,7 @@
 # ninja log v5
-0	31	1657398974202288937	CMakeFiles/boot_stage2.dir/home/pibs/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	530982fe7aa986e7
-31	101	1657398974266290927	boot_stage2	b4c675930270e90d
-31	101	1657398974266290927	boot_stage2.bin	b4c675930270e90d
-31	101	1657398974266290927	boot_stage2.S	b4c675930270e90d
-31	101	1657398974266290927	/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/boot_stage2.bin	b4c675930270e90d
-31	101	1657398974266290927	/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/boot_stage2.S	b4c675930270e90d
+0	136	1658848679344727880	CMakeFiles/boot_stage2.dir/home/pibs/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	530982fe7aa986e7
+138	319	1658848679520729449	boot_stage2	b4c675930270e90d
+138	319	1658848679520729449	boot_stage2.bin	b4c675930270e90d
+138	319	1658848679520729449	boot_stage2.S	b4c675930270e90d
+138	319	1658848679520729449	/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/boot_stage2.bin	b4c675930270e90d
+138	319	1658848679520729449	/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/boot_stage2.S	b4c675930270e90d

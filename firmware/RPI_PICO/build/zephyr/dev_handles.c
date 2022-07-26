@@ -11,7 +11,7 @@
  *   - (/soc/usbd@50100000)
  */
 const device_handle_t __aligned(2) __attribute__((__section__(".__device_handles_pass2")))
-__devicehdl_DT_N_S_soc_S_reset_controller_4000c000[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, 2, 7, 3, DEVICE_HANDLE_ENDS };
+__devicehdl_DT_N_S_soc_S_reset_controller_4000c000[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, 3, 7, 2, DEVICE_HANDLE_ENDS };
 
 /* 2 : /soc/uart@40038000:
  * Direct Dependencies:

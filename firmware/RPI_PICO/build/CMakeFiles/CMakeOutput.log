@@ -1,5 +1,5 @@
 The target system is: Generic - 3.1.99 - arm
-The host system is: Linux - 5.13.0-52-generic - x86_64
+The host system is: Linux - 5.15.0-41-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
 Build flags: 

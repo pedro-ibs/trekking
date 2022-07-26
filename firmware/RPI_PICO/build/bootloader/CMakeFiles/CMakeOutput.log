@@ -1,5 +1,5 @@
 The target system is: Generic -  - 
-The host system is: Linux - 5.13.0-52-generic - x86_64
+The host system is: Linux - 5.15.0-41-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
 Build flags: 
@@ -29,7 +29,7 @@ The CXX compiler identification is GNU, found in "/home/pibs/workspace/trekking/
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja cmTC_03973 && [1/2] Building C object CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj
+Run Build Command(s):/usr/bin/ninja cmTC_39a39 && [1/2] Building C object CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj
 Using built-in specs.
 COLLECT_GCC=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
 Target: arm-zephyr-eabi
@@ -37,8 +37,8 @@ Configured with: /__w/_temp/workspace/build/.build/arm-zephyr-eabi/src/gcc/confi
 Thread model: single
 Supported LTO compression algorithms: zlib
 gcc version 10.3.0 (Zephyr SDK 0.14.1) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
- /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1 -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj -version -o /tmp/cc8hc2QI.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
+ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1 -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj -version -o /tmp/ccD3dXtc.s
 GNU C17 (Zephyr SDK 0.14.1) version 10.3.0 (arm-zephyr-eabi)
 	compiled by GNU C version 7.5.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.0, isl version isl-0.24-GMP
 
@@ -59,13 +59,13 @@ GNU C17 (Zephyr SDK 0.14.1) version 10.3.0 (arm-zephyr-eabi)
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 64489c9f1fa47cd0e5b206182270e3e8
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
- /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj /tmp/cc8hc2QI.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
+ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj /tmp/ccD3dXtc.s
 GNU assembler version 2.35.1 (arm-zephyr-eabi) using BFD version (Zephyr SDK 0.14.1) 2.35.1
 COMPILER_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/
 LIBRARY_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
-[2/2] Linking C static library libcmTC_03973.a
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
+[2/2] Linking C static library libcmTC_39a39.a
 
 
 
@@ -88,7 +88,7 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(arm-zephyr-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/ninja cmTC_03973 && [1/2] Building C object CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [Run Build Command(s):/usr/bin/ninja cmTC_39a39 && [1/2] Building C object CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc]
   ignore line: [Target: arm-zephyr-eabi]
@@ -96,8 +96,8 @@ Parsed C implicit link information from above output:
   ignore line: [Thread model: single]
   ignore line: [Supported LTO compression algorithms: zlib]
   ignore line: [gcc version 10.3.0 (Zephyr SDK 0.14.1) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
-  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1 -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj -version -o /tmp/cc8hc2QI.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
+  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1 -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj -version -o /tmp/ccD3dXtc.s]
   ignore line: [GNU C17 (Zephyr SDK 0.14.1) version 10.3.0 (arm-zephyr-eabi)]
   ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.0  isl version isl-0.24-GMP]
   ignore line: []
@@ -118,13 +118,13 @@ Parsed C implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 64489c9f1fa47cd0e5b206182270e3e8]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
-  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj /tmp/cc8hc2QI.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
+  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj /tmp/ccD3dXtc.s]
   ignore line: [GNU assembler version 2.35.1 (arm-zephyr-eabi) using BFD version (Zephyr SDK 0.14.1) 2.35.1]
   ignore line: [COMPILER_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/]
   ignore line: [LIBRARY_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_03973.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
-  ignore line: [[2/2] Linking C static library libcmTC_03973.a]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_39a39.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
+  ignore line: [[2/2] Linking C static library libcmTC_39a39.a]
   ignore line: []
   ignore line: []
   implicit libs: []
@@ -136,7 +136,7 @@ Parsed C implicit link information from above output:
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja cmTC_8f0d0 && [1/2] Building CXX object CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj
+Run Build Command(s):/usr/bin/ninja cmTC_9bf4c && [1/2] Building CXX object CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj
 Using built-in specs.
 COLLECT_GCC=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-c++
 Target: arm-zephyr-eabi
@@ -144,8 +144,8 @@ Configured with: /__w/_temp/workspace/build/.build/arm-zephyr-eabi/src/gcc/confi
 Thread model: single
 Supported LTO compression algorithms: zlib
 gcc version 10.3.0 (Zephyr SDK 0.14.1) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
- /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1plus -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj -version -o /tmp/cceG1UDE.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
+ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1plus -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj -version -o /tmp/cczdOjTL.s
 GNU C++14 (Zephyr SDK 0.14.1) version 10.3.0 (arm-zephyr-eabi)
 	compiled by GNU C version 7.5.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.0, isl version isl-0.24-GMP
 
@@ -172,13 +172,13 @@ GNU C++14 (Zephyr SDK 0.14.1) version 10.3.0 (arm-zephyr-eabi)
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 761010482d88277a00d0647232d101c3
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
- /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cceG1UDE.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
+ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cczdOjTL.s
 GNU assembler version 2.35.1 (arm-zephyr-eabi) using BFD version (Zephyr SDK 0.14.1) 2.35.1
 COMPILER_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/
 LIBRARY_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
-[2/2] Linking CXX static library libcmTC_8f0d0.a
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t'
+[2/2] Linking CXX static library libcmTC_9bf4c.a
 
 
 
@@ -207,7 +207,7 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(arm-zephyr-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/ninja cmTC_8f0d0 && [1/2] Building CXX object CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [Run Build Command(s):/usr/bin/ninja cmTC_9bf4c && [1/2] Building CXX object CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-c++]
   ignore line: [Target: arm-zephyr-eabi]
@@ -215,8 +215,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [Thread model: single]
   ignore line: [Supported LTO compression algorithms: zlib]
   ignore line: [gcc version 10.3.0 (Zephyr SDK 0.14.1) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
-  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1plus -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj -version -o /tmp/cceG1UDE.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
+  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/cc1plus -quiet -v -iprefix /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/ -D__USES_INITFINI__ /usr/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -march=armv4t -auxbase-strip CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj -version -o /tmp/cczdOjTL.s]
   ignore line: [GNU C++14 (Zephyr SDK 0.14.1) version 10.3.0 (arm-zephyr-eabi)]
   ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.0  isl version isl-0.24-GMP]
   ignore line: []
@@ -243,13 +243,13 @@ Parsed CXX implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 761010482d88277a00d0647232d101c3]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
-  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cceG1UDE.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
+  ignore line: [ /home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cczdOjTL.s]
   ignore line: [GNU assembler version 2.35.1 (arm-zephyr-eabi) using BFD version (Zephyr SDK 0.14.1) 2.35.1]
   ignore line: [COMPILER_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../libexec/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/bin/]
   ignore line: [LIBRARY_PATH=/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/:/home/pibs/.local/opt/zephyr-sdk-0.14.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/../../../../arm-zephyr-eabi/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8f0d0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
-  ignore line: [[2/2] Linking CXX static library libcmTC_8f0d0.a]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9bf4c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-march=armv4t']
+  ignore line: [[2/2] Linking CXX static library libcmTC_9bf4c.a]
   ignore line: []
   ignore line: []
   implicit libs: []

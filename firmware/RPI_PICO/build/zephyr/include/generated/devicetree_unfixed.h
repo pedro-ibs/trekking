@@ -2453,7 +2453,7 @@
 /* Generic property macros: */
 #define DT_N_S_motors_pwm_S_pwm_m1a_P_pwms_IDX_0_EXISTS 1
 #define DT_N_S_motors_pwm_S_pwm_m1a_P_pwms_IDX_0_PH DT_N_S_soc_S_pwm_40050000
-#define DT_N_S_motors_pwm_S_pwm_m1a_P_pwms_IDX_0_VAL_channel 9
+#define DT_N_S_motors_pwm_S_pwm_m1a_P_pwms_IDX_0_VAL_channel 22
 #define DT_N_S_motors_pwm_S_pwm_m1a_P_pwms_IDX_0_VAL_channel_EXISTS 1
 #define DT_N_S_motors_pwm_S_pwm_m1a_P_pwms_IDX_0_VAL_period 20000000
 #define DT_N_S_motors_pwm_S_pwm_m1a_P_pwms_IDX_0_VAL_period_EXISTS 1
