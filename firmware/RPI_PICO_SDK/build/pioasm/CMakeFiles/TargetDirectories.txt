@@ -1,0 +1,3 @@
+/home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/build/pioasm/CMakeFiles/pioasm.dir
+/home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/build/pioasm/CMakeFiles/edit_cache.dir
+/home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/build/pioasm/CMakeFiles/rebuild_cache.dir

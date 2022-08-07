@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/soc/arm/rpi_pico/rp2",
+		"source" : "/home/pibs/zephyrproject/zephyr/soc/arm/rpi_pico/rp2"
+	}
+}

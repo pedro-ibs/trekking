@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/lvgl",
+		"source" : "/home/pibs/zephyrproject/modules/lib/gui/lvgl/zephyr"
+	}
+}

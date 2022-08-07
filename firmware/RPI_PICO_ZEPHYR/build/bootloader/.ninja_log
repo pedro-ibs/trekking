@@ -1,0 +1,7 @@
+# ninja log v5
+0	66	1659139765115793239	CMakeFiles/boot_stage2.dir/home/pibs/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	530982fe7aa986e7
+66	249	1659139765275794266	boot_stage2	b4c675930270e90d
+66	249	1659139765275794266	boot_stage2.bin	b4c675930270e90d
+66	249	1659139765275794266	boot_stage2.S	b4c675930270e90d
+66	249	1659139765275794266	/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/boot_stage2.bin	b4c675930270e90d
+66	249	1659139765275794266	/home/pibs/workspace/trekking/firmware/RPI_PICO/build/bootloader/boot_stage2.S	b4c675930270e90d
