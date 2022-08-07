@@ -14,19 +14,20 @@
 		},
 		"buildTarget": {
 			"visibility": "hidden"
-		}
+		},
 	},
-	"cmake.buildBeforeRun": true,
-	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-	
 	"cmake.configureEnvironment": {
 		"PICO_SDK_PATH": "/home/pibs/.local/opt/pico/pico-sdk",
 		"PICO_EXAMPLES_PATH": "/home/pibs/.local/opt/pico/pico-examples",
 		"PICO_EXTRAS_PATH": "/home/pibs/.local/opt/pico/pico-extras",
 		"PICO_PLAYGROUND_PATH": "/home/pibs/.local/opt/pico/pico-playground"
 	},
+	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 	"cmake.generator": "NMake Makefiles",
 	"cmake.cmakePath": "cmake",
+	"cmake.buildBeforeRun": false,
+
+
 	"cSpell.words": [
 		"gpio"
 	],
@@ -35,7 +36,8 @@
 		"cstdint": "cpp",
 		"simple_uart.h": "c",
 		"stdlib.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"config.h": "c"
 	},
 	"environment": [ {
 		"PICO_SDK_PATH": "/home/pibs/.local/opt/pico/pico-sdk",
@@ -44,12 +46,14 @@
 		"PICO_PLAYGROUND_PATH": "/home/pibs/.local/opt/pico/pico-playground"			
 	} ],
 	"terminal.integrated.env.linux": {
-		
 		"PICO_SDK_PATH": "/home/pibs/.local/opt/pico/pico-sdk",
 		"PICO_EXAMPLES_PATH": "/home/pibs/.local/opt/pico/pico-examples",
 		"PICO_EXTRAS_PATH": "/home/pibs/.local/opt/pico/pico-extras",
 		"PICO_PLAYGROUND_PATH": "/home/pibs/.local/opt/pico/pico-playground"	
 	},
-	"problems.decorations.enabled": false,
+
+
+	// "problems.decorations.enabled": false,
+	// "C_Cpp.errorSquiggles": "Disabled",
 
 }

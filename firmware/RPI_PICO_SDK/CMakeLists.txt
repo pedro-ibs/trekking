@@ -22,7 +22,8 @@ src
 
 add_executable( RPI_PICO_SDK
 src/main.c
-
+includes/config.h
+includes/hardware.h
 lib/uart/simple_uart.h
 lib/uart/simple_uart.c
 )

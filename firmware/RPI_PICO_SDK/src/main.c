@@ -4,8 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include <stdio.h>
-#include <pico/stdlib.h>
+#include <config.h>
 #include <simple_uart.h>
 
 int main() {

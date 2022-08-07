@@ -1,5 +1,6 @@
 CMakeFiles/RPI_PICO_SDK.dir/src/main.c.obj: \
  /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/src/main.c \
+ /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/includes/config.h \
  /usr/include/newlib/stdio.h /usr/include/newlib/_ansi.h \
  /usr/include/newlib/newlib.h /usr/include/newlib/_newlib_version.h \
  /usr/include/newlib/sys/config.h /usr/include/newlib/machine/ieeefp.h \
@@ -55,4 +56,5 @@ CMakeFiles/RPI_PICO_SDK.dir/src/main.c.obj: \
  /home/pibs/.local/opt/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
  /home/pibs/.local/opt/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
  /home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+ /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/includes/hardware.h \
  /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/lib/uart/simple_uart.h
