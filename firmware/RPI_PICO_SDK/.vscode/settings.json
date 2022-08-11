@@ -25,11 +25,12 @@
 	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 	"cmake.generator": "NMake Makefiles",
 	"cmake.cmakePath": "cmake",
-	"cmake.buildBeforeRun": false,
+	"cmake.buildBeforeRun": true,
 
 
 	"cSpell.words": [
-		"gpio"
+		"gpio",
+		"textp"
 	],
 	"files.associations": {
 		"atomic": "cpp",
@@ -37,7 +38,8 @@
 		"simple_uart.h": "c",
 		"stdlib.h": "c",
 		"stdio.h": "c",
-		"config.h": "c"
+		"config.h": "c",
+		"motor.h": "c"
 	},
 	"environment": [ {
 		"PICO_SDK_PATH": "/home/pibs/.local/opt/pico/pico-sdk",
@@ -53,7 +55,7 @@
 	},
 
 
-	// "problems.decorations.enabled": false,
+	"problems.decorations.enabled": false,
 	// "C_Cpp.errorSquiggles": "Disabled",
 
 }

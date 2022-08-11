@@ -31,6 +31,8 @@
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
 #include <stdio.h>
+#include <stddef.h>
+#include <ctype.h>
 #include "pico/stdlib.h"
 #include "hardware.h"
 
@@ -45,9 +47,10 @@
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL, 								*/
 /* ************************************************************************************************************ */
-#define CONFIG_BAUD_RATE	115200
-#define CONFIG_DATA_BITS	8
-#define CONFIG_STOP_BITS	1
-#define CONFIG_PARITY		UART_PARITY_NONE
+#define CONFIG_BAUD_RATE	( 115200		)
+#define CONFIG_DATA_BITS	( 8			)
+#define CONFIG_STOP_BITS	( 1			)
+#define CONFIG_PARITY		( UART_PARITY_NONE	)
+#define CONFIG_BUFFER_SIZE	( 1024			)
 
 #endif /* config_H_ */

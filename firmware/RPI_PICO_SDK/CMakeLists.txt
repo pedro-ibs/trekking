@@ -16,6 +16,7 @@ include_directories(
 includes
 lib
 lib/motor
+lib/textProtocol
 lib/uart
 src
 )
@@ -24,7 +25,11 @@ add_executable( RPI_PICO_SDK
 src/main.c
 includes/config.h
 includes/hardware.h
+lib/motor/motor.h
+lib/textProtocol/textProtocol.h
 lib/uart/simple_uart.h
+lib/motor/motor.c
+lib/textProtocol/textProtocol.c
 lib/uart/simple_uart.c
 )
 

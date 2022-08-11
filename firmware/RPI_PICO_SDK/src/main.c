@@ -6,15 +6,27 @@
 
 #include <config.h>
 #include <simple_uart.h>
+#include <textProtocol.h>
+#include <motor.h> 
 
 int main() {
-	const uint LED_PIN = PICO_DEFAULT_LED_PIN;
-	gpio_init(LED_PIN);
-	gpio_set_dir(LED_PIN, GPIO_OUT);
+
+	uart_vSetup();
+
+	uart_vSendStringLn("started!");
+
+	motor_vSetGpio(HARDWARE_M1CHA_GPIO, HARDWARE_M1CHB_GPIO);
+
+
 	while (true) {
-		gpio_put(LED_PIN, 1);
-		sleep_ms(300);
-		gpio_put(LED_PIN, 0);
-		sleep_ms(300);
+
+		if(uart_uGetBufferSize() > 0) {
+			if ( textp_bFindString( uart_pcGetBuffer(), "}" ) ){
+				uart_vSendString(uart_pcGetBuffer());
+				uart_vCleanBuffer();
+			}
+		}
+
+		sleep_ms(100);
 	}
 }

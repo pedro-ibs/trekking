@@ -31,8 +31,6 @@
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
 #include "pico/stdlib.h"
-#include "hardware/uart.h"
-#include "hardware/irq.h"
 
 #ifndef hardware_H_
 #define hardware_H_
@@ -45,7 +43,21 @@
  * Comunicação serial raspberry - rpi_pico
  */
 #define HARDWARE_UART_ID		uart0
-#define HARDWARE_TX_GPIO		( 0 ) 
-#define HARDWARE_RX_GPIO		( 1 )
+#define HARDWARE_TX_GPIO		( 0	) 
+#define HARDWARE_RX_GPIO		( 1	)
+
+
+/**
+ * Pinos utilizados nos motores
+ */
+#define HARDWARE_M1CHA_GPIO		( 12	)
+#define HARDWARE_M1CHB_GPIO		( 13	)
+#define HARDWARE_M2CHA_GPIO		( 10	)
+#define HARDWARE_M2CHB_GPIO		( 11	)
+#define HARDWARE_M3CHA_GPIO		( 6	)
+#define HARDWARE_M3CHB_GPIO		( 7	)
+#define HARDWARE_M4CHA_GPIO		( 2	)
+#define HARDWARE_M4CHB_GPIO		( 3	)
+
 
 #endif /* hardware_H_ */

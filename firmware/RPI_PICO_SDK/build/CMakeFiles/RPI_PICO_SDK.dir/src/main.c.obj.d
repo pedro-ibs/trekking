@@ -17,6 +17,7 @@ CMakeFiles/RPI_PICO_SDK.dir/src/main.c.obj: \
  /usr/include/newlib/sys/timespec.h /usr/include/newlib/sys/_timespec.h \
  /usr/include/newlib/sys/_pthreadtypes.h /usr/include/newlib/sys/sched.h \
  /usr/include/newlib/machine/types.h /usr/include/newlib/sys/stdio.h \
+ /usr/include/newlib/ctype.h /usr/include/newlib/sys/_locale.h \
  /home/pibs/.local/opt/pico/pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h \
  /home/pibs/.local/opt/pico/pico-sdk/src/common/pico_base/include/pico.h \
  /home/pibs/.local/opt/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
@@ -57,4 +58,8 @@ CMakeFiles/RPI_PICO_SDK.dir/src/main.c.obj: \
  /home/pibs/.local/opt/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
  /home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
  /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/includes/hardware.h \
- /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/lib/uart/simple_uart.h
+ /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/lib/uart/simple_uart.h \
+ /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/lib/textProtocol/textProtocol.h \
+ /usr/include/newlib/string.h /usr/include/newlib/strings.h \
+ /usr/include/newlib/sys/string.h \
+ /home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/lib/motor/motor.h

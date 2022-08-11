@@ -40,5 +40,15 @@
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
+void uart_vSetup(void);
+void uart_vCleanBuffer(void);
+
+size_t uart_uGetBufferSize(void);
+const char *uart_pcGetBuffer(void);
+
+void uart_vSendChar(char ch);
+void uart_vSendString( const char *str );
+void uart_vSendStringLn( const char *str );
+
 
 #endif /* simple_uart_H_ */

@@ -1124,6 +1124,54 @@ home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RPI_PICO_SDK.dir/build.make CMakeFiles/RPI_PICO_SDK.dir/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 .PHONY : home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 
+lib/motor/motor.obj: lib/motor/motor.c.obj
+.PHONY : lib/motor/motor.obj
+
+# target to build an object file
+lib/motor/motor.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RPI_PICO_SDK.dir/build.make CMakeFiles/RPI_PICO_SDK.dir/lib/motor/motor.c.obj
+.PHONY : lib/motor/motor.c.obj
+
+lib/motor/motor.i: lib/motor/motor.c.i
+.PHONY : lib/motor/motor.i
+
+# target to preprocess a source file
+lib/motor/motor.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RPI_PICO_SDK.dir/build.make CMakeFiles/RPI_PICO_SDK.dir/lib/motor/motor.c.i
+.PHONY : lib/motor/motor.c.i
+
+lib/motor/motor.s: lib/motor/motor.c.s
+.PHONY : lib/motor/motor.s
+
+# target to generate assembly for a file
+lib/motor/motor.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RPI_PICO_SDK.dir/build.make CMakeFiles/RPI_PICO_SDK.dir/lib/motor/motor.c.s
+.PHONY : lib/motor/motor.c.s
+
+lib/textProtocol/textProtocol.obj: lib/textProtocol/textProtocol.c.obj
+.PHONY : lib/textProtocol/textProtocol.obj
+
+# target to build an object file
+lib/textProtocol/textProtocol.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RPI_PICO_SDK.dir/build.make CMakeFiles/RPI_PICO_SDK.dir/lib/textProtocol/textProtocol.c.obj
+.PHONY : lib/textProtocol/textProtocol.c.obj
+
+lib/textProtocol/textProtocol.i: lib/textProtocol/textProtocol.c.i
+.PHONY : lib/textProtocol/textProtocol.i
+
+# target to preprocess a source file
+lib/textProtocol/textProtocol.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RPI_PICO_SDK.dir/build.make CMakeFiles/RPI_PICO_SDK.dir/lib/textProtocol/textProtocol.c.i
+.PHONY : lib/textProtocol/textProtocol.c.i
+
+lib/textProtocol/textProtocol.s: lib/textProtocol/textProtocol.c.s
+.PHONY : lib/textProtocol/textProtocol.s
+
+# target to generate assembly for a file
+lib/textProtocol/textProtocol.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RPI_PICO_SDK.dir/build.make CMakeFiles/RPI_PICO_SDK.dir/lib/textProtocol/textProtocol.c.s
+.PHONY : lib/textProtocol/textProtocol.c.s
+
 lib/uart/simple_uart.obj: lib/uart/simple_uart.c.obj
 .PHONY : lib/uart/simple_uart.obj
 
@@ -1301,6 +1349,12 @@ help:
 	@echo "... home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.obj"
 	@echo "... home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.i"
 	@echo "... home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.s"
+	@echo "... lib/motor/motor.obj"
+	@echo "... lib/motor/motor.i"
+	@echo "... lib/motor/motor.s"
+	@echo "... lib/textProtocol/textProtocol.obj"
+	@echo "... lib/textProtocol/textProtocol.i"
+	@echo "... lib/textProtocol/textProtocol.s"
 	@echo "... lib/uart/simple_uart.obj"
 	@echo "... lib/uart/simple_uart.i"
 	@echo "... lib/uart/simple_uart.s"
