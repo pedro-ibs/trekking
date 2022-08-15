@@ -40,7 +40,10 @@
 
 /* Includes ----------------------------------------------------------------------------------------------------------------------------------------------*/
 #include "motor.h"
+#include <stdio.h>
 #include "pico/stdlib.h"
+#include "pico/time.h"
+#include "hardware/irq.h"
 #include "hardware/pwm.h"
 
 
