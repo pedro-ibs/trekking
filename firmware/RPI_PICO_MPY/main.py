@@ -1,29 +1,16 @@
 from machine import Pin, PWM, UART
 import time
 
-time.sleep(3)
+# time.sleep(3)
 
-
-########################################################################### 
-############################## CONFIGURAÇÕES ############################## 
-########################################################################### 
 duty_resolution = 128+64
 freq_pwm = 400
 up_down = False
+led_dy = 0
 dy_s = 0.01
 hello = '\r\nMotor Driver Started!\r\n'
 buffer = ''
 cmd = {}
-
-motor1a_dy  = 0
-motor1B_dy  = 0
-motor2A_dy  = 0
-motor2B_dy  = 0
-motor3A_dy  = 0
-motor3B_dy  = 0
-motor4A_dy  = 0
-motor4B_dy  = 0
-led_dy      = 0
 
 uart0 = UART(0, baudrate=19200, tx=Pin(0), rx=Pin(1))
 
@@ -121,8 +108,8 @@ def turn_off(  ):
     motor3A.duty_u16( 0 )
     motor4A.duty_u16( 0 )
 
-
 uart0.write(hello)
+
 while True:
     bt = uart0.read(1)
 
