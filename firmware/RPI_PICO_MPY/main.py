@@ -1,17 +1,15 @@
-from machine import Pin, PWM, UART
+from machine import Pin, PWM, UART, WDT
 import time
 
 # time.sleep(3)
+wdt = WDT(timeout=1500)
 
-duty_resolution = 128+64
 freq_pwm = 400
 up_down = False
 led_dy = 0
-dy_s = 0.01
+dy_s = 0.001
 hello = '\r\nMotor Driver Started!\r\n'
 buffer = ''
-cmd = {}
-
 uart0 = UART(0, baudrate=19200, tx=Pin(0), rx=Pin(1))
 
 motor1A = PWM(Pin( 3    ))
@@ -34,113 +32,84 @@ motor4A.freq( freq_pwm )
 motor4B.freq( freq_pwm )
 led.freq( freq_pwm )
 
-
 def led_app ( resolution ):
     global led_dy
     global up_down
-    
     if led_dy >= (65535-resolution):
         up_down = False
     elif led_dy <= 0:
         up_down = True
-
     if up_down:
         led_dy = led_dy + resolution
     else:
         led_dy = led_dy - resolution
-
     led.duty_u16( led_dy )
 
-def to_front( dy_b=0  ):
+
+def motors_left(dy_a=0, dy_b=0):
+    motor1A.duty_u16( dy_a )
     motor1B.duty_u16( dy_b )
+    motor2A.duty_u16( dy_a )
     motor2B.duty_u16( dy_b )
+
+def motors_right(dy_a=0, dy_b=0):
+    motor3A.duty_u16( dy_a )
     motor3B.duty_u16( dy_b )
+    motor4A.duty_u16( dy_a )
     motor4B.duty_u16( dy_b )
 
-    motor1A.duty_u16( 0 )
-    motor2A.duty_u16( 0 )
-    motor3A.duty_u16( 0 )
-    motor4A.duty_u16( 0 )
+def to_front( dy=0  ):
+    motors_left(dy_a=0, dy_b=dy)
+    motors_right(dy_a=0, dy_b=dy)
 
+def to_back( dy=0  ):
+    motors_left(dy_a=dy, dy_b=0)
+    motors_right(dy_a=dy, dy_b=0)
 
-def to_back( dy_a=0  ):
-    motor1B.duty_u16( 0 )
-    motor2B.duty_u16( 0 )
-    motor3B.duty_u16( 0 )
-    motor4B.duty_u16( 0 )
+def turn_left( dy=0 ):
+    motors_left(dy_a=dy, dy_b=0)
+    motors_right(dy_a=0, dy_b=dy)
 
-    motor1A.duty_u16( dy_a )
-    motor2A.duty_u16( dy_a )
-    motor3A.duty_u16( dy_a )
-    motor4A.duty_u16( dy_a )
-
-def turn_left( dy ):
-    motor1B.duty_u16( 0 )
-    motor2B.duty_u16( 0 )
-    motor3B.duty_u16( dy )
-    motor4B.duty_u16( dy )
-
-    motor1A.duty_u16( dy )
-    motor2A.duty_u16( dy )
-    motor3A.duty_u16( 0 )
-    motor4A.duty_u16( 0 )
-
-
-def turn_right( dy ):
-    motor1B.duty_u16( dy )
-    motor2B.duty_u16( dy )
-    motor3B.duty_u16( 0 )
-    motor4B.duty_u16( 0 )
-
-    motor1A.duty_u16( 0 )
-    motor2A.duty_u16( 0 )
-    motor3A.duty_u16( dy )
-    motor4A.duty_u16( dy )
+def turn_right( dy=0 ):
+    motors_left(dy_a=0, dy_b=dy)
+    motors_right(dy_a=dy, dy_b=0)
 
 def turn_off(  ):
-    motor1B.duty_u16( 0 )
-    motor2B.duty_u16( 0 )
-    motor3B.duty_u16( 0 )
-    motor4B.duty_u16( 0 )
+    motors_left(dy_a=0, dy_b=0)
+    motors_right(dy_a=0, dy_b=0)
 
-    motor1A.duty_u16( 0 )
-    motor2A.duty_u16( 0 )
-    motor3A.duty_u16( 0 )
-    motor4A.duty_u16( 0 )
+def cmd_run( cmd_arg = { 's', 0, 0 } ):
+    if cmd_arg[0] == 'x':
+        turn_off()
+        time.sleep(5)
+    elif cmd_arg[0] == 's':
+        turn_off()
+    elif cmd_arg[0] == 'f':
+        to_front( int( cmd_arg[ 1 ] ) )
+    elif cmd_arg[0] == 'b':
+        to_back( int( cmd_arg [ 1 ] ) )
+    elif cmd_arg[0] == 'l':
+        turn_left( int( cmd_arg [ 1 ] ) )
+    elif cmd_arg[0] == 'L':
+        motors_left( dy_a=int( cmd_arg[ 1 ] ), dy_b=int( cmd_arg[ 2 ] ) )
+    elif cmd_arg[0] == 'r':
+        turn_right( int( cmd_arg[ 1 ] ) )
+    elif cmd_arg[0] == 'R':
+        motors_right( dy_a=int( cmd_arg[ 1 ] ), dy_b=int( cmd_arg[ 2 ] ) )
 
 uart0.write(hello)
 
 while True:
     bt = uart0.read(1)
-
     if bt:
         bt = bt.decode()
         uart0.write(bt)
         if bt == '/':
-
-            cmd = buffer.split(':')
+            cmd_run( cmd_arg=buffer.split(':') )
             buffer = ''
             bt = ''
-
-            if cmd[0] == 'f':
-                to_front( int(cmd[1]) )
-
-            if cmd[0] == 'b':
-                to_back( int(cmd[1]) )
-
-            if cmd[0] == 'l':
-                turn_left( int(cmd[1]) )
-
-            if cmd[0] == 'r':
-                turn_right( int(cmd[1]) )
-
-            if cmd[0] == 's':
-                turn_off()
-
         elif bt:
             buffer = buffer + bt
-
-    led_app( 512 )
-
-    led.duty_u16( led_dy )
+    led_app( 128 )
     time.sleep( dy_s )
+    wdt.feed()
