@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
-import serial
 from evdev import InputDevice, categorize, ecodes
+import os
+import time
+import serial
 
-gamepad	= InputDevice( '/dev/input/event1' )
-ser	= serial.Serial('/dev/ttyS0', 19200, timeout=0 ) 
+ser		= serial.Serial('/dev/ttyS0', 19200, timeout=0 )
+path		= '/dev/input/'
 
-print( gamepad )
-print( gamepad.capabilities( verbose = True ) )
+
 
 def show_event( absevent ):
 	print( "[ ", absevent.event.type, " - ", absevent.event.code," ] : ", absevent.event.value )
@@ -56,11 +57,36 @@ def run_command( absevent ):
 			return
 		remap_value( 'R', value )
 		
+while True:
 
-for event in gamepad.read_loop():
-	run_command( categorize( event ) )
-	# if event.type == ecodes.EV_KEY:
-	# 	show_event(categorize(event))
-	# elif event.type == ecodes.EV_ABS:
-	# 	absevent = categorize(event)
-	# 	show_event(absevent)
+	try:
+		send_cmd( "s:0/" )
+		
+		FindEvent1 = True
+		while FindEvent1:
+			time.sleep(1)
+			dir_list = os.listdir(path)
+			
+			for elem in dir_list:
+				if elem == "event1":
+					FindEvent1 = False
+
+		gamepad	= InputDevice( '/dev/input/event1' )
+
+		print( gamepad )
+		print( gamepad.capabilities( verbose = True ) )
+
+		for event in gamepad.read_loop():
+			run_command( categorize( event ) )
+			# if event.type == ecodes.EV_KEY:
+			# 	show_event(categorize(event))
+			# elif event.type == ecodes.EV_ABS:
+			# 	absevent = categorize(event)
+			# 	show_event(absevent)
+
+
+	except OSError as Error:
+		print(Error)
+		FindEvent1 = True
+		pass
+
