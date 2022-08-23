@@ -1,5 +1,10 @@
 # **Firmware**
 
+## Preparando Raspberry pi pico
+
+Siga os paços definidos [aqui](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html) para a gravação do Micro Python na Raspberry Pi Pico, para mais informações veja o [Python SDK](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf).
+
+<br>
 
 ### **Protocolo**
 
