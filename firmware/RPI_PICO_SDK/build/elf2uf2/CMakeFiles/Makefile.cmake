@@ -9,9 +9,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/pibs/.local/opt/pico/pico-sdk/src/common/boot_uf2/CMakeLists.txt"
   "/home/pibs/.local/opt/pico/pico-sdk/tools/elf2uf2/CMakeLists.txt"
-  "CMakeFiles/3.24.0/CMakeCCompiler.cmake"
-  "CMakeFiles/3.24.0/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.24.0/CMakeSystem.cmake"
+  "CMakeFiles/3.24.1/CMakeCCompiler.cmake"
+  "CMakeFiles/3.24.1/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.24.1/CMakeSystem.cmake"
   "/usr/share/cmake-3.24/Modules/CMakeCCompiler.cmake.in"
   "/usr/share/cmake-3.24/Modules/CMakeCCompilerABI.c"
   "/usr/share/cmake-3.24/Modules/CMakeCInformation.cmake"
@@ -40,7 +40,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.24/Modules/CMakeTestCCompiler.cmake"
   "/usr/share/cmake-3.24/Modules/CMakeTestCXXCompiler.cmake"
   "/usr/share/cmake-3.24/Modules/CMakeTestCompilerCommon.cmake"
-  "/usr/share/cmake-3.24/Modules/CMakeUnixFindMake.cmake"
   "/usr/share/cmake-3.24/Modules/Compiler/ADSP-DetermineCompiler.cmake"
   "/usr/share/cmake-3.24/Modules/Compiler/ARMCC-DetermineCompiler.cmake"
   "/usr/share/cmake-3.24/Modules/Compiler/ARMClang-DetermineCompiler.cmake"
@@ -113,11 +112,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/3.24.0/CMakeSystem.cmake"
-  "CMakeFiles/3.24.0/CMakeCCompiler.cmake"
-  "CMakeFiles/3.24.0/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.24.0/CMakeCCompiler.cmake"
-  "CMakeFiles/3.24.0/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.24.1/CMakeSystem.cmake"
+  "CMakeFiles/3.24.1/CMakeCCompiler.cmake"
+  "CMakeFiles/3.24.1/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.24.1/CMakeCCompiler.cmake"
+  "CMakeFiles/3.24.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "boot_uf2_headers/CMakeFiles/CMakeDirectoryInformation.cmake"
   )

@@ -20,6 +20,7 @@ set(CMAKE_DEPENDS_CHECK_ASM
   "/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S" "/home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/build/CMakeFiles/RPI_PICO_SDK.dir/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj"
   "/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S" "/home/pibs/workspace/trekking/firmware/RPI_PICO_SDK/build/CMakeFiles/RPI_PICO_SDK.dir/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj"
   )
+set(CMAKE_ASM_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_ASM
@@ -59,6 +60,8 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
   "PICO_NO_FLASH=0"
   "PICO_NO_HARDWARE=0"
   "PICO_ON_DEVICE=1"
+  "PICO_PROGRAM_NAME=\"RPI_PICO_SDK\""
+  "PICO_PROGRAM_VERSION_STRING=\"0.1\""
   "PICO_TARGET_NAME=\"RPI_PICO_SDK\""
   "PICO_USE_BLOCKED_RAM=0"
   )
@@ -108,6 +111,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/pibs/.local/opt/pico/pico-sdk/src/common/pico_binary_info/include"
   "/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdio/include"
   "/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/pico_stdio_uart/include"
+  "/home/pibs/.local/opt/pico/pico-sdk/src/rp2_common/hardware_pwm/include"
   )
 
 # The set of dependency files which are needed:
