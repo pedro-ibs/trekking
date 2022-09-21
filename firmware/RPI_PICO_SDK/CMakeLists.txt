@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Initialise pico_sdk from installed location
 # (note this can come from environment, CMake cache etc)
-set(PICO_SDK_PATH /home/pibs/.local/opt/pico/pico-sdk)
+set(PICO_SDK_PATH "/home/pibs/.local/opt/pico/pico-sdk")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
@@ -46,7 +46,7 @@ lib/textProtocol/textProtocol.c
 lib/uart/simple_uart.c
 )
 
-pico_set_program_name(RPI_PICO_SDK RPI_PICO_SDK)
+pico_set_program_name(RPI_PICO_SDK "RPI_PICO_SDK")
 pico_set_program_version(RPI_PICO_SDK 0.1)
 
 pico_enable_stdio_uart(RPI_PICO_SDK 1)
@@ -58,10 +58,8 @@ target_link_libraries(RPI_PICO_SDK pico_stdlib)
 # Add any user requested libraries
 target_link_libraries(RPI_PICO_SDK
 
-
 	hardware_pwm
 	hardware_uart
-
 
 )
 

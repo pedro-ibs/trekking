@@ -54,6 +54,8 @@
 
 void motor_vSetGpio( uint8_t ma, uint8_t mb ){
 
+	gpio_init(ma);
+	gpio_init(mb);
 	gpio_set_function(ma, GPIO_FUNC_PWM);
 	gpio_set_function(mb, GPIO_FUNC_PWM);
 

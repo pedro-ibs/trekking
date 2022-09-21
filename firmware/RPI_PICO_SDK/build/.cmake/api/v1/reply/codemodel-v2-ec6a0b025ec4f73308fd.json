@@ -1043,7 +1043,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ELF2UF2Build::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ELF2UF2Build-Release-2747b86ef23dc4e5323e.json",
+					"jsonFile" : "target-ELF2UF2Build-Release-1c4e064867f33762f6e9.json",
 					"name" : "ELF2UF2Build",
 					"projectIndex" : 0
 				},
@@ -1057,7 +1057,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "RPI_PICO_SDK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RPI_PICO_SDK-Release-8244ed0a3ce18f9fcd73.json",
+					"jsonFile" : "target-RPI_PICO_SDK-Release-4ad368174a9ffd104a5e.json",
 					"name" : "RPI_PICO_SDK",
 					"projectIndex" : 0
 				},
