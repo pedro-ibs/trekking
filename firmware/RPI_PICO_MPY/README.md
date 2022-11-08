@@ -18,7 +18,7 @@ Como carácteres especiais São utilizados **`:`** e **`/`** sendo que **`:`** d
 **`x`**		| X			| X 			| Reinicia o Driver	
 **`s`**		| X			| X 			| Desliga os motores
 **`f`**		| 0 - 65535		| X 			| Robô para frente
-**`b`**		| 0 - 65535		| X 			| Robô para traz
+**`b`**		| 0 - 65535		| X 			| Robô para trás
 **`l`**		| 0 - 65535		| X 			| Robô gira para esquerda
 **`L`**		| 0 - 65535		| 0 - 65535 		| Controla conjunto esquerdo
 **`r`**		| 0 - 65535		| X 			| Robô gira para direita
