@@ -85,7 +85,6 @@ def run_command( absevent ):
 		remap_value( 'R', value, target_R )
 		
 while True:
-
 	try:
 		send_cmd( "s:0/" )
 		
@@ -110,7 +109,6 @@ while True:
 			elif event.type == ecodes.EV_ABS:
 				absevent = categorize(event)
 				show_event(absevent)
-
 
 	except OSError as Error:
 		print(Error)
