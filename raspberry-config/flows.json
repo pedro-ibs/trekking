@@ -157,7 +157,7 @@
         "order": 1,
         "disp": true,
         "width": "6",
-        "collapse": false,
+        "collapse": true,
         "className": ""
     },
     {
@@ -181,28 +181,6 @@
         "height": "0"
     },
     {
-        "id": "3b982341a86e6ba1",
-        "type": "ui_group",
-        "name": "Driver",
-        "tab": "cf04793d64cc8d9f",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "59cd598727a4116c",
-        "type": "ui_group",
-        "name": "Motor",
-        "tab": "cf04793d64cc8d9f",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "e32111f57d357328",
         "type": "ui_spacer",
         "z": "4ea4ea10d497d4a2",
@@ -211,6 +189,47 @@
         "order": 6,
         "width": "0",
         "height": "0"
+    },
+    {
+        "id": "a425446c30ef1936",
+        "type": "ui_tab",
+        "name": "System Acquisition",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "6343f24e788b14f8",
+        "type": "ui_group",
+        "name": "Driver",
+        "tab": "a425446c30ef1936",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d8b2b812e9b42593",
+        "type": "ui_group",
+        "name": "Motors driver's Firmware ",
+        "tab": "cf04793d64cc8d9f",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1e3112a2399542b4",
+        "type": "ui_spacer",
+        "z": "4ea4ea10d497d4a2",
+        "name": "spacer",
+        "group": "d8b2b812e9b42593",
+        "order": 2,
+        "width": 1,
+        "height": 1
     },
     {
         "id": "650713c06214601f",
@@ -444,7 +463,7 @@
         "finalize": "",
         "libs": [],
         "x": 1070,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "f430e109270e30f1",
@@ -464,7 +483,7 @@
         "template": "R:{{motor1_right}}:{{motor2_right}}/",
         "output": "str",
         "x": 1260,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "85a8e587146b89ba"
@@ -606,7 +625,7 @@
         "name": "",
         "label": "Motor Driver ",
         "tooltip": "",
-        "group": "3b982341a86e6ba1",
+        "group": "6343f24e788b14f8",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -633,23 +652,6 @@
                 "562324a837485fcf"
             ]
         ]
-    },
-    {
-        "id": "3532c2b0e1d1f231",
-        "type": "ui_text",
-        "z": "1b74ef80f309d060",
-        "group": "3b982341a86e6ba1",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Status:",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1120,
-        "y": 740,
-        "wires": []
     },
     {
         "id": "397600f488bfd5aa",
@@ -739,8 +741,8 @@
         "type": "ui_gauge",
         "z": "1b74ef80f309d060",
         "name": "",
-        "group": "59cd598727a4116c",
-        "order": 5,
+        "group": "6343f24e788b14f8",
+        "order": 3,
         "width": 0,
         "height": 0,
         "gtype": "gage",
@@ -786,8 +788,8 @@
         "type": "ui_gauge",
         "z": "1b74ef80f309d060",
         "name": "",
-        "group": "59cd598727a4116c",
-        "order": 5,
+        "group": "6343f24e788b14f8",
+        "order": 4,
         "width": 0,
         "height": 0,
         "gtype": "gage",
@@ -805,7 +807,7 @@
         "seg2": "",
         "className": "",
         "x": 1500,
-        "y": 180,
+        "y": 160,
         "wires": []
     },
     {
@@ -821,7 +823,7 @@
         "property": "motor_right_conjunct",
         "name": "%",
         "x": 1230,
-        "y": 180,
+        "y": 160,
         "wires": [
             [
                 "c030b65218e2de62"
@@ -875,6 +877,39 @@
         "wires": [
             [
                 "bb6ad697220b042c"
+            ]
+        ]
+    },
+    {
+        "id": "3532c2b0e1d1f231",
+        "type": "ui_text",
+        "z": "1b74ef80f309d060",
+        "group": "6343f24e788b14f8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1120,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "276276bb82d23b67",
+        "type": "link in",
+        "z": "1b74ef80f309d060",
+        "name": "Motor Driver ",
+        "links": [
+            "ab85bfcfc7d58996"
+        ],
+        "x": 165,
+        "y": 740,
+        "wires": [
+            [
+                "77534bbc79933f98"
             ]
         ]
     },
@@ -977,7 +1012,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 510,
+        "x": 490,
         "y": 120,
         "wires": [
             [
@@ -1009,8 +1044,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 500,
-        "y": 40,
+        "x": 470,
+        "y": 60,
         "wires": [
             [
                 "2422ba6486f43414"
@@ -1059,7 +1094,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 700,
+        "x": 680,
         "y": 120,
         "wires": [
             []
@@ -1077,8 +1112,8 @@
         "passthru": false,
         "label": "Power Off",
         "tooltip": "",
-        "color": "",
-        "bgcolor": "",
+        "color": "black",
+        "bgcolor": "red",
         "className": "",
         "icon": "",
         "payload": "sudo poweroff",
@@ -1105,8 +1140,8 @@
         "passthru": false,
         "label": "Reboot",
         "tooltip": "",
-        "color": "",
-        "bgcolor": "",
+        "color": "black",
+        "bgcolor": "yellow",
         "className": "",
         "icon": "",
         "payload": "sudo reboot -h now",
@@ -1118,6 +1153,245 @@
         "wires": [
             [
                 "40859f5bdb670014"
+            ]
+        ]
+    },
+    {
+        "id": "f71f2b3e921da8fa",
+        "type": "ui_upload",
+        "z": "4ea4ea10d497d4a2",
+        "group": "d8b2b812e9b42593",
+        "title": "upload",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 5,
+        "chunk": 256,
+        "transfer": "binary",
+        "x": 230,
+        "y": 360,
+        "wires": [
+            [
+                "5cc038f529269764"
+            ]
+        ]
+    },
+    {
+        "id": "6f4fc652cfe23578",
+        "type": "debug",
+        "z": "4ea4ea10d497d4a2",
+        "name": "write file",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "5cc038f529269764",
+        "type": "file",
+        "z": "4ea4ea10d497d4a2",
+        "name": "",
+        "filename": "file.name",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 380,
+        "y": 360,
+        "wires": [
+            [
+                "6f4fc652cfe23578"
+            ]
+        ]
+    },
+    {
+        "id": "cbb3cfdb272d7a3b",
+        "type": "ui_button",
+        "z": "4ea4ea10d497d4a2",
+        "name": "",
+        "group": "d8b2b812e9b42593",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Reset Driver",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 250,
+        "y": 540,
+        "wires": [
+            [
+                "30197eaad4309168",
+                "ab85bfcfc7d58996",
+                "bd3f746617a985ba"
+            ]
+        ]
+    },
+    {
+        "id": "30197eaad4309168",
+        "type": "rpi-gpio out",
+        "z": "4ea4ea10d497d4a2",
+        "name": "motor driver",
+        "pin": "6",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 790,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "ab85bfcfc7d58996",
+        "type": "link out",
+        "z": "4ea4ea10d497d4a2",
+        "name": "Motor Driver ",
+        "mode": "link",
+        "links": [
+            "276276bb82d23b67"
+        ],
+        "x": 375,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "bd3f746617a985ba",
+        "type": "delay",
+        "z": "4ea4ea10d497d4a2",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 420,
+        "y": 580,
+        "wires": [
+            [
+                "46ac67a0118fe71f"
+            ]
+        ]
+    },
+    {
+        "id": "46ac67a0118fe71f",
+        "type": "change",
+        "z": "4ea4ea10d497d4a2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 580,
+        "wires": [
+            [
+                "30197eaad4309168"
+            ]
+        ]
+    },
+    {
+        "id": "4af9836347990859",
+        "type": "ui_template",
+        "z": "4ea4ea10d497d4a2",
+        "group": "d8b2b812e9b42593",
+        "name": "STDOUT",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "format": "<p><b>STDOUT:</b></p>\n<pre><code>\n{{msg.payload}}\n</code></pre>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 580,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c718556ff47b2329",
+        "type": "exec",
+        "z": "4ea4ea10d497d4a2",
+        "command": "ls",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "10",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 410,
+        "y": 660,
+        "wires": [
+            [
+                "4af9836347990859"
+            ],
+            [
+                "4af9836347990859"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0687a26901c4d478",
+        "type": "ui_button",
+        "z": "4ea4ea10d497d4a2",
+        "name": "",
+        "group": "d8b2b812e9b42593",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Flash firmware",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 240,
+        "y": 660,
+        "wires": [
+            [
+                "c718556ff47b2329"
             ]
         ]
     }
