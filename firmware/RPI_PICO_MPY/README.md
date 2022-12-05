@@ -1,5 +1,10 @@
 # **Firmware**
 
+# **IMPORTANTE**
+
+**DESCONTINUADO**: Este firmware foi feito com o objetivo de testar o circuito em condições reais, e como medida provisória para controlar o robô. E será eventualmente substituído por [outro firmware](https://github.com/pedro-ibs/trekking/tree/main/firmware/RPI_PICO_SDK) programa em C que irá conter funções de controle mais completas. 
+
+
 ## Preparando Raspberry pi pico
 
 Siga os paços definidos [aqui](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html) para a gravação do Micro Python na Raspberry Pi Pico, para mais informações veja o [Python SDK](https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf).
