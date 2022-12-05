@@ -46,6 +46,8 @@
 #define HARDWARE_TX_GPIO		( 0	) 
 #define HARDWARE_RX_GPIO		( 1	)
 
+#define HARDWARE_LED_GPIO               ( PICO_DEFAULT_LED_PIN	)
+
 
 /**
  * Pinos utilizados nos motores
@@ -58,6 +60,15 @@
 #define HARDWARE_M3CHB_GPIO		( 7	)
 #define HARDWARE_M4CHA_GPIO		( 2	)
 #define HARDWARE_M4CHB_GPIO		( 3	)
+
+
+/**
+ * Pinos utilizados nas leituras da da alimentação
+ * da placa 
+ */
+#define HARDWARE_VIN_GPIO		( 26	)
+#define HARDWARE_VCC_GPIO		( 27	)
+#define HARDWARE_V1_GPIO		( 28	)
 
 
 #endif /* hardware_H_ */

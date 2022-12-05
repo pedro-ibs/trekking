@@ -1,13 +1,14 @@
 /**
- * motor.h
+ * telemetry_power.h
  *
- *  @date Created at:	10/08/2022 19:53:30
+ *  @date Created at:	04/12/2022 11:38:26
  *	@author:	Pedro Igor B. S.
- *	@email:		pedro.igor.ifsp@gmail.com
+ *	@email:		pibscontato@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
  * 	tabSize:	8
  *
  * #######################################################################
+ *
  *   Copyright (C) Pedro Igor B. S 2021
  * -------------------------------------------------------------------
  *
@@ -25,41 +26,20 @@
  * -------------------------------------------------------------------
  * #######################################################################
  *
- * Cada par de motor utiliza uma PONTE H, sendo controlado por 4 pinos de
- * saída:
- * 
- * 			      ___________
- * 			     |		|
- * 			M1 --| PONTE 1	|-- M2
- * 			     |		|
- *			M3 --| PONTE 2	|-- M4
- *			     |__________|	
+ * Realizar as medidas referente a alimentação da placa
+ *
  */
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
 #include <config.h>
 
-typedef struct {
-
-	const uint8_t ma;
-	const uint8_t mb;
-
-	uint32_t pwm;
-
-	uint32_t pwm_max;
-
-} motor;
 
 
-
-
-#ifndef motor_H_
-#define motor_H_
+#ifndef telemetry_power_H_
+#define telemetry_power_H_
 
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-void motor_vSetup( motor *m, uint32_t frequency, uint16_t duty_cycle);
-void motor_vToFront(const motor *m, uint32_t duty_cycle );
 
-#endif /* motor_H_ */
+#endif /* telemetry_power_H_ */

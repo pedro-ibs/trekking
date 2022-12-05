@@ -1,13 +1,14 @@
 /**
- * motor.c
+ * telemetry_power.c
  *
- *  @date Created at:	10/08/2022 19:53:57
+ *  @date Created at:	04/12/2022 11:38:37
  *	@author:	Pedro Igor B. S.
- *	@email:		pedro.igor.ifsp@gmail.com
+ *	@email:		pibscontato@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
  * 	tabSize:	8
  *
  * #######################################################################
+ *
  *   Copyright (C) Pedro Igor B. S 2021
  * -------------------------------------------------------------------
  *
@@ -25,54 +26,32 @@
  * -------------------------------------------------------------------
  * #######################################################################
  *
- * Cada par de motor utiliza uma PONTE H, sendo controlado por 4 pinos de
- * saída:
- * 
- * 			      ___________
- * 			     |		|
- * 			M1 --| PONTE 1	|-- M2
- * 			     |		|
- *			M3 --| PONTE 2	|-- M4
- *			     |__________|	
+ * Realizar as medidas referente a alimentação da placa
+ *
  */
 
 
 
 /* Includes ----------------------------------------------------------------------------------------------------------------------------------------------*/
-#include "motor.h"
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include "pico/time.h"
-#include "hardware/irq.h"
-#include "hardware/pwm.h"
-
+#include "telemetry_power.h"
+#include "hardware/adc.h"
+#include "hardware/gpio.h"
 
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
-void motor_vConfig(uint gpio, uint32_t wrap, uint32_t divisor16, uint16_t duty_cycle);
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-void motor_vSetup( motor *m, uint32_t frequency, uint16_t duty_cycle) {
-	m->pwm = 0;
 
-	uint32_t divisor16 = CONFIG_PWM_SYS_FREQUENCY_HZ / frequency / 4096 + ( CONFIG_PWM_SYS_FREQUENCY_HZ % ( frequency * 4096 ) != 0 );
-	
-	if( divisor16 / 16 == 0 ) {
-		divisor16 = 16;
-	}
+void telemetry_vSetup(void){
+        adc_init();
 
-	m->pwm_max = CONFIG_PWM_SYS_FREQUENCY_HZ * 16 / divisor16 / frequency - 1;
+        adc_gpio_init( HARDWARE_VIN_GPIO );
+        adc_gpio_init( HARDWARE_VCC_GPIO );
+        adc_gpio_init( HARDWARE_V1_GPIO  );
 
 
-	motor_vConfig(m->ma, m->pwm_max, divisor16, duty_cycle);
-	motor_vConfig(m->mb, m->pwm_max, divisor16, duty_cycle);
-}
 
-
-void motor_vToFront(const motor *m, uint32_t duty_cycle ) {
-	pwm_set_gpio_level(m->ma, duty_cycle );
-	pwm_set_gpio_level(m->mb, 0 );
 }
 
 
@@ -81,19 +60,3 @@ void motor_vToFront(const motor *m, uint32_t duty_cycle ) {
 /*########################################################################################################################################################*/
 /*-------------------------------------------------------------------- Local Functions -------------------------------------------------------------------*/
 /*########################################################################################################################################################*/
-
-void motor_vConfig(uint gpio, uint32_t wrap, uint32_t divisor16, uint16_t duty_cycle) {
-
-	gpio_init( gpio );
-	gpio_set_function( gpio, GPIO_FUNC_PWM );
-
-	uint slice_num	= pwm_gpio_to_slice_num	( gpio );
-	uint channel	= pwm_gpio_to_channel	( gpio );
-
-
-	pwm_set_clkdiv_int_frac	( slice_num, divisor16 / 16, divisor16 & 0xF	);
-	pwm_set_wrap		( slice_num, wrap				);
-	pwm_set_chan_level	( slice_num, channel, wrap * duty_cycle / 100	);
-	pwm_set_enabled		( slice_num, true				); 
-
-}

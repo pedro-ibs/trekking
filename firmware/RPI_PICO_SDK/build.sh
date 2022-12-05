@@ -1,22 +1,23 @@
 #! /bin/bash
-libraries
-
-# configura as bibliorecas que serão utilizadas no projeto Ex:
-#       hardware_pwm
-#	hardware_uart
-#
-LIBRARIES="
-	hardware_pwm
-	hardware_uart
-"
-
 
 # Variaveis do ambiente 
-export PICO_SDK_PATH=~/.local/opt/pico/pico-sdk
-export PICO_EXAMPLES_PATH=~/.local/opt/pico/pico-examples
-# export PICO_EXTRAS_PATH=~/.local/opt/pico/pico-extras
-# export PICO_PLAYGROUND_PATH=~/.local/opt/pico/pico-playground
+export PICO_SDK_PATH=~/pico/pico-sdk
+export PICO_EXAMPLES_PATH=~/pico/pico-examples
+# export PICO_EXTRAS_PATH=~/pico/pico-extras
+# export PICO_PLAYGROUND_PATH=~/pico/pico-playground
 export PICO_PLATFORM=rp2040
+
+# configura as bibliorecas que serão utilizadas no projeto Ex:
+# hardware_pwm
+# hardware_uart
+LIBRARIES="
+
+	hardware_pwm
+	hardware_uart
+	hardware_adc
+	hardware_dma
+
+"
 
 # ler bastas subpastas e arquivos
 FIND_INC_H=$(find includes | grep "\.h")

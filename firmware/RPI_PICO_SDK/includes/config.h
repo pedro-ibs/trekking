@@ -45,12 +45,32 @@
 
 
 /* ************************************************************************************************************ */
-/* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL, 								*/
+/* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL. 								*/
 /* ************************************************************************************************************ */
-#define CONFIG_BAUD_RATE	( 115200		)
-#define CONFIG_DATA_BITS	( 8			)
-#define CONFIG_STOP_BITS	( 1			)
-#define CONFIG_PARITY		( UART_PARITY_NONE	)
-#define CONFIG_BUFFER_SIZE	( 1024			)
+#define CONFIG_BAUD_RATE		( 115200		)
+#define CONFIG_DATA_BITS		( 8			)
+#define CONFIG_STOP_BITS		( 1			)
+#define CONFIG_PARITY			( UART_PARITY_NONE	)
+#define CONFIG_BUFFER_SIZE		( 1024			)
+
+
+/* ************************************************************************************************************ */
+/* CONFIGURAÇÕES DA TELEMETRIA DA FONTE DE ALIMENTAÇÃO.								*/
+/* ************************************************************************************************************ */
+#define CONFIG_TELEMETRY_CLOCK_DIV	( 960			)						// 52 Hz
+
+
+
+
+/* ************************************************************************************************************ */
+/* CONFIGURAÇÕES DO DRIVERS MOTORES										*/
+/* ************************************************************************************************************ */
+#define CONFIG_PWM_SYS_FREQUENCY_HZ	( 125000000		)
+#define CONFIG_PWM_FREQUENCY_HZ		( 400			)
+#define CONFIG_PWM_DUTY_CYCLE_START	( 0			)
+
+
+
+
 
 #endif /* config_H_ */
