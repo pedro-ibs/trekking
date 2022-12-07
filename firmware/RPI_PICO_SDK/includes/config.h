@@ -47,7 +47,7 @@
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL. 								*/
 /* ************************************************************************************************************ */
-#define CONFIG_BAUD_RATE		( 115200		)
+#define CONFIG_BAUD_RATE		( 230400		)
 #define CONFIG_DATA_BITS		( 8			)
 #define CONFIG_STOP_BITS		( 1			)
 #define CONFIG_PARITY			( UART_PARITY_NONE	)
@@ -68,7 +68,15 @@
 #define CONFIG_PWM_SYS_FREQUENCY_HZ	( 125000000		)
 #define CONFIG_PWM_FREQUENCY_HZ		( 400			)
 #define CONFIG_PWM_DUTY_CYCLE_START	( 0			)
+#define CONFIG_KP			( 0.0751		)
+#define CONFIG_KI			( 0.0009		)
+#define CONFIG_KD			( 0.0003		)
 
+
+/* ************************************************************************************************************ */
+/* FORMATO DE COMUNICAÇÃO JSON (PARA FACILITAR NO NODE-RED)							*/
+/* ************************************************************************************************************ */
+#define CONFIG_JSON "{\"ml1\":{\"s\":%d, \"m\":%d,\"v\":%f},\"ml2\":{\"s\":%d,\"m\":%d,\"v\":%f},\"mr1\":{\"s\":%d,\"m\":%d,\"v\":%f},\"mr2\":{\"s\":%d,\"m\":%d,\"v\":%f},\"p\":{\"i\":%f,\"c\":%f,\"s\":%f,\"a\":%f}}"			
 
 
 

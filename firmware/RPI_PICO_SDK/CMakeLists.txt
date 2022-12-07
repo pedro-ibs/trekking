@@ -31,6 +31,7 @@ lib/motor
 lib/telemetry
 lib/simple_uart
 lib/textProtocol
+lib/pid
 src
 )
 
@@ -43,10 +44,12 @@ lib/motor/motor.h
 lib/telemetry/telemetry_power.h
 lib/simple_uart/simple_uart.h
 lib/textProtocol/textProtocol.h
+lib/pid/pid.h
 lib/motor/motor.c
 lib/telemetry/telemetry_power.c
 lib/simple_uart/simple_uart.c
 lib/textProtocol/textProtocol.c
+lib/pid/pid.c
 )
 
 pico_set_program_name(RPI_PICO_SDK "RPI_PICO_SDK")

@@ -1,13 +1,14 @@
 /**
- * motor.h
+ * pid.h
  *
- *  @date Created at:	10/08/2022 19:53:30
+ *  @date Created at:	05/12/2022 23:50:32
  *	@author:	Pedro Igor B. S.
- *	@email:		pedro.igor.ifsp@gmail.com
+ *	@email:		pibscontato@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
  * 	tabSize:	8
  *
  * #######################################################################
+ *
  *   Copyright (C) Pedro Igor B. S 2021
  * -------------------------------------------------------------------
  *
@@ -25,47 +26,42 @@
  * -------------------------------------------------------------------
  * #######################################################################
  *
- * Cada par de motor utiliza uma PONTE H, sendo controlado por 4 pinos de
- * saída:
- * 
- * 			      ___________
- * 			     |		|
- * 			M1 --| PONTE 1	|-- M2
- * 			     |		|
- *			M3 --| PONTE 2	|-- M4
- *			     |__________|	
+ *
+ * TODO: documentation or resume or Abstract
+ *
  */
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
 #include <config.h>
 
+
 typedef struct {
+	float fKp;
+	float fKi;
+	float fKd;
 
-	const uint8_t ma;
-	const uint8_t mb;
+	float fP;
+	float fI;
+	float fD;
 
-	uint32_t pwm;
+	float fSetPoint;
+	float fInput;
+	float fLastInput;
+	float fOutput;
+	float fError;
 
-	uint32_t pwm_max;
-
-} motor;
-
+	float xLastTime;
+} pid;
 
 
+float pid_fRun( pid *pxPid );
 
-#ifndef motor_H_
-#define motor_H_
+
+#ifndef pid_H_
+#define pid_H_
 
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-void motor_vSetup( motor *m, uint32_t frequency, uint16_t duty_cycle);
 
-void motor_vToFront( motor *m, uint32_t duty_cycle );
-void motor_vToBack( motor *m, uint32_t duty_cycle );
-void motor_vToBraking( motor *m, uint32_t duty_cycle );
-void motor_vTurnOff( motor *m, uint32_t duty_cycle );
-
-
-
-#endif /* motor_H_ */
+#endif /* pid_H_ */

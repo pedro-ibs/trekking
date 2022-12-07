@@ -5,7 +5,7 @@ Circuito de controle dos motores, módulos e fontes utilizando a raspberry pi pi
 
 ## *Descrição*
 
-em progresso
+Circuito para trabalho em conjunto entre Raspberry pi e Raspberry Pi Pico, contem uma fonte DC-DC de 5V, uma linear de 3V3 para trabalhar com os drivers e outra fonte linear regulável. 
 
 <br>
 <hr>

@@ -1,13 +1,14 @@
 /**
- * motor.c
+ * pid.c
  *
- *  @date Created at:	10/08/2022 19:53:57
+ *  @date Created at:	05/12/2022 23:50:55
  *	@author:	Pedro Igor B. S.
- *	@email:		pedro.igor.ifsp@gmail.com
+ *	@email:		pibscontato@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
  * 	tabSize:	8
  *
  * #######################################################################
+ *
  *   Copyright (C) Pedro Igor B. S 2021
  * -------------------------------------------------------------------
  *
@@ -25,75 +26,27 @@
  * -------------------------------------------------------------------
  * #######################################################################
  *
- * Cada par de motor utiliza uma PONTE H, sendo controlado por 4 pinos de
- * saída:
- * 
- * 			      ___________
- * 			     |		|
- * 			M1 --| PONTE 1	|-- M2
- * 			     |		|
- *			M3 --| PONTE 2	|-- M4
- *			     |__________|	
+ *
+ * TODO: documentation or resume or Abstract
+ *
  */
 
 
 
 /* Includes ----------------------------------------------------------------------------------------------------------------------------------------------*/
-#include "motor.h"
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include "pico/time.h"
-#include "hardware/irq.h"
-#include "hardware/pwm.h"
-
-
+#include "pid.h"
+#include <time.h>
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
+#define TO_SECONDS( MS ) ( ( MS ) / 1000.0)
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
-void motor_vConfig(uint gpio, uint32_t wrap, uint32_t divisor16, uint16_t duty_cycle);
+float pid_fCore( pid *pxPid, float xDeltaTime );
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-void motor_vSetup( motor *m, uint32_t frequency, uint16_t duty_cycle) {
-	m->pwm = 0;
-
-	uint32_t divisor16 = CONFIG_PWM_SYS_FREQUENCY_HZ / frequency / 4096 + ( CONFIG_PWM_SYS_FREQUENCY_HZ % ( frequency * 4096 ) != 0 );
-	
-	if( divisor16 / 16 == 0 ) {
-		divisor16 = 16;
-	}
-
-	m->pwm_max = CONFIG_PWM_SYS_FREQUENCY_HZ * 16 / divisor16 / frequency - 1;
-
-
-	motor_vConfig(m->ma, m->pwm_max, divisor16, duty_cycle);
-	motor_vConfig(m->mb, m->pwm_max, divisor16, duty_cycle);
-}
-
-
-void motor_vToFront( motor *m, uint32_t duty_cycle ) {
-	m->pwm = duty_cycle;
-
-	pwm_set_gpio_level(m->ma, m->pwm );
-	pwm_set_gpio_level(m->mb, 0 );
-}
-
-void motor_vToBack( motor *m, uint32_t duty_cycle ) {
-	m->pwm = duty_cycle;
-	
-	pwm_set_gpio_level(m->ma, 0 );
-	pwm_set_gpio_level(m->mb, m->pwm );
-}
-
-
-void motor_vToBraking( motor *m, uint32_t duty_cycle ) {
-	m->pwm = duty_cycle;
-
-	pwm_set_gpio_level(m->ma, m->pwm );
-	pwm_set_gpio_level(m->mb, m->pwm );
-}
-
-void motor_vTurnOff( motor *m, uint32_t duty_cycle ) {
-	motor_vToBraking(m, 0);
+float pid_fRun( pid *pxPid ){
+	float xDeltaTime = TO_SECONDS( time_us_32() - pxPid->xLastTime );
+	pxPid->xLastTime = time_us_32();
+	return pid_fCore( pxPid, xDeltaTime );
 }
 
 
@@ -104,18 +57,21 @@ void motor_vTurnOff( motor *m, uint32_t duty_cycle ) {
 /*-------------------------------------------------------------------- Local Functions -------------------------------------------------------------------*/
 /*########################################################################################################################################################*/
 
-void motor_vConfig(uint gpio, uint32_t wrap, uint32_t divisor16, uint16_t duty_cycle) {
 
-	gpio_init( gpio );
-	gpio_set_function( gpio, GPIO_FUNC_PWM );
+float pid_fCore( pid *pxPid, float xDeltaTime ){
+	pxPid->fError = pxPid->fSetPoint - pxPid->fInput;
 
-	uint slice_num	= pwm_gpio_to_slice_num	( gpio );
-	uint channel	= pwm_gpio_to_channel	( gpio );
+	// proportional
+	pxPid->fP = pxPid->fError * pxPid->fKp;
 
+	// integra
+	pxPid->fI += (pxPid->fError * pxPid->fKi) * xDeltaTime;
 
-	pwm_set_clkdiv_int_frac	( slice_num, divisor16 / 16, divisor16 & 0xF	);
-	pwm_set_wrap		( slice_num, wrap				);
-	pwm_set_chan_level	( slice_num, channel, wrap * duty_cycle / 100	);
-	pwm_set_enabled		( slice_num, true				); 
+	// derived
+	pxPid->fD = (pxPid->fLastInput - pxPid->fInput)  * pxPid->fKd * xDeltaTime;
+	pxPid->fLastInput = pxPid->fInput;
 
+	pxPid->fOutput = pxPid->fP + pxPid->fI + pxPid->fD;
+
+	return pxPid->fOutput;
 }

@@ -54,10 +54,10 @@
  */
 #define HARDWARE_M1CHA_GPIO		( 12	)
 #define HARDWARE_M1CHB_GPIO		( 13	)
-#define HARDWARE_M2CHA_GPIO		( 10	)
-#define HARDWARE_M2CHB_GPIO		( 11	)
-#define HARDWARE_M3CHA_GPIO		( 6	)
-#define HARDWARE_M3CHB_GPIO		( 7	)
+#define HARDWARE_M2CHA_GPIO		( 11	)
+#define HARDWARE_M2CHB_GPIO		( 10	)
+#define HARDWARE_M3CHA_GPIO		( 7	)
+#define HARDWARE_M3CHB_GPIO		( 6	)
 #define HARDWARE_M4CHA_GPIO		( 2	)
 #define HARDWARE_M4CHB_GPIO		( 3	)
 
