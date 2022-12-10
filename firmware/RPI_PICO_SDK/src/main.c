@@ -34,88 +34,151 @@
 
 /* Includes ----------------------------------------------------------------------------------------------------------------------------------------------*/
 #include <config.h>
+#include <pico/multicore.h>
+#include <pico/util/queue.h>
 #include <simple_uart.h>
 #include <textProtocol.h>
 #include <motor.h> 
 #include <pid.h> 
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
-/* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
-void main_showInformation(void);
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
-static motor motorRight1	= { HARDWARE_M1CHA_GPIO, HARDWARE_M1CHB_GPIO, 0, 0};
-static motor motorRight2	= { HARDWARE_M2CHA_GPIO, HARDWARE_M2CHB_GPIO, 0, 0};
-static motor motorLeft1		= { HARDWARE_M4CHA_GPIO, HARDWARE_M4CHB_GPIO, 0, 0};
-static motor motorLeft2		= { HARDWARE_M3CHA_GPIO, HARDWARE_M3CHB_GPIO, 0, 0};
+typedef struct {
+	motor right1;
+	motor right2;
+	motor left1;
+	motor left2;
+} dataMotors;
 
-static pid pid_motorRight1	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-static pid pid_motorRight2	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-static pid pid_motorLeft1	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-static pid pid_motorLeft2	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+typedef struct {
+	pid motorRight1;
+	pid motorRight2;
+	pid motorLeft1;
+	pid motorLeft2;
+} dataPIDs;
+
+queue_t sendToCore0Queue;
+queue_t sendToCore1queue;
 
 
-static char buffer[CONFIG_BUFFER_SIZE]	= "";
+/* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
+void main_showInformation(const dataMotors *motors, char *buffer);
+void core1_entry( void );
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+/**
+ * @brief the main is pined at core 0, this core are dedicated to communication between devices
+ * both queue be pinned at core 0 too, so, send and receive queue there are in "function main"
+ * perspective 
+ */
 int main( void ) {
 
+	dataMotors motors  = {
+		.right1		= { HARDWARE_M1CHA_GPIO, HARDWARE_M1CHB_GPIO, 0, 0 },
+		.right2		= { HARDWARE_M2CHA_GPIO, HARDWARE_M2CHB_GPIO, 0, 0 },
+		.left1		= { HARDWARE_M4CHA_GPIO, HARDWARE_M4CHB_GPIO, 0, 0 },
+		.left2		= { HARDWARE_M3CHA_GPIO, HARDWARE_M3CHB_GPIO, 0, 0 }	
+	};
+
+	char buffer[ CONFIG_BUFFER_SIZE ] = { 0 };
+
+	/* base setup */
 	stdio_init_all();
-
-	motor_vSetup(&motorRight1,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
-	motor_vSetup(&motorRight2,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
-	motor_vSetup(&motorLeft1,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
-	motor_vSetup(&motorLeft2,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
-
-	pid_motorRight1.fSetPoint	= motorRight1.pwm_max	/ 2;
-	pid_motorRight2.fSetPoint	= motorRight2.pwm_max	/ 2;
-	pid_motorLeft1.fSetPoint	= motorLeft1.pwm_max	/ 2;
-	pid_motorLeft2.fSetPoint	= motorLeft2.pwm_max 	/ 2;
-
 	uart_vSetup();
 
+	/* show the starting values */
+	main_showInformation(&motors, buffer);
 	sleep_ms(1000);
 
-	main_showInformation();
+	/* multicore setup */
+	queue_init(&sendToCore1queue,	sizeof(dataMotors), CONFIG_QUEUE_ELEMENTS);
+    	queue_init(&sendToCore0Queue,	sizeof(dataMotors), CONFIG_QUEUE_ELEMENTS);
+	multicore_launch_core1(core1_entry);
 
-	uint32_t set_point =  motorRight1.pwm_max;
+	queue_add_blocking(&sendToCore1queue, &motors);
 
 	while (true) {
 
-		pid_motorRight1.fSetPoint 	= set_point;
-		pid_motorRight1.fInput		= motorRight1.pwm;
-
-		set_point -= 25;
-		if ( set_point < 50){
-			set_point = motorRight1.pwm_max-1;
+		if( queue_try_remove(&sendToCore0Queue, &motors) == true ){
+			textp_puCleanBlk((uint8_t*)buffer, CONFIG_BUFFER_SIZE);
+			main_showInformation(&motors, buffer);
+			sleep_ms(50);
+		} else {
+			sleep_ms(5);
 		}
-
-		motor_vToFront(&motorRight1,	pid_fRun(&pid_motorRight1)	);
-
-		main_showInformation();
-		sleep_ms(25);
 	}
 }
 
 
 
-void main_showInformation(void){
+void core1_entry( void )   {
+	
+	dataMotors motors  = { };
+	queue_remove_blocking(&sendToCore1queue, &motors);
 
-	textp_puCleanBlk((uint8_t*)buffer, CONFIG_BUFFER_SIZE);
+	dataPIDs pids  = {
+		.motorRight1	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		.motorRight2	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		.motorLeft1	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		.motorLeft2	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+	};
+
+	motor_vSetup(&motors.right1,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
+	motor_vSetup(&motors.right2,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
+	motor_vSetup(&motors.left1,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
+	motor_vSetup(&motors.left2,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
+
+
+	uint32_t set_point =  motors.right1.pwm_max - 1;
+
+	while (true) {
+
+		queue_try_add(&sendToCore0Queue, &motors);
+
+		// if( queue_try_remove(&sendToCore1Queue, &motors) == true ){
+
+		// }
+
+
+
+		pids.motorRight1.fSetPoint 	= set_point;
+		pids.motorRight1.fInput		= motors.right1.pwm;
+
+		set_point -= 2;
+		if ( set_point < 50){
+			set_point = motors.right1.pwm_max-1;
+		}
+
+		motor_vToFront(&motors.right1,	pid_fRun(&pids.motorRight1)	);
+
+		sleep_ms( CONFIG_PID_FRAME_HATE_MS );
+
+	}
+
+}
+
+
+
+
+
+
+
+void main_showInformation(const dataMotors *motors, char *buffer){
 
 	sprintf( buffer, CONFIG_JSON,
-		motorLeft1.pwm,
-		motorLeft1.pwm_max,
+		motors->left1.pwm,
+		motors->left1.pwm_max,
 		0.0,
 
-		motorLeft2.pwm,
-		motorLeft2.pwm_max,
+		motors->left2.pwm,
+		motors->left2.pwm_max,
 		0.0,
 
-		motorRight1.pwm,
-		motorRight1.pwm_max,
+		motors->right1.pwm,
+		motors->right1.pwm_max,
 		0.0,
 
-		motorRight2.pwm,
-		motorRight2.pwm_max,
+		motors->right2.pwm,
+		motors->right2.pwm_max,
 		0.0,
 
 		0.0,

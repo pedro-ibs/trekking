@@ -65,6 +65,9 @@ target_link_libraries(RPI_PICO_SDK pico_stdlib)
 target_link_libraries(RPI_PICO_SDK
 
 
+	pico_multicore
+	pico_stdlib
+
 	hardware_pwm
 	hardware_uart
 	hardware_adc

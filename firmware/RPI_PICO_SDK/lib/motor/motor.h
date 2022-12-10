@@ -41,8 +41,8 @@
 
 typedef struct {
 
-	const uint8_t ma;
-	const uint8_t mb;
+	uint8_t ma;
+	uint8_t mb;
 
 	uint32_t pwm;
 

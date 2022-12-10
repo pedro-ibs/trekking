@@ -12,6 +12,9 @@ export PICO_PLATFORM=rp2040
 # hardware_uart
 LIBRARIES="
 
+	pico_multicore
+	pico_stdlib
+
 	hardware_pwm
 	hardware_uart
 	hardware_adc
