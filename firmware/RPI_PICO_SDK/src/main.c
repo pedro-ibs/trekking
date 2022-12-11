@@ -47,7 +47,17 @@ typedef struct {
 	motor right2;
 	motor left1;
 	motor left2;
+	
 } dataMotors;
+
+typedef struct  {
+	uint32_t motorRight1;
+	uint32_t motorRight2;
+	uint32_t motorLeft1;
+	uint32_t motorLeft2;
+} setpoint;
+
+
 
 typedef struct {
 	pid motorRight1;
@@ -57,7 +67,7 @@ typedef struct {
 } dataPIDs;
 
 queue_t sendToCore0Queue;
-queue_t sendToCore1queue;
+queue_t sendToCore1Queue;
 
 
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
@@ -72,39 +82,66 @@ void core1_entry( void );
  */
 int main( void ) {
 
-	dataMotors motors  = {
-		.right1		= { HARDWARE_M1CHA_GPIO, HARDWARE_M1CHB_GPIO, 0, 0 },
-		.right2		= { HARDWARE_M2CHA_GPIO, HARDWARE_M2CHB_GPIO, 0, 0 },
-		.left1		= { HARDWARE_M4CHA_GPIO, HARDWARE_M4CHB_GPIO, 0, 0 },
-		.left2		= { HARDWARE_M3CHA_GPIO, HARDWARE_M3CHB_GPIO, 0, 0 }	
-	};
 
-	char buffer[ CONFIG_BUFFER_SIZE ] = { 0 };
+	char buffer[ CONFIG_BUFFER_SIZE ]	= { 0 };
+	setpoint velocities			= { 0, 0, 0, 0 };
+	dataMotors motors			= { 0 };
+
 
 	/* base setup */
 	stdio_init_all();
 	uart_vSetup();
 
-	/* show the starting values */
-	main_showInformation(&motors, buffer);
-	sleep_ms(1000);
-
 	/* multicore setup */
-	queue_init(&sendToCore1queue,	sizeof(dataMotors), CONFIG_QUEUE_ELEMENTS);
-    	queue_init(&sendToCore0Queue,	sizeof(dataMotors), CONFIG_QUEUE_ELEMENTS);
+	queue_init(&sendToCore1Queue,	sizeof( setpoint	), CONFIG_QUEUE_ELEMENTS);
+    	queue_init(&sendToCore0Queue,	sizeof( dataMotors	), CONFIG_QUEUE_ELEMENTS);
 	multicore_launch_core1(core1_entry);
 
-	queue_add_blocking(&sendToCore1queue, &motors);
+
+	/* set the first setpoint at core 1 */
+	queue_add_blocking(&sendToCore1Queue, &velocities);
+
+	/* show the first data */
+	queue_remove_blocking(&sendToCore0Queue, &motors);
+	textp_puCleanBlk((uint8_t*)buffer, CONFIG_BUFFER_SIZE);
+	main_showInformation(&motors, buffer);
 
 	while (true) {
+
+
+		if ( textp_bFindString( uart_pcGetBuffer(), "\n" ) == true ) {
+
+
+			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "mr1", 0, buffer ) ){ 
+				velocities.motorRight1	= atoi(buffer);
+			}
+
+			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "mr2", 0, buffer ) ){
+				velocities.motorRight2	= atoi(buffer);
+			}
+
+			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "ml1", 0, buffer ) ){
+				velocities.motorLeft1	= atoi(buffer);
+			}
+
+			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "ml2", 0, buffer ) ){
+				velocities.motorLeft2	= atoi(buffer);
+			}
+
+			queue_add_blocking(&sendToCore1Queue, &velocities);
+
+
+			uart_vCleanBuffer();
+		}
+
+
 
 		if( queue_try_remove(&sendToCore0Queue, &motors) == true ){
 			textp_puCleanBlk((uint8_t*)buffer, CONFIG_BUFFER_SIZE);
 			main_showInformation(&motors, buffer);
-			sleep_ms(50);
-		} else {
-			sleep_ms(5);
 		}
+
+		sleep_ms(40);
 	}
 }
 
@@ -112,8 +149,14 @@ int main( void ) {
 
 void core1_entry( void )   {
 	
-	dataMotors motors  = { };
-	queue_remove_blocking(&sendToCore1queue, &motors);
+	setpoint velocities = {0, 0, 0, 0};
+
+	dataMotors motors  = {
+		.right1		= { HARDWARE_M1CHA_GPIO, HARDWARE_M1CHB_GPIO, 0, 0 },
+		.right2		= { HARDWARE_M2CHA_GPIO, HARDWARE_M2CHB_GPIO, 0, 0 },
+		.left1		= { HARDWARE_M4CHA_GPIO, HARDWARE_M4CHB_GPIO, 0, 0 },
+		.left2		= { HARDWARE_M3CHA_GPIO, HARDWARE_M3CHB_GPIO, 0, 0 },
+	};
 
 	dataPIDs pids  = {
 		.motorRight1	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -122,45 +165,47 @@ void core1_entry( void )   {
 		.motorLeft2	= { CONFIG_KP, CONFIG_KI, CONFIG_KD, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 	};
 
+
 	motor_vSetup(&motors.right1,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
 	motor_vSetup(&motors.right2,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
 	motor_vSetup(&motors.left1,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
 	motor_vSetup(&motors.left2,	CONFIG_PWM_FREQUENCY_HZ, CONFIG_PWM_DUTY_CYCLE_START);
 
 
-	uint32_t set_point =  motors.right1.pwm_max - 1;
+	queue_remove_blocking(&sendToCore1Queue, &velocities);
+
+	// pids.motorRight1.fSetPoint	= velocities.motorRight1;
+	// pids.motorRight2.fSetPoint	= velocities.motorRight2;
+	// pids.motorLeft1.fSetPoint	= velocities.motorLeft1;
+	// pids.motorLeft2.fSetPoint	= velocities.motorLeft2;
+
+	motors.right1.pwm	= velocities.motorRight1;
+	motors.right2.pwm	= velocities.motorRight2;
+	motors.left1.pwm	= velocities.motorLeft1;
+	motors.left2.pwm	= velocities.motorLeft2;
 
 	while (true) {
 
 		queue_try_add(&sendToCore0Queue, &motors);
 
-		// if( queue_try_remove(&sendToCore1Queue, &motors) == true ){
-
-		// }
-
-
-
-		pids.motorRight1.fSetPoint 	= set_point;
-		pids.motorRight1.fInput		= motors.right1.pwm;
-
-		set_point -= 2;
-		if ( set_point < 50){
-			set_point = motors.right1.pwm_max-1;
+		if( queue_try_remove(&sendToCore1Queue, &velocities) == true ){
+			// pids.motorRight1.fSetPoint	= velocities.motorRight1;
+			// pids.motorRight2.fSetPoint	= velocities.motorRight2;
+			// pids.motorLeft1.fSetPoint	= velocities.motorLeft1;
+			// pids.motorLeft2.fSetPoint	= velocities.motorLeft2;
 		}
 
-		motor_vToFront(&motors.right1,	pid_fRun(&pids.motorRight1)	);
 
-		sleep_ms( CONFIG_PID_FRAME_HATE_MS );
+		motor_vToFront(&motors.right1,	velocities.motorRight1	);
+		motor_vToFront(&motors.right2,	velocities.motorRight2	);
+		motor_vToFront(&motors.left1,	velocities.motorLeft1	);
+		motor_vToFront(&motors.left2,	velocities.motorLeft2	);
 
+
+		sleep_ms( CONFIG_PID_FRAME_HATE_MS );		
 	}
 
 }
-
-
-
-
-
-
 
 void main_showInformation(const dataMotors *motors, char *buffer){
 

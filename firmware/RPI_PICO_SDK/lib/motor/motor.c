@@ -73,12 +73,16 @@ void motor_vSetup( motor *m, uint32_t frequency, uint16_t duty_cycle) {
 void motor_vToFront( motor *m, uint32_t duty_cycle ) {
 	m->pwm = duty_cycle;
 
+	if(m->pwm > m->pwm_max) m->pwm = m->pwm_max-1;
+
 	pwm_set_gpio_level(m->ma, m->pwm );
 	pwm_set_gpio_level(m->mb, 0 );
 }
 
 void motor_vToBack( motor *m, uint32_t duty_cycle ) {
 	m->pwm = duty_cycle;
+
+	if(m->pwm > m->pwm_max) m->pwm = m->pwm_max-1;
 	
 	pwm_set_gpio_level(m->ma, 0 );
 	pwm_set_gpio_level(m->mb, m->pwm );
@@ -87,6 +91,8 @@ void motor_vToBack( motor *m, uint32_t duty_cycle ) {
 
 void motor_vToBraking( motor *m, uint32_t duty_cycle ) {
 	m->pwm = duty_cycle;
+
+	if(m->pwm > m->pwm_max) m->pwm = m->pwm_max-1;
 
 	pwm_set_gpio_level(m->ma, m->pwm );
 	pwm_set_gpio_level(m->mb, m->pwm );
