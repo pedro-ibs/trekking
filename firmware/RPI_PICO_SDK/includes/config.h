@@ -73,7 +73,8 @@
 #define CONFIG_KI			( 0.0009		)
 #define CONFIG_KD			( 0.0003		)
 #define CONFIG_PID_FRAME_HATE_MS	( 1			)
-
+#define CONFIG_DETECT_TO_FRONT		< 0
+#define CONFIG_DETECT_TO_BACK		> 0
 /* ************************************************************************************************************ */
 /* FORMATO DE COMUNICAÇÃO JSON (PARA FACILITAR NO NODE-RED)							*/
 /* ************************************************************************************************************ */

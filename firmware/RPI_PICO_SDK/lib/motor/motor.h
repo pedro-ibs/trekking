@@ -64,8 +64,8 @@ void motor_vSetup( motor *m, uint32_t frequency, uint16_t duty_cycle);
 void motor_vToFront( motor *m, uint32_t duty_cycle );
 void motor_vToBack( motor *m, uint32_t duty_cycle );
 void motor_vToBraking( motor *m, uint32_t duty_cycle );
-void motor_vTurnOff( motor *m, uint32_t duty_cycle );
-
+void motor_vTurnOff( motor *m );
+void motor_vMove( motor *m,  int duty_cycle );
 
 
 #endif /* motor_H_ */

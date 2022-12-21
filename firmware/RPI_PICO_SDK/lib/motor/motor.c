@@ -98,8 +98,27 @@ void motor_vToBraking( motor *m, uint32_t duty_cycle ) {
 	pwm_set_gpio_level(m->mb, m->pwm );
 }
 
-void motor_vTurnOff( motor *m, uint32_t duty_cycle ) {
+void motor_vTurnOff( motor *m ) {
 	motor_vToBraking(m, 0);
+}
+
+/**
+ * @brief detecta a direção do movimento de acordo com o sinal 
+ * configure a macro CONFIG_DETECT_TO_FRONT e CONFIG_DETECT_TO_BACK
+ * para definir o padrão do sentido.
+ */
+void motor_vMove( motor *m,  int duty_cycle ){
+	if ( duty_cycle	CONFIG_DETECT_TO_FRONT ){
+		motor_vToFront(m, abs(duty_cycle) );
+		return;
+	}
+	
+	if ( duty_cycle	CONFIG_DETECT_TO_BACK ){
+		motor_vToBack(m, abs(duty_cycle) );
+		return;
+	}
+	
+	motor_vTurnOff(m); 
 }
 
 
