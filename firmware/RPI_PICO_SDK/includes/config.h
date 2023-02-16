@@ -46,9 +46,10 @@
 
 
 /* ************************************************************************************************************ */
-/* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL. 								*/
+/* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL e SECUNDARIA							*/
 /* ************************************************************************************************************ */
-#define CONFIG_BAUD_RATE		( 115200		)
+#define CONFIG_BAUD_RATE_UART0		( 115200		)
+#define CONFIG_BAUD_RATE_UART1		( 19600			)
 #define CONFIG_DATA_BITS		( 8			)
 #define CONFIG_STOP_BITS		( 1			)
 #define CONFIG_PARITY			( UART_PARITY_NONE	)
@@ -58,7 +59,6 @@
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES DA TELEMETRIA DA FONTE DE ALIMENTAÇÃO.								*/
 /* ************************************************************************************************************ */
-#define CONFIG_TELEMETRY_CLOCK_DIV	( 960			)						// 52 Hz
 
 
 

@@ -42,9 +42,14 @@
 /**
  * Comunicação serial raspberry - rpi_pico
  */
-#define HARDWARE_UART_ID		uart0
-#define HARDWARE_TX_GPIO		( 0	) 
-#define HARDWARE_RX_GPIO		( 1	)
+#define HARDWARE_UART0_ID		uart0
+#define HARDWARE_UART1_ID		uart1
+#define HARDWARE_TX0_GPIO		( 0	) 
+#define HARDWARE_RX0_GPIO		( 1	)
+#define HARDWARE_TX1_GPIO		( 8	) 
+#define HARDWARE_RX1_GPIO		( 9	)
+
+
 
 #define HARDWARE_LED_GPIO               ( PICO_DEFAULT_LED_PIN	)
 

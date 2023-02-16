@@ -83,14 +83,17 @@ int main( void ) {
 	char buffer[ CONFIG_BUFFER_SIZE ]	= { 0		};
 	setpoint velocities			= { 0, 0, 0, 0	};
 	dataMotors motors			= { 0		};
+	uint8_t	uLedLevel			= 0;
 
 	/* base setup */
 	stdio_init_all();
-	uart_vSetup();
+	uart_vSetup( _idxUart0, CONFIG_BAUD_RATE_UART0, HARDWARE_TX1_GPIO, HARDWARE_RX1_GPIO );
+	uart_vSetup( _idxUart1, CONFIG_BAUD_RATE_UART0, HARDWARE_TX1_GPIO, HARDWARE_RX1_GPIO );
+
 
 	/* multicore setup */
-	queue_init(&sendToCore1Queue,	sizeof( setpoint	), CONFIG_QUEUE_ELEMENTS);
-    	queue_init(&sendToCore0Queue,	sizeof( dataMotors	), CONFIG_QUEUE_ELEMENTS);
+	queue_init( &sendToCore1Queue,	sizeof( setpoint	), CONFIG_QUEUE_ELEMENTS );
+    	queue_init( &sendToCore0Queue,	sizeof( dataMotors	), CONFIG_QUEUE_ELEMENTS );
 	multicore_launch_core1( core1_entry );
 
 
@@ -102,29 +105,34 @@ int main( void ) {
 	textp_puCleanBlk( ( uint8_t* )buffer, CONFIG_BUFFER_SIZE );
 	main_showInformation( &motors, buffer );
 
+	gpio_init( HARDWARE_LED_GPIO );
+	gpio_set_dir(HARDWARE_LED_GPIO, GPIO_OUT);
+
 	while (true) {
 
-		if ( textp_bFindString( uart_pcGetBuffer(), "\n" ) == true ) {
+		const char *pcBuffer = uart_pcGetBuffer( _idxUart0 );
 
-			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "mr1", 0, buffer ) ){ 
+		if ( textp_bFindString( pcBuffer, "\n" ) == true ) {
+
+			if( textp_bGetLabelInfo( pcBuffer, "mr1", 0, buffer ) ){ 
 				velocities.motorRight1	= atoi(buffer);
 			}
 
-			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "mr2", 0, buffer ) ){
+			if( textp_bGetLabelInfo( pcBuffer, "mr2", 0, buffer ) ){
 				velocities.motorRight2	= atoi(buffer);
 			}
 
-			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "ml1", 0, buffer ) ){
+			if( textp_bGetLabelInfo( pcBuffer, "ml1", 0, buffer ) ){
 				velocities.motorLeft1	= atoi(buffer);
 			}
 
-			if( textp_bGetLabelInfo( uart_pcGetBuffer(), "ml2", 0, buffer ) ){
+			if( textp_bGetLabelInfo( pcBuffer, "ml2", 0, buffer ) ){
 				velocities.motorLeft2	= atoi(buffer);
 			}
 
 			queue_add_blocking( &sendToCore1Queue, &velocities );
 
-			uart_vCleanBuffer();
+			uart_vCleanBuffer( _idxUart0 );
 		}
 
 
@@ -134,6 +142,7 @@ int main( void ) {
 		}
 
 		sleep_ms( 40 );
+		gpio_put( HARDWARE_LED_GPIO, ( uLedLevel++ )%2 );
 	}
 }
 
@@ -223,5 +232,9 @@ void main_showInformation( const dataMotors *motors, char *buffer ){
 		0.0
 	);
 
-	uart_vSendStringLn(buffer);
+	uart_vSendStringLn(_idxUart0, buffer);
+
+
+	uart_vSendStringLn(_idxUart1, buffer);
+
 }

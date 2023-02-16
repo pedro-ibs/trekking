@@ -40,15 +40,21 @@
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-void uart_vSetup(void);
-void uart_vCleanBuffer(void);
+typedef enum {
+	_idxUart0 = 0,
+	_idxUart1,
+} uart_index;
 
-size_t uart_uGetBufferSize(void);
-const char *uart_pcGetBuffer(void);
 
-void uart_vSendChar(char ch);
-void uart_vSendString( const char *str );
-void uart_vSendStringLn( const char *str );
+void uart_vSetup( uint uart, uint baudrate, uint tx, uint rx );
+
+void uart_vCleanBuffer( uint uart );
+size_t uart_uGetBufferSize( uint uart );
+const char *uart_pcGetBuffer( uint uart );
+
+void uart_vSendChar( uint uart, const char ch) ;
+void uart_vSendString( uint uart, const char *str ) ;
+void uart_vSendStringLn( uint uart, const char *str ) ;
 
 
 #endif /* simple_uart_H_ */
