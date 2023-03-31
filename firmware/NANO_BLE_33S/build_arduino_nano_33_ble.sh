@@ -1,4 +1,7 @@
 #! /bin/bash
+
+source ~/zephyrproject/.venv/bin/activate
+
 export ZEPHYR_BASE=$HOME/zephyrproject/zephyr/
 # export ZEPHYR_TOOLCHAIN_VARIANT=
 # export ESPRESSIF_TOOLCHAIN_PATH=
@@ -44,5 +47,7 @@ cd build
 ninja hardenconfig
 
 
-scp zephyr/zephyr.bin tars@tracker.local:trekking/nano_ble_33s.bin
+# scp zephyr/zephyr.bin tars@tracker.local:trekking/nano_ble_33s.bin
 #ssh tars@tracker.local 'cd $HOME/trekking && openocd -f interface/raspberrypi-swd.cfg -f target/rp2040.cfg -c "program rpi_pico.elf verify reset exit"'
+
+west flash
