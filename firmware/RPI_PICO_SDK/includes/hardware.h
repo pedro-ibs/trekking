@@ -71,9 +71,9 @@
  * Pinos utilizados nas leituras da da alimentação
  * da placa 
  */
-#define HARDWARE_VIN_GPIO		( 26	)
-#define HARDWARE_VCC_GPIO		( 27	)
-#define HARDWARE_V1_GPIO		( 28	)
+#define HARDWARE_POWER_SYSTEM_GPIO	( 26	)
+#define HARDWARE_POWER_SUPPLY_1_GPIO	( 28	)
+#define HARDWARE_POWER_SUPPLY_2_GPIO	( 27	)
 
 
 #endif /* hardware_H_ */

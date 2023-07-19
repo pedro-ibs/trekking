@@ -41,5 +41,10 @@
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
+void telemetry_vSetup(void);
+
+float telemetry_fGetPowerSystem( void );
+float telemetry_fGetPowerSupplyA( void );
+float telemetry_fGetPowerSupplyB( void );
 
 #endif /* telemetry_power_H_ */

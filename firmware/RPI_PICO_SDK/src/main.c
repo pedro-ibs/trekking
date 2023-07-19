@@ -39,7 +39,8 @@
 #include <simple_uart.h>
 #include <textProtocol.h>
 #include <motor.h> 
-#include <pid.h> 
+#include <pid.h>
+#include <telemetry_power.h>
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
 typedef struct {
@@ -83,19 +84,18 @@ int main( void ) {
 	char buffer[ CONFIG_BUFFER_SIZE ]	= { 0		};
 	setpoint velocities			= { 0, 0, 0, 0	};
 	dataMotors motors			= { 0		};
-	uint8_t	uLedLevel			= 0;
 
 	/* base setup */
 	stdio_init_all();
-	uart_vSetup( _idxUart0, CONFIG_BAUD_RATE_UART0, HARDWARE_TX1_GPIO, HARDWARE_RX1_GPIO );
+	uart_vSetup( _idxUart0, CONFIG_BAUD_RATE_UART0, HARDWARE_TX0_GPIO, HARDWARE_RX0_GPIO );
 	uart_vSetup( _idxUart1, CONFIG_BAUD_RATE_UART0, HARDWARE_TX1_GPIO, HARDWARE_RX1_GPIO );
 
+	telemetry_vSetup();
 
 	/* multicore setup */
 	queue_init( &sendToCore1Queue,	sizeof( setpoint	), CONFIG_QUEUE_ELEMENTS );
     	queue_init( &sendToCore0Queue,	sizeof( dataMotors	), CONFIG_QUEUE_ELEMENTS );
 	multicore_launch_core1( core1_entry );
-
 
 	/* set the first setpoint at core 1 */
 	queue_add_blocking( &sendToCore1Queue, &velocities );
@@ -105,8 +105,6 @@ int main( void ) {
 	textp_puCleanBlk( ( uint8_t* )buffer, CONFIG_BUFFER_SIZE );
 	main_showInformation( &motors, buffer );
 
-	gpio_init( HARDWARE_LED_GPIO );
-	gpio_set_dir(HARDWARE_LED_GPIO, GPIO_OUT);
 
 	while (true) {
 
@@ -142,7 +140,7 @@ int main( void ) {
 		}
 
 		sleep_ms( 40 );
-		gpio_put( HARDWARE_LED_GPIO, ( uLedLevel++ )%2 );
+
 	}
 }
 
@@ -226,15 +224,12 @@ void main_showInformation( const dataMotors *motors, char *buffer ){
 		motors->right2.pwm_max,
 		0.0,
 
-		0.0,
-		0.0,
-		0.0,
-		0.0
+		telemetry_fGetPowerSupplyA(),
+		telemetry_fGetPowerSupplyB(),
+		telemetry_fGetPowerSystem()
 	);
 
 	uart_vSendStringLn(_idxUart0, buffer);
-
-
 	uart_vSendStringLn(_idxUart1, buffer);
 
 }
