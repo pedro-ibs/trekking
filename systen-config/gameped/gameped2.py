@@ -7,12 +7,12 @@ import time
 #import serial
 import socket
 
-path = '/dev/input/'
-event = 'event' + sys.argv[1]
+path		= '/dev/input/'
+event		= ''
 UDP_PORT	= 42420
 UDP_IP		= '127.0.0.1'
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-
+sock		= socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+gamepad		= ''
 
 def put_event(_type='null', _code='null', _value='null'):
 	if _type == 0:
@@ -26,24 +26,33 @@ def put_event(_type='null', _code='null', _value='null'):
 
 while True:
 	try:
-
 		put_event()
 
 		FindEvent1 = True
 		while FindEvent1:
 			time.sleep(1)
 			dir_list = os.listdir(path)
-			print("find: " + path + event )
-			print(dir_list)
-
+			print( "find devices between: " + str(dir_list) )
+			print( "----------------------" )
 			for elem in dir_list:
-				if elem == event:
+				try:
+					gamepad = 'null'
+					gamepad	= InputDevice( path + elem )
+					print( "check [ " +   path + elem + " ]--> " + str( gamepad ) )
+				except:
+					gamepad = 'null'
+					print( "check [ " +   path + elem + " ]--> " + str( gamepad ) )
+					pass
+
+				if "Microsoft X-Box 360 pad" in str(gamepad):
+					print("gameped connected!!")
+					event = path + elem
 					FindEvent1 = False
+					break
 
-		gamepad	= InputDevice( path + event )
-
-		print( gamepad )
 		print( gamepad.capabilities( verbose = True ) )
+
+		put_event('42', '42', '42')
 
 		for event in gamepad.read_loop():
 			if event.type == ecodes.EV_ABS:
