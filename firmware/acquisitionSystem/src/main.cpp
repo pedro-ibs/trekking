@@ -2,23 +2,88 @@
 
 #include "hardware.h"
 
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <ArduinoJson.h>
 
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+
+DynamicJsonDocument jsonBuffer(1024);
+
+void display_show( const float fVcc, const float fVsys, const float fCurrent, String msg){
+
+	display.clearDisplay();
+	display.setTextColor(WHITE);
+
+
+	display.setTextSize(2);
+	display.setCursor(0,0);
+	display.print(F("B:"));
+	display.print(fVcc);
+	display.print(F("V"));
+
+	display.setCursor(0,16);
+	display.print(F("S:"));
+	display.print(fVsys);
+	display.print(F("V"));
+
+	display.setCursor(0,32);
+	display.print(F("I:"));
+	display.print(fCurrent);
+	display.print(F("A"));
+
+	display.setTextSize(1);
+	display.setCursor(0,55);
+	display.print(msg);
+	// display.print(F("Voyager NCC-74656"));
+	display.display();	
+}
 
 void setup( void ){
-	pinMode(LED1, OUTPUT);
-	pinMode(LDS_PIN_MOTOR, OUTPUT);
-	pinMode(LDS_PIN_POWER, OUTPUT);
 
-	digitalWrite(LDS_PIN_MOTOR, HIGH);
-	digitalWrite(LDS_PIN_POWER, HIGH);
+	pinMode(LED1, OUTPUT);
+	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+	display_show(0.0, 0.0, 0.0, "Voyager NCC-74656");
+
+	/* Serial setup for UART debugging */
+	Serial.begin(115200);
+	/* Wait for serial to be available */
+	while(!Serial);
 }
 
 void loop( void ){
 
-	digitalWrite(LED1, HIGH);
-	delay( 200 );
-	digitalWrite(LED1, LOW);
-	delay( 200 );
+	if(Serial.available() > 1){
+		digitalWrite(LED1, HIGH);
+
+		delay(50);
+		String sData = Serial.readString();
+		sData.trim();
+		
+		if( !deserializeJson(jsonBuffer, sData) ){
+
+			float fVcc	= jsonBuffer["vcc"];
+			float fVsys	= jsonBuffer["vsys"];
+			float fCurrent	= jsonBuffer["current"];
+			String msg	= jsonBuffer["msg"];
+			msg.trim();
+
+			display_show(fVcc, fVsys, fCurrent, msg);
+			
+		}
+		digitalWrite(LED1, LOW);
+	}
+
+	delay(1);
 }
 
 
