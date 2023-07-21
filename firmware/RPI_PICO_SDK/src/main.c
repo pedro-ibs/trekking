@@ -69,6 +69,12 @@ typedef struct {
 
 queue_t sendToCore0Queue;
 queue_t sendToCore1Queue;
+
+static float fGlobalPowerSupplyA	= 0.00;
+static float fGlobalPowerSupplyB	= 0.00;
+static float fGlobalPowerSystem		= 0.00;
+
+
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
 void main_showInformation(const dataMotors *motors, char *buffer);
 void core1_entry( void );
@@ -84,6 +90,11 @@ int main( void ) {
 	char buffer[ CONFIG_BUFFER_SIZE ]	= { 0		};
 	setpoint velocities			= { 0, 0, 0, 0	};
 	dataMotors motors			= { 0		};
+
+	float fPowerSupplyA			= 0.00;
+	float fPowerSupplyB			= 0.00;
+	float fPowerSystem			= 0.00;
+	uint count				= 0;
 
 	/* base setup */
 	stdio_init_all();
@@ -139,7 +150,28 @@ int main( void ) {
 			main_showInformation( &motors, buffer );
 		}
 
-		sleep_ms( 40 );
+
+		count++;
+
+		if (  count >= CONFIG_MOVING_AVERAGE ){
+
+			fGlobalPowerSupplyA	= ( fPowerSupplyA	/ CONFIG_MOVING_AVERAGE ) + CONFIG_POWER_SUPPLY_OFFSET;
+			fGlobalPowerSupplyB	= ( fPowerSupplyB	/ CONFIG_MOVING_AVERAGE ) + CONFIG_POWER_SUPPLY_OFFSET;
+			fGlobalPowerSystem	= ( fPowerSystem	/ CONFIG_MOVING_AVERAGE ) + CONFIG_POWER_SYSTEM_OFFSET;
+			
+			fPowerSupplyA		= 0;
+			fPowerSupplyB		= 0;
+			fPowerSystem		= 0;
+
+			count			= 0;
+
+		} else {
+			fPowerSupplyA		= fPowerSupplyA	+ telemetry_fGetPowerSupplyA();
+			fPowerSupplyB		= fPowerSupplyB	+ telemetry_fGetPowerSupplyB();
+			fPowerSystem		= fPowerSystem	+ telemetry_fGetPowerSystem();
+		}
+
+		sleep_ms( CONFIG_DELAY_LOOP_MS );
 
 	}
 }
@@ -224,9 +256,9 @@ void main_showInformation( const dataMotors *motors, char *buffer ){
 		motors->right2.pwm_max,
 		0.0,
 
-		telemetry_fGetPowerSupplyA(),
-		telemetry_fGetPowerSupplyB(),
-		telemetry_fGetPowerSystem()
+		fGlobalPowerSupplyA,
+		fGlobalPowerSupplyB,
+		fGlobalPowerSystem
 	);
 
 	uart_vSendStringLn(_idxUart0, buffer);

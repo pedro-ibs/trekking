@@ -85,6 +85,9 @@
 /* Configurações gerais da aplicação										*/
 /* ************************************************************************************************************ */
 #define CONFIG_QUEUE_ELEMENTS 		( 1			)
-
+#define CONFIG_DELAY_LOOP_MS		( 40			)
+#define CONFIG_MOVING_AVERAGE		( 24			)
+#define CONFIG_POWER_SUPPLY_OFFSET	( 12.00-11.7		)
+#define CONFIG_POWER_SYSTEM_OFFSET	( 5.00 - 4.9		)
 
 #endif /* config_H_ */

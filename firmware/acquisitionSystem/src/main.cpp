@@ -8,6 +8,8 @@
 #include <Adafruit_SSD1306.h>
 #include <ArduinoJson.h>
 
+#include <textProtocol.h>
+
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -54,9 +56,8 @@ void setup( void ){
 	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
 	display_show(0.0, 0.0, 0.0, "Voyager NCC-74656");
 
-	/* Serial setup for UART debugging */
 	Serial.begin(115200);
-	/* Wait for serial to be available */
+	Serial.setTimeout(0);
 	while(!Serial);
 }
 
@@ -65,7 +66,7 @@ void loop( void ){
 	if(Serial.available() > 1){
 		digitalWrite(LED1, HIGH);
 
-		delay(50);
+		delay(100);
 		String sData = Serial.readString();
 		sData.trim();
 		
