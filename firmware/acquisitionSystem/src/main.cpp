@@ -56,25 +56,43 @@ void loop( void ){
 		String sData = Serial.readString();
 		sData.trim();
 		
+		float fVcc	= 0.00;
+		float fVsys	= 0.00;
+		float fCurrent	= 0.00;
+		String msg	= "PPP5CM";
+
 		if( !deserializeJson(jsonBuffer, sData) ){
 
-			float fVcc	= jsonBuffer[ "vcc"	];
-			float fVsys	= jsonBuffer[ "vsys"	];
-			float fCurrent	= jsonBuffer[ "current"	];
-			String msg	= jsonBuffer[ "msg"	];
-			msg.trim();
+			if( jsonBuffer.containsKey( "vcc" ) ){
+				fVcc = (float)jsonBuffer[ "vcc" ];
+			}
+
+			if( jsonBuffer.containsKey( "vsys" ) ){
+				fVsys = (float)jsonBuffer[ "vsys" ];
+			}
+
+			if( jsonBuffer.containsKey( "current" ) ){
+				fCurrent = (float)jsonBuffer[ "current" ];
+			}
+
+			if( jsonBuffer.containsKey( "msg" ) ){
+				String m =  jsonBuffer[ "msg" ];
+				m.trim();
+				msg = m;
+			} 
+			
 
 			display_vShow(fVcc, fVsys, fCurrent, msg);
 			
 
-			digitalWrite( PIN_OUT1, (bool) jsonBuffer[ "d2" ] );
-			digitalWrite( PIN_OUT2, (bool) jsonBuffer[ "d3" ] );
-			digitalWrite( PIN_OUT3, (bool) jsonBuffer[ "d4" ] );
-			digitalWrite( PIN_OUT4, (bool) jsonBuffer[ "d5" ] );
-			digitalWrite( PIN_OUT5, (bool) jsonBuffer[ "d6" ] );
-			digitalWrite( PIN_OUT6, (bool) jsonBuffer[ "d7" ] );
-			digitalWrite( PIN_OUT7, (bool) jsonBuffer[ "d8" ] );
-			digitalWrite( PIN_OUT8, (bool) jsonBuffer[ "d9" ] );
+			if( jsonBuffer.containsKey( "d2" ) ) digitalWrite( PIN_OUT1, (bool) jsonBuffer[ "d2" ] );
+			if( jsonBuffer.containsKey( "d3" ) ) digitalWrite( PIN_OUT2, (bool) jsonBuffer[ "d3" ] );
+			if( jsonBuffer.containsKey( "d4" ) ) digitalWrite( PIN_OUT3, (bool) jsonBuffer[ "d4" ] );
+			if( jsonBuffer.containsKey( "d5" ) ) digitalWrite( PIN_OUT4, (bool) jsonBuffer[ "d5" ] );
+			if( jsonBuffer.containsKey( "d6" ) ) digitalWrite( PIN_OUT5, (bool) jsonBuffer[ "d6" ] );
+			if( jsonBuffer.containsKey( "d7" ) ) digitalWrite( PIN_OUT6, (bool) jsonBuffer[ "d7" ] );
+			if( jsonBuffer.containsKey( "d8" ) ) digitalWrite( PIN_OUT7, (bool) jsonBuffer[ "d8" ] );
+			if( jsonBuffer.containsKey( "d9" ) ) digitalWrite( PIN_OUT7, (bool) jsonBuffer[ "d9" ] );
 
 		}
 		digitalWrite(LED1, LOW);
