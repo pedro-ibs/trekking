@@ -1,7 +1,7 @@
 /**
- * hardware.h
+ * disp.h
  *
- *  @date Created at:	26/03/2023 17:39:32
+ *  @date Created at:	25/07/2023 22:47:19
  *	@author:	Pedro Igor B. S.
  *	@email:		pibscontato@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
@@ -26,7 +26,8 @@
  * -------------------------------------------------------------------
  * #######################################################################
  *
- * Definições dos pinos utilizados 
+ *
+ *  Display para visualizar dados da alimentação + mensagem
  *
  */
 
@@ -34,22 +35,14 @@
 #include <Arduino.h>
 
 
-#ifndef hardware_H_
-#define hardware_H_
+
+#ifndef disp_H_
+#define disp_H_
 
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-#define PIN_OUT1	D2
-#define PIN_OUT2	D3
-#define PIN_OUT3	D4
-#define PIN_OUT4	D5
-#define PIN_OUT5	D6
-#define PIN_OUT6	D7
-#define PIN_OUT7	D8
-#define PIN_OUT8	D9
+void display_vSetup( void );
+void display_vShow( const float fVcc, const float fVsys, const float fCurrent, String msg);
 
-#define PIN_AIN0
-			
-
-#endif /* hardware_H_ */
+#endif /* disp_H_ */

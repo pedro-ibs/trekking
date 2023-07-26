@@ -419,11 +419,14 @@
             "fb7691a534974a82",
             "98ca87d6a54235a4",
             "cb7a097c66b41030",
-            "bbe1e1daf89f1482"
+            "bbe1e1daf89f1482",
+            "720d8bffebd6ccc8",
+            "818d35a93e2701bb",
+            "45633c2c5cb5d71f"
         ],
         "x": 54,
         "y": 779,
-        "w": 2012,
+        "w": 2052,
         "h": 302
     },
     {
@@ -449,9 +452,7 @@
             "5dc6dd1185d5284e"
         ],
         "x": 134,
-        "y": 379,
-        "w": 672,
-        "h": 182
+        "y": 379
     },
     {
         "id": "27a7c7735c2dec5c",
@@ -477,9 +478,7 @@
             "16dccd5a9a05cdff"
         ],
         "x": 134,
-        "y": 79,
-        "w": 712,
-        "h": 242
+        "y": 79
     },
     {
         "id": "0e93553eeeb00ce8",
@@ -1392,8 +1391,8 @@
         "round": true,
         "property": "motor_left_conjunct",
         "name": "%",
-        "x": 1650,
-        "y": 860,
+        "x": 1690,
+        "y": 820,
         "wires": [
             [
                 "69eb1fae570ccdb8"
@@ -1413,8 +1412,8 @@
         "round": true,
         "property": "motor_right_conjunct",
         "name": "%",
-        "x": 1650,
-        "y": 900,
+        "x": 1690,
+        "y": 860,
         "wires": [
             [
                 "fb7691a534974a82"
@@ -1491,11 +1490,21 @@
                 "t": "eq",
                 "v": "4",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
             }
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 2,
+        "outputs": 4,
         "x": 1310,
         "y": 880,
         "wires": [
@@ -1504,6 +1513,10 @@
             ],
             [
                 "46982eb8927ded14"
+            ],
+            [],
+            [
+                "45633c2c5cb5d71f"
             ]
         ]
     },
@@ -1900,7 +1913,7 @@
         "z": "b940f0e527559f7c",
         "g": "430141fbf79295d9",
         "name": "stop",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1946,8 +1959,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1490,
-        "y": 860,
+        "x": 1530,
+        "y": 820,
         "wires": [
             [
                 "9a2701124c67fb3d"
@@ -1988,8 +2001,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1490,
-        "y": 900,
+        "x": 1530,
+        "y": 860,
         "wires": [
             [
                 "7ac303f26230475b"
@@ -2076,8 +2089,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1770,
-        "y": 860,
+        "x": 1810,
+        "y": 820,
         "wires": [
             [
                 "98ca87d6a54235a4"
@@ -2104,8 +2117,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1770,
-        "y": 900,
+        "x": 1810,
+        "y": 860,
         "wires": [
             [
                 "cb7a097c66b41030"
@@ -2173,8 +2186,8 @@
         "seg2": "",
         "diff": false,
         "className": "",
-        "x": 1930,
-        "y": 860,
+        "x": 1970,
+        "y": 820,
         "wires": []
     },
     {
@@ -2202,8 +2215,8 @@
         "seg2": "",
         "diff": false,
         "className": "",
-        "x": 1940,
-        "y": 900,
+        "x": 1980,
+        "y": 860,
         "wires": []
     },
     {
@@ -2601,6 +2614,73 @@
         "x": 730,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "720d8bffebd6ccc8",
+        "type": "change",
+        "z": "b940f0e527559f7c",
+        "g": "430141fbf79295d9",
+        "name": "buzle",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pind2",
+                "pt": "global",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1690,
+        "y": 900,
+        "wires": [
+            [
+                "818d35a93e2701bb"
+            ]
+        ]
+    },
+    {
+        "id": "818d35a93e2701bb",
+        "type": "debug",
+        "z": "b940f0e527559f7c",
+        "g": "430141fbf79295d9",
+        "name": "buzle",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1930,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "45633c2c5cb5d71f",
+        "type": "range",
+        "z": "b940f0e527559f7c",
+        "g": "430141fbf79295d9",
+        "minin": "0",
+        "maxin": "255",
+        "minout": "0",
+        "maxout": "1",
+        "action": "clamp",
+        "round": true,
+        "property": "payload.value",
+        "name": "",
+        "x": 1490,
+        "y": 900,
+        "wires": [
+            [
+                "720d8bffebd6ccc8"
+            ]
+        ]
     },
     {
         "id": "cde9ee48151f0216",
@@ -3482,7 +3562,7 @@
         "pauseType": "rate",
         "timeout": "200",
         "timeoutUnits": "milliseconds",
-        "rate": "1",
+        "rate": "3",
         "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
@@ -3569,6 +3649,13 @@
         "g": "0e93553eeeb00ce8",
         "name": "powerSupply",
         "rules": [
+            {
+                "t": "set",
+                "p": "powerSupply.d2",
+                "pt": "msg",
+                "to": "pind2",
+                "tot": "global"
+            },
             {
                 "t": "set",
                 "p": "powerSupply.vcc",

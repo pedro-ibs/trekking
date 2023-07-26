@@ -1,64 +1,49 @@
+
 #include <Arduino.h>
-
-#include "hardware.h"
-
-#include <SPI.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 #include <ArduinoJson.h>
 
 #include <textProtocol.h>
+#include <disp.h>
 
+#include "hardware.h"
 
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
-
-// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
-#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 
 DynamicJsonDocument jsonBuffer(1024);
 
-void display_show( const float fVcc, const float fVsys, const float fCurrent, String msg){
-
-	display.clearDisplay();
-	display.setTextColor(WHITE);
-
-
-	display.setTextSize(2);
-	display.setCursor(0,0);
-	display.print(F("B:"));
-	display.print(fVcc);
-	display.print(F("V"));
-
-	display.setCursor(0,16);
-	display.print(F("S:"));
-	display.print(fVsys);
-	display.print(F("V"));
-
-	display.setCursor(0,32);
-	display.print(F("I:"));
-	display.print(fCurrent);
-	display.print(F("A"));
-
-	display.setTextSize(1);
-	display.setCursor(0,55);
-	display.print(msg);
-	// display.print(F("Voyager NCC-74656"));
-	display.display();	
-}
 
 void setup( void ){
 
 	pinMode(LED1, OUTPUT);
-	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-	display_show(0.0, 0.0, 0.0, "Voyager NCC-74656");
+
+	display_vSetup();
 
 	Serial.begin(115200);
 	Serial.setTimeout(0);
 	while(!Serial);
+
+	pinMode(PIN_OUT1, OUTPUT);
+	pinMode(PIN_OUT2, OUTPUT);
+	pinMode(PIN_OUT3, OUTPUT);
+	pinMode(PIN_OUT4, OUTPUT);
+	pinMode(PIN_OUT5, OUTPUT);
+	pinMode(PIN_OUT6, OUTPUT);
+	pinMode(PIN_OUT7, OUTPUT);
+	pinMode(PIN_OUT8, OUTPUT);
+
+
+	digitalWrite(PIN_OUT1, LOW);
+	digitalWrite(PIN_OUT2, LOW);
+	digitalWrite(PIN_OUT3, LOW);
+	digitalWrite(PIN_OUT4, LOW);
+	digitalWrite(PIN_OUT5, LOW);
+	digitalWrite(PIN_OUT6, LOW);
+	digitalWrite(PIN_OUT7, LOW);
+	digitalWrite(PIN_OUT8, LOW);
+
+	pinMode(0, INPUT);
+	
+
 }
 
 void loop( void ){
@@ -67,19 +52,30 @@ void loop( void ){
 		digitalWrite(LED1, HIGH);
 
 		delay(100);
+
 		String sData = Serial.readString();
 		sData.trim();
 		
 		if( !deserializeJson(jsonBuffer, sData) ){
 
-			float fVcc	= jsonBuffer["vcc"];
-			float fVsys	= jsonBuffer["vsys"];
-			float fCurrent	= jsonBuffer["current"];
-			String msg	= jsonBuffer["msg"];
+			float fVcc	= jsonBuffer[ "vcc"	];
+			float fVsys	= jsonBuffer[ "vsys"	];
+			float fCurrent	= jsonBuffer[ "current"	];
+			String msg	= jsonBuffer[ "msg"	];
 			msg.trim();
 
-			display_show(fVcc, fVsys, fCurrent, msg);
+			display_vShow(fVcc, fVsys, fCurrent, msg);
 			
+
+			digitalWrite( PIN_OUT1, (bool) jsonBuffer[ "d2" ] );
+			digitalWrite( PIN_OUT2, (bool) jsonBuffer[ "d3" ] );
+			digitalWrite( PIN_OUT3, (bool) jsonBuffer[ "d4" ] );
+			digitalWrite( PIN_OUT4, (bool) jsonBuffer[ "d5" ] );
+			digitalWrite( PIN_OUT5, (bool) jsonBuffer[ "d6" ] );
+			digitalWrite( PIN_OUT6, (bool) jsonBuffer[ "d7" ] );
+			digitalWrite( PIN_OUT7, (bool) jsonBuffer[ "d8" ] );
+			digitalWrite( PIN_OUT8, (bool) jsonBuffer[ "d9" ] );
+
 		}
 		digitalWrite(LED1, LOW);
 	}
