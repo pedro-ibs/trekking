@@ -1,16 +1,63 @@
+/**
+ * main.cpp
+ *
+ *  @date Created at:	06/08/2023 16:38:31
+ *	@author:	Pedro Igor B. S.
+ *	@email:		pibscontato@gmail.com
+ * 	GitHub:		https://github.com/pedro-ibs
+ * 	tabSize:	8
+ *
+ * #######################################################################
+ *
+ *   Copyright (C) Pedro Igor B. S 2021
+ * -------------------------------------------------------------------
+ *
+ *   Licença: GNU GPL 2
+ * -------------------------------------------------------------------
+ *   This program is free software; you can redistribute it and/or
+ *   modify it under the terms of the GNU General Public License as
+ *   published by the Free Software Foundation; version 2 of the
+ *   License.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ * -------------------------------------------------------------------
+ * #######################################################################
+ *
+ */
 
+
+
+/* Includes ----------------------------------------------------------------------------------------------------------------------------------------------*/
 #include <Arduino.h>
 #include <ArduinoJson.h>
+#include <Arduino_LSM9DS1.h>
+#include <Event.h>
+#include <Timer.h>
+
+
 
 #include <textProtocol.h>
 #include <disp.h>
-
 #include "hardware.h"
+/* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
+#define SAMPLE_RATE		( 200 )
+#define BUFFER_SIZE		( 300 )
+/* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
+DynamicJsonDocument	jsonBufferInput( BUFFER_SIZE );
+DynamicJsonDocument	jsonBufferOutput( BUFFER_SIZE );
 
-
-
-DynamicJsonDocument jsonBuffer(1024);
-
+static String msg			= "PPP5CM";
+static float fVcc			= 0.00;
+static float fVsys			= 0.00;
+static float fCurrent			= 0.00;
+static unsigned long ulSampleRate	= 0;		
+/* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
+void app_vShowTelemetry( void );
+void app_vUpdatePin( void );
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 void setup( void ){
 
@@ -18,88 +65,161 @@ void setup( void ){
 
 	display_vSetup();
 
-	Serial.begin(115200);
-	Serial.setTimeout(0);
-	while(!Serial);
+	IMU.begin();
 
-	pinMode(PIN_OUT1, OUTPUT);
-	pinMode(PIN_OUT2, OUTPUT);
-	pinMode(PIN_OUT3, OUTPUT);
-	pinMode(PIN_OUT4, OUTPUT);
-	pinMode(PIN_OUT5, OUTPUT);
-	pinMode(PIN_OUT6, OUTPUT);
-	pinMode(PIN_OUT7, OUTPUT);
-	pinMode(PIN_OUT8, OUTPUT);
+	Serial.begin( 115200 );
+	Serial.setTimeout( 0 );
+
+	while(!Serial) delay( 300 );
 
 
-	digitalWrite(PIN_OUT1, LOW);
-	digitalWrite(PIN_OUT2, LOW);
-	digitalWrite(PIN_OUT3, LOW);
-	digitalWrite(PIN_OUT4, LOW);
-	digitalWrite(PIN_OUT5, LOW);
-	digitalWrite(PIN_OUT6, LOW);
-	digitalWrite(PIN_OUT7, LOW);
-	digitalWrite(PIN_OUT8, LOW);
+	pinMode( PIN_OUT1, OUTPUT );
+	pinMode( PIN_OUT2, OUTPUT );
+	pinMode( PIN_OUT3, OUTPUT );
+	pinMode( PIN_OUT4, OUTPUT );
+	pinMode( PIN_OUT5, OUTPUT );
+	pinMode( PIN_OUT6, OUTPUT );
+	pinMode( PIN_OUT7, OUTPUT );
+	pinMode( PIN_OUT8, OUTPUT );
 
-	pinMode(0, INPUT);
-	
+	digitalWrite( PIN_OUT1, LOW );
+	digitalWrite( PIN_OUT2, LOW );
+	digitalWrite( PIN_OUT3, LOW );
+	digitalWrite( PIN_OUT4, LOW );
+	digitalWrite( PIN_OUT5, LOW );
+	digitalWrite( PIN_OUT6, LOW );
+	digitalWrite( PIN_OUT7, LOW );
+	digitalWrite( PIN_OUT8, LOW );
+
+	msg.reserve( BUFFER_SIZE );
+
+	serializeJson(jsonBufferOutput, Serial);
 
 }
 
 void loop( void ){
 
-	if(Serial.available() > 1){
+	bool bReadData = false;
+	String sData;
+
+
+	while ( Serial.available() ) {
 		digitalWrite(LED1, HIGH);
 
-		delay(100);
+		bReadData = true;
 
-		String sData = Serial.readString();
-		sData.trim();
-		
-		float fVcc	= 0.00;
-		float fVsys	= 0.00;
-		float fCurrent	= 0.00;
-		String msg	= "PPP5CM";
+		char cBuffer = Serial.read();
+		sData.concat( cBuffer );
 
-		if( !deserializeJson(jsonBuffer, sData) ){
-
-			if( jsonBuffer.containsKey( "vcc" ) ){
-				fVcc = (float)jsonBuffer[ "vcc" ];
-			}
-
-			if( jsonBuffer.containsKey( "vsys" ) ){
-				fVsys = (float)jsonBuffer[ "vsys" ];
-			}
-
-			if( jsonBuffer.containsKey( "current" ) ){
-				fCurrent = (float)jsonBuffer[ "current" ];
-			}
-
-			if( jsonBuffer.containsKey( "msg" ) ){
-				String m =  jsonBuffer[ "msg" ];
-				m.trim();
-				msg = m;
-			} 
-			
-
-			display_vShow(fVcc, fVsys, fCurrent, msg);
-			
-
-			if( jsonBuffer.containsKey( "d2" ) ) digitalWrite( PIN_OUT1, (bool) jsonBuffer[ "d2" ] );
-			if( jsonBuffer.containsKey( "d3" ) ) digitalWrite( PIN_OUT2, (bool) jsonBuffer[ "d3" ] );
-			if( jsonBuffer.containsKey( "d4" ) ) digitalWrite( PIN_OUT3, (bool) jsonBuffer[ "d4" ] );
-			if( jsonBuffer.containsKey( "d5" ) ) digitalWrite( PIN_OUT4, (bool) jsonBuffer[ "d5" ] );
-			if( jsonBuffer.containsKey( "d6" ) ) digitalWrite( PIN_OUT5, (bool) jsonBuffer[ "d6" ] );
-			if( jsonBuffer.containsKey( "d7" ) ) digitalWrite( PIN_OUT6, (bool) jsonBuffer[ "d7" ] );
-			if( jsonBuffer.containsKey( "d8" ) ) digitalWrite( PIN_OUT7, (bool) jsonBuffer[ "d8" ] );
-			if( jsonBuffer.containsKey( "d9" ) ) digitalWrite( PIN_OUT7, (bool) jsonBuffer[ "d9" ] );
-
-		}
-		digitalWrite(LED1, LOW);
+		delay( 1 );
 	}
 
-	delay(1);
+	if ( bReadData ){
+
+		sData.trim();
+
+		if( !deserializeJson(jsonBufferInput, sData) ){
+			app_vShowTelemetry();
+			app_vUpdatePin();
+		}
+	}
+
+	digitalWrite(LED1, LOW);
+
+	while ( millis() > ulSampleRate ) {
+  		
+		ulSampleRate = millis() + SAMPLE_RATE;
+
+		float ax = 0.00;
+		float ay = 0.00;
+		float az = 0.00;
+
+		float gx = 0.00;
+		float gy = 0.00;
+		float gz = 0.00;
+
+		float mx = 0.00;
+		float my = 0.00;
+		float mz = 0.00;
+
+		if (IMU.accelerationAvailable()) {
+
+			IMU.readAcceleration(ax, ay, az);
+
+			jsonBufferOutput["accelerometer"]["x"]		= mx;
+			jsonBufferOutput["accelerometer"]["y"]		= my;
+			jsonBufferOutput["accelerometer"]["z"]		= mz;
+			jsonBufferOutput["accelerometer"]["t"]		= millis();
+
+		}
+
+		if( IMU.gyroscopeAvailable() ){
+
+			IMU.readGyroscope(gx, gy, gz);
+
+			jsonBufferOutput["gyroscope"]["x"]		= gx;
+			jsonBufferOutput["gyroscope"]["y"]		= gy;
+			jsonBufferOutput["gyroscope"]["z"]		= gz;
+			jsonBufferOutput["gyroscope"]["t"]		= millis();
+		}
+		
+		if( IMU.magneticFieldAvailable() ){
+
+			IMU.readMagneticField(mx, my, mz);
+
+			jsonBufferOutput["magneticFiel"]["x"]		= mx;
+			jsonBufferOutput["magneticFiel"]["y"]		= my;
+			jsonBufferOutput["magneticFiel"]["z"]		= mz;
+			jsonBufferOutput["magneticFiel"]["t"]		= millis();
+		}
+		
+		serializeJson(jsonBufferOutput, Serial);
+	}
+	
+	
+
 }
 
 
+/*########################################################################################################################################################*/
+/*########################################################################################################################################################*/
+/*########################################################################################################################################################*/
+/*-------------------------------------------------------------------- Local Functions -------------------------------------------------------------------*/
+/*########################################################################################################################################################*/
+
+void app_vShowTelemetry( void ){
+
+	if( jsonBufferInput.containsKey( "vcc" ) ){
+		fVcc = (float)jsonBufferInput[ "vcc" ];
+	}
+
+	if( jsonBufferInput.containsKey( "vsys" ) ){
+		fVsys = (float)jsonBufferInput[ "vsys" ];
+	}
+
+	if( jsonBufferInput.containsKey( "current" ) ){
+		fCurrent = (float)jsonBufferInput[ "current" ];
+	}
+
+	if( jsonBufferInput.containsKey( "msg" ) ){
+		String m = jsonBufferInput[ "msg" ];
+		m.trim();
+		msg = m;
+	} 
+
+
+	display_vShow(fVcc, fVsys, fCurrent, msg);
+}
+
+
+void app_vUpdatePin( void ){
+	if( jsonBufferInput.containsKey( "d2" ) ) digitalWrite( PIN_OUT1, ( bool ) jsonBufferInput[ "d2" ] );
+	if( jsonBufferInput.containsKey( "d3" ) ) digitalWrite( PIN_OUT2, ( bool ) jsonBufferInput[ "d3" ] );
+	if( jsonBufferInput.containsKey( "d4" ) ) digitalWrite( PIN_OUT3, ( bool ) jsonBufferInput[ "d4" ] );
+	if( jsonBufferInput.containsKey( "d5" ) ) digitalWrite( PIN_OUT4, ( bool ) jsonBufferInput[ "d5" ] );
+	if( jsonBufferInput.containsKey( "d6" ) ) digitalWrite( PIN_OUT5, ( bool ) jsonBufferInput[ "d6" ] );
+	if( jsonBufferInput.containsKey( "d7" ) ) digitalWrite( PIN_OUT6, ( bool ) jsonBufferInput[ "d7" ] );
+	if( jsonBufferInput.containsKey( "d8" ) ) digitalWrite( PIN_OUT7, ( bool ) jsonBufferInput[ "d8" ] );
+	if( jsonBufferInput.containsKey( "d9" ) ) digitalWrite( PIN_OUT7, ( bool ) jsonBufferInput[ "d9" ] );
+}
 

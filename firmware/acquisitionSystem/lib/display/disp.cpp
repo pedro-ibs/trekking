@@ -52,6 +52,8 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 void display_vSetup( void ){
 	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
 	display_vShow(0.0, 0.0, 0.0, "Voyager NCC-74656");
+
+	delay(1000);
 }
 
 

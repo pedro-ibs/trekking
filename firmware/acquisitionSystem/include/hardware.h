@@ -49,7 +49,7 @@
 #define PIN_OUT7	D8
 #define PIN_OUT8	D9
 
-#define PIN_AIN0
+
 			
 
 #endif /* hardware_H_ */
