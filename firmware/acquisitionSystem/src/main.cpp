@@ -66,6 +66,7 @@ void setup( void ){
 	display_vSetup();
 
 	IMU.begin();
+	IMU.set
 
 	Serial.begin( 115200 );
 	Serial.setTimeout( 0 );
@@ -142,13 +143,15 @@ void loop( void ){
 		float my = 0.00;
 		float mz = 0.00;
 
+
+
 		if (IMU.accelerationAvailable()) {
 
 			IMU.readAcceleration(ax, ay, az);
 
-			jsonBufferOutput["accelerometer"]["x"]		= mx;
-			jsonBufferOutput["accelerometer"]["y"]		= my;
-			jsonBufferOutput["accelerometer"]["z"]		= mz;
+			jsonBufferOutput["accelerometer"]["x"]		= ax;
+			jsonBufferOutput["accelerometer"]["y"]		= ay;
+			jsonBufferOutput["accelerometer"]["z"]		= az;
 			jsonBufferOutput["accelerometer"]["t"]		= millis();
 
 		}
