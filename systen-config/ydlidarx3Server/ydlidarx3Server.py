@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 import os
-import ydlidar
+import ydlidar	# https://github.com/YDLIDAR/YDLidar-SDK
 import time
 import sys
 import json
