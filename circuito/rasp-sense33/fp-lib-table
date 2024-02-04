@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name "trekking-library")(type "KiCad")(uri "${KIPRJMOD}/trekking-library.pretty")(options "")(descr ""))
-)

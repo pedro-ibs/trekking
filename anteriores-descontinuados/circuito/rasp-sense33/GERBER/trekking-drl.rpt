@@ -1,0 +1,30 @@
+Drill report for trekking.kicad_pcb
+Created on ter 17 jan 2023 11:13:26
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  cobre frontal             front
+    L2 :  Cobre traseira            back
+
+
+Drill file 'trekking-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0,400mm  0,0157"  (151 holes)
+    T2  0,700mm  0,0276"  (2 holes)
+    T3  0,800mm  0,0315"  (4 holes)
+    T4  1,000mm  0,0394"  (82 holes)
+    T5  1,190mm  0,0469"  (52 holes)
+    T6  1,199mm  0,0472"  (2 holes)
+    T7  1,400mm  0,0551"  (6 holes)
+    T8  1,500mm  0,0591"  (15 holes)
+    T9  3,500mm  0,1378"  (5 holes)
+
+    Total plated holes count 319
+
+
+Drill file 'trekking-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0

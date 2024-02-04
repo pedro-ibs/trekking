@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name "trekking_Library")(type "KiCad")(uri "${KIPRJMOD}/trekking-library/trekking_Library.kicad_sym")(options "")(descr ""))
-)

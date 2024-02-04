@@ -1,0 +1,16 @@
+[Unit]
+Description=application for aquisittion of gamepad-rv2.
+
+Want=network.target
+After=syslog.target network-online.target
+
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/gamepad-rv2-server
+Restart=on-failure
+RestartSec=5
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
