@@ -46,8 +46,7 @@
 void loopMain( void ){
 
 		rs485_vSendString( _idxUart0, "dasdahkdhsja_turnon_djdsnfmdsnfsdf" );
-		// cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	true );
-		gpio_put( HARDWARE_LED_GPIO,	true );
+		cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	true );
 		gpio_put( HARDWARE_M1CHA_GPIO,	true );
 		gpio_put( HARDWARE_M1CHB_GPIO,	true );
 		gpio_put( HARDWARE_M2CHA_GPIO,	true );
@@ -55,8 +54,7 @@ void loopMain( void ){
 		sleep_ms( 500 );
 
 		rs485_vSendString( _idxUart0, "dasdahkdhsja_turnoff_djdsnfmdsnfsdf" );
-		// cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	false );
-		gpio_put( HARDWARE_LED_GPIO,	false );
+		cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	false );
 		gpio_put( HARDWARE_M1CHA_GPIO,	false );
 		gpio_put( HARDWARE_M1CHB_GPIO,	false );
 		gpio_put( HARDWARE_M2CHA_GPIO,	false );
@@ -72,8 +70,7 @@ void loopSec( void ){
 
 
 			if( strstr( rs485_pcGetBuffer( _idxUart0 ), "turnon" ) != NULL ){
-				// cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	true );
-				gpio_put( HARDWARE_LED_GPIO,	true );
+				cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	true );
 				gpio_put( HARDWARE_M1CHA_GPIO,	true );
 				gpio_put( HARDWARE_M1CHB_GPIO,	true );
 				gpio_put( HARDWARE_M2CHA_GPIO,	true );
@@ -81,8 +78,7 @@ void loopSec( void ){
 			}
 
 			if( strstr( rs485_pcGetBuffer( _idxUart0 ), "turnoff" ) != NULL ){
-				// cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	false );
-				gpio_put( HARDWARE_LED_GPIO,	false );
+				cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	false );
 				gpio_put( HARDWARE_M1CHA_GPIO,	false );
 				gpio_put( HARDWARE_M1CHB_GPIO,	false );
 				gpio_put( HARDWARE_M2CHA_GPIO,	false );
@@ -101,16 +97,13 @@ int main( void ) {
 	/* base setup */
 	stdio_init_all();
 
-	// if (cyw43_arch_init()) {
-	// 	printf("Wi-Fi init failed");
-	// 	return -1;
-	// }
+	if (cyw43_arch_init()) {
+		printf("Wi-Fi init failed");
+		return -1;
+	}
 
 	rs485_vSetup( _idxUart0, CONFIG_BAUD_RATE_UART0, HARDWARE_TX0_GPIO, HARDWARE_RX0_GPIO );
 
-	gpio_init	( HARDWARE_LED_GPIO				);
-	gpio_set_dir	( HARDWARE_LED_GPIO,		GPIO_OUT	);
-	
 	gpio_init	( HARDWARE_M1CHA_GPIO				);
 	gpio_set_dir	( HARDWARE_M1CHA_GPIO,		GPIO_OUT	);
 
@@ -127,16 +120,14 @@ int main( void ) {
 	gpio_set_dir	( HARDWARE_TXRX_ENABLE_GPIO,	GPIO_OUT	);
 
 
-	gpio_put( HARDWARE_LED_GPIO,	true );
-
 	rs485_vSendString( _idxUart0, "startrd\r\n" );
 	rs458_vCleanBuffer( _idxUart0 );
 	rs458_vRxEnableTxDisable();
 
 
 	while (true) {
-		loopSec();
-		// loopMain();
+		// loopSec();
+		loopMain();
 	}
 }
 

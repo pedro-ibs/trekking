@@ -1,7 +1,7 @@
 /**
- * hardware.h
+ * simple_uart.h
  *
- *  @date Created at:	07/08/2022 14:03:26
+ *  @date Created at:	07/08/2022 10:49:42
  *	@author:	Pedro Igor B. S.
  *	@email:		pedro.igor.ifsp@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
@@ -25,47 +25,36 @@
  * -------------------------------------------------------------------
  * #######################################################################
  *
- * As definições de hardware  utilizada na aplicação
+ *
+ * TODO: documentation or resume or Abstract
  *
  */
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
-#include "pico/stdlib.h"
+#include <config.h>
 
-#ifndef hardware_H_
-#define hardware_H_
+
+#ifndef simple_uart_H_
+#define simple_uart_H_
 
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-/**
- * Comunicação serial raspberry - rpi_pico
- */
-#define HARDWARE_UART0_ID		uart0
-#define HARDWARE_TX0_GPIO		( 16				) 
-#define HARDWARE_RX0_GPIO		( 17				)
-
-#define HARDWARE_TXRX_ENABLE_GPIO	( 18				)
-#define HARDWARE_RX_ENABLE_TX_DISABLE	( false				)
-#define HARDWARE_TX_ENABLE_RX_DISABLE	( true				)
-
-#define HARDWARE_LED_GPIO_RPI		( PICO_DEFAULT_LED_PIN		)
-#define HARDWARE_LED_GPIO_RPIW		( CYW43_WL_GPIO_LED_PIN		)
+typedef enum {
+	_idxUart0 = 0,
+	_idxUart1,
+} uart_index;
 
 
-#define HARDWARE_LED_GPIO               ( HARDWARE_LED_GPIO_RPI		)
+void uart_vSetup( uint uart, uint baudrate, uint tx, uint rx );
+
+void uart_vCleanBuffer( uint uart );
+size_t uart_uGetBufferSize( uint uart );
+const char *uart_pcGetBuffer( uint uart );
+
+void uart_vSendChar( uint uart, const char ch) ;
+void uart_vSendString( uint uart, const char *str ) ;
+void uart_vSendStringLn( uint uart, const char *str ) ;
 
 
-
-/**
- * Pinos utilizados nos motores
- */
-#define HARDWARE_M1CHA_GPIO		( 22				)
-#define HARDWARE_M1CHB_GPIO		( 21				)
-#define HARDWARE_M2CHA_GPIO		( 20				)
-#define HARDWARE_M2CHB_GPIO		( 19				)
-
-
-
-#endif /* hardware_H_ */
+#endif /* simple_uart_H_ */

@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD 17)
 set( PICO_SDK_PATH  ~/pico/pico-sdk )
 set( PICO_EXAMPLES_PATH  ~/pico/pico-examples )
 set( PICO_PLATFORM  rp2040 )
-set( PICO_BOARD  pico )
+set( PICO_BOARD  pico_w )
 
 ## Initialise pico_sdk from installed location
 ## (note this can come from environment, CMake cache etc)
@@ -62,7 +62,7 @@ target_link_libraries(RPI_PICO_SDK pico_stdlib)
 target_link_libraries(RPI_PICO_SDK
 
 
-	# pico_cyw43_arch_none
+	pico_cyw43_arch_none
 	# pico_cyw43_arch_lwip_threadsafe_background
 
 	pico_stdlib

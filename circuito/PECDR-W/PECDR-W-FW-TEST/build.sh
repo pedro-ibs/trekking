@@ -5,8 +5,8 @@ PICO_EXAMPLES_PATH="~/pico/pico-examples"
 PICO_PLATFORM="rp2040"
 
 ## select board
-# PICO_BOARD="pico_w"
-PICO_BOARD="pico"
+PICO_BOARD="pico_w"
+# PICO_BOARD="pico"
 
 ## enable comunnicarion by uart 
 ## 1 to enable 0 to desable
@@ -26,7 +26,7 @@ export PICO_BOARD=$PICO_BOARD
 ## hardware_uart
 LIBRARIES="
 
-	# pico_cyw43_arch_none
+	pico_cyw43_arch_none
 	# pico_cyw43_arch_lwip_threadsafe_background
 
 	pico_stdlib

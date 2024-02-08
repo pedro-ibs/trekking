@@ -31,6 +31,8 @@
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
 #include "pico/stdlib.h"
+#include "pico/cyw43_arch.h"
+
 
 #ifndef hardware_H_
 #define hardware_H_
@@ -54,7 +56,7 @@
 #define HARDWARE_LED_GPIO_RPIW		( CYW43_WL_GPIO_LED_PIN		)
 
 
-#define HARDWARE_LED_GPIO               ( HARDWARE_LED_GPIO_RPI		)
+#define HARDWARE_LED_GPIO               ( HARDWARE_LED_GPIO_RPIW	)
 
 
 
