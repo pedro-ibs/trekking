@@ -4072,6 +4072,12 @@
 		)
 	)
 	(junction
+		(at 33.02 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "05389521-6af5-4529-a557-1d567184c572")
+	)
+	(junction
 		(at 49.53 86.995)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4112,12 +4118,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "24924adc-209d-495c-a189-3fcdecdf7ba0")
-	)
-	(junction
-		(at 33.02 99.06)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "30d47618-8a60-42c6-99e5-b5c1e4c6adcf")
 	)
 	(junction
 		(at 220.345 128.27)
@@ -4519,6 +4519,16 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 86.995) (xy 33.02 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ec73083-9ca8-4d42-b4c5-f50ffcc8a2bf")
+	)
+	(wire
+		(pts
 			(xy 171.45 24.765) (xy 171.45 25.4)
 		)
 		(stroke
@@ -4609,7 +4619,7 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 86.995) (xy 33.02 99.06)
+			(xy 33.02 109.22) (xy 33.02 93.98)
 		)
 		(stroke
 			(width 0)
@@ -4806,16 +4816,6 @@
 			(type default)
 		)
 		(uuid "2be2716a-6714-4b97-8c27-f9e7aa2c91c5")
-	)
-	(wire
-		(pts
-			(xy 33.02 99.06) (xy 34.29 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2bfdf6cf-d98c-43de-b84a-b214dd1d7abd")
 	)
 	(wire
 		(pts
@@ -5226,16 +5226,6 @@
 			(type default)
 		)
 		(uuid "4b4a3bc9-0dc8-44a6-a04f-421d5430f483")
-	)
-	(wire
-		(pts
-			(xy 31.115 93.98) (xy 34.29 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4d772752-6460-47a0-8813-200259d74a5c")
 	)
 	(wire
 		(pts
@@ -5789,6 +5779,16 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 93.98) (xy 34.29 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80e7774a-e8f0-4c87-8a60-af995d1d8a19")
+	)
+	(wire
+		(pts
 			(xy 28.575 165.735) (xy 34.29 165.735)
 		)
 		(stroke
@@ -5916,6 +5916,16 @@
 			(type default)
 		)
 		(uuid "8fe21c36-8e0c-4465-98d5-48c31a3fbb2a")
+	)
+	(wire
+		(pts
+			(xy 31.115 99.06) (xy 34.29 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90352d11-624d-4a8a-8b67-14d678dda4fd")
 	)
 	(wire
 		(pts
@@ -6539,16 +6549,6 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 99.06) (xy 33.02 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d191fced-7fa9-434c-8648-d5c6709e42cf")
-	)
-	(wire
-		(pts
 			(xy 43.18 125.095) (xy 41.91 125.095)
 		)
 		(stroke
@@ -7086,16 +7086,6 @@
 		)
 		(uuid "44aaca44-9bf6-428d-9c32-1c29bbefb05e")
 	)
-	(text "COMFERIR"
-		(exclude_from_sim no)
-		(at 123.19 158.75 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "6e1fcf25-1a66-4f18-914c-ab54fe5cd6b7")
-	)
 	(text "INPUT DRIVER"
 		(exclude_from_sim no)
 		(at 18.415 141.605 0)
@@ -7108,6 +7098,18 @@
 			(justify left bottom)
 		)
 		(uuid "7f7be998-7cd6-417a-bd5c-51f834f72b70")
+	)
+	(text "ERRADO "
+		(exclude_from_sim no)
+		(at 20.32 96.52 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "9597886f-c7ab-4671-b6a2-4cca17dbced6")
 	)
 	(text "POWER IMPUT 3V3 3A"
 		(exclude_from_sim no)
@@ -7191,7 +7193,7 @@
 		(uuid "1a5fee21-008e-4ad3-9b12-47aec6be7347")
 	)
 	(label "GP22"
-		(at 31.115 93.98 180)
+		(at 31.115 99.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
