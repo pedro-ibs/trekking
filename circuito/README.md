@@ -2,8 +2,11 @@
 
 <br>
 
+
+
+
 ### **ALIMENTAÇÃO GERAL**
-A chave `SELETOR` muda a origem da alimentação, sendo ela a bateria ou fonte externa, no modelo externo combinado com a chave da `BATERIA` permite que o robô opere usando uma fonte externa carregando ou não a bateria. Em Ambos os casos o multímetro amperímetro irá medir a fonte de origem selecionada pelo `SELETOR`. Também com as chaves `CIRCUITO COMUTADOR` e `CIRCUITO POTÊNCIA` permite ligar ou desligar um sistema independentemente do outro. Essas opções existem para facilitar o desenvolvimento e manutenção do robô
+A chave `SELETOR` muda se a bateria passrá pelo voltimetro-amperimetro, ou se firará em paralelo com a carga, permitindo assim monitorar o carregamento da bateria. Também com as chaves `CIRCUITO COMUTADOR` e `CIRCUITO POTÊNCIA` permite ligar ou desligar um sistema independentemente do outro. Essas opções existem para facilitar o desenvolvimento e manutenção do robô
 
 <br>
 
@@ -26,5 +29,12 @@ O robô contém alguns subsistemas, dois reservados para controlar os conjuntos 
 <br>
 
 ![TOPOLOGIA E CONEXÕES DOS SUBSISTEMAS](./03.jpeg)
+
+<br>
+### **Topologia das conexõesdo dos motores**
+
+
+![Topologia das conexõesdo dos motores](./04.jpeg)
+
 
 <br> <br>
