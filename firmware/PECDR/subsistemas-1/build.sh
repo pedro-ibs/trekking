@@ -26,7 +26,7 @@ export PICO_BOARD=$PICO_BOARD
 ## hardware_uart
 LIBRARIES="
 
-	# pico_cyw43_arch_none
+	pico_cyw43_arch_none
 	# pico_cyw43_arch_lwip_poll
 	# pico_cyw43_arch_lwip_threadsafe_background
 

@@ -35,7 +35,6 @@ lib
 lib/pid
 lib/simple_uart
 lib/servo
-lib/motor
 lib/textProtocol
 src
 )
@@ -50,13 +49,11 @@ lib/pid/pid.h
 lib/simple_uart/simple_uart.h
 lib/simple_uart/rs485.h
 lib/servo/servo.h
-lib/motor/motor.h
 lib/textProtocol/textProtocol.h
 lib/pid/pid.c
 lib/simple_uart/simple_uart.c
 lib/simple_uart/rs485.c
 lib/servo/servo.c
-lib/motor/motor.c
 lib/textProtocol/textProtocol.c
 )
 
@@ -74,7 +71,7 @@ target_link_libraries(RPI_PICO_SDK pico_stdlib)
 target_link_libraries(RPI_PICO_SDK
 
 
-	# pico_cyw43_arch_none
+	pico_cyw43_arch_none
 	# pico_cyw43_arch_lwip_poll
 	# pico_cyw43_arch_lwip_threadsafe_background
 

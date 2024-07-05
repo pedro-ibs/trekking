@@ -34,110 +34,208 @@
 
 /* Includes ----------------------------------------------------------------------------------------------------------------------------------------------*/
 #include <pico/stdlib.h>
+#include <pico/multicore.h>
+#include <pico/util/queue.h>
 
+#include <textProtocol.h>
 #include <config.h>
 #include <rs485.h>
+#include <servo.h>
+#include <motor.h>
+#include <pid.h>
+
 /* Setings -----------------------------------------------------------------------------------------------------------------------------------------------*/
+queue_t sendToCore1Queue;
 /* Setup -------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Function prototype ------------------------------------------------------------------------------------------------------------------------------------*/
+void core1_entry( void );
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+typedef enum {
+	_Stop =0,
+	_Front,
+	_Back,
+} Direction ;
 
-void loopMain( void ){
+typedef struct  {
+	
+	float		velocity;
+	Direction	direction;
 
-		rs485_vSendString( _idxUart0, "dasdahkdhsja_turnon_djdsnfmdsnfsdf" );
-		cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	true );
-		// gpio_put( HARDWARE_LED_GPIO,	true );
-		gpio_put( HARDWARE_M1CHA_GPIO,	true );
-		gpio_put( HARDWARE_M1CHB_GPIO,	true );
-		gpio_put( HARDWARE_M2CHA_GPIO,	true );
-		gpio_put( HARDWARE_M2CHB_GPIO,	true );
-		sleep_ms( 500 );
+} Motor;
 
-		rs485_vSendString( _idxUart0, "dasdahkdhsja_turnoff_djdsnfmdsnfsdf" );
-		cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	false );
-		// gpio_put( HARDWARE_LED_GPIO,	false );
-		gpio_put( HARDWARE_M1CHA_GPIO,	false );
-		gpio_put( HARDWARE_M1CHB_GPIO,	false );
-		gpio_put( HARDWARE_M2CHA_GPIO,	false );
-		gpio_put( HARDWARE_M2CHB_GPIO,	false );
-		sleep_ms( 500 );
-
-}
-
-void loopSec( void ){
-
-		if( rs485_uGetBufferSize( _idxUart0 ) > 0 ){
-			sleep_ms( 20 );
-
-
-			if( strstr( rs485_pcGetBuffer( _idxUart0 ), "turnon" ) != NULL ){
-				cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	true );
-				// gpio_put( HARDWARE_LED_GPIO,	true );
-				gpio_put( HARDWARE_M1CHA_GPIO,	true );
-				gpio_put( HARDWARE_M1CHB_GPIO,	true );
-				gpio_put( HARDWARE_M2CHA_GPIO,	true );
-				gpio_put( HARDWARE_M2CHB_GPIO,	true );
-			}
-
-			if( strstr( rs485_pcGetBuffer( _idxUart0 ), "turnoff" ) != NULL ){
-				cyw43_arch_gpio_put( HARDWARE_LED_GPIO,	false );
-				// gpio_put( HARDWARE_LED_GPIO,	false );
-				gpio_put( HARDWARE_M1CHA_GPIO,	false );
-				gpio_put( HARDWARE_M1CHB_GPIO,	false );
-				gpio_put( HARDWARE_M2CHA_GPIO,	false );
-				gpio_put( HARDWARE_M2CHB_GPIO,	false );
-			}
-				
-			rs458_vCleanBuffer( _idxUart0 );
-			rs458_vRxEnableTxDisable();
-		}
-
-		sleep_ms( 1 );
-}
 
 int main( void ) {
+
 
 	/* base setup */
 	stdio_init_all();
 
-	if (cyw43_arch_init()) {
-		printf("Wi-Fi init failed");
-		return -1;
-	}
-
-	rs485_vSetup( _idxUart0, CONFIG_BAUD_RATE_UART0, HARDWARE_TX0_GPIO, HARDWARE_RX0_GPIO );
-
 	gpio_init	( HARDWARE_LED_GPIO				);
 	gpio_set_dir	( HARDWARE_LED_GPIO,		GPIO_OUT	);
-	
-	gpio_init	( HARDWARE_M1CHA_GPIO				);
-	gpio_set_dir	( HARDWARE_M1CHA_GPIO,		GPIO_OUT	);
 
-	gpio_init	( HARDWARE_M1CHB_GPIO				);
-	gpio_set_dir	( HARDWARE_M1CHB_GPIO,		GPIO_OUT	);
-
-	gpio_init	( HARDWARE_M2CHA_GPIO				);
-	gpio_set_dir	( HARDWARE_M2CHA_GPIO,		GPIO_OUT	);
-
-	gpio_init	( HARDWARE_M2CHB_GPIO				);
-	gpio_set_dir	( HARDWARE_M2CHB_GPIO,		GPIO_OUT	);
-
-	gpio_init	( HARDWARE_TXRX_ENABLE_GPIO			);
-	gpio_set_dir	( HARDWARE_TXRX_ENABLE_GPIO,	GPIO_OUT	);
+	rs485_vSetup( CONFIG_RS485_INTERFACE, CONFIG_BAUD_RATE_UART0, HARDWARE_TX0_GPIO, HARDWARE_RX0_GPIO );
 
 
-	gpio_put( HARDWARE_LED_GPIO,	true );
-
-	rs485_vSendString( _idxUart0, "startrd\r\n" );
-	rs458_vCleanBuffer( _idxUart0 );
+	rs458_vCleanBuffer( CONFIG_RS485_INTERFACE );
 	rs458_vRxEnableTxDisable();
 
+	const char * pcReceiverBuffer = rs485_pcGetBuffer( CONFIG_RS485_INTERFACE );
 
+	queue_init( &sendToCore1Queue,	sizeof( Motor ), 5 );
+	multicore_launch_core1( core1_entry );
+
+	gpio_put( HARDWARE_LED_GPIO, true );
+
+
+	#if( CONFIG_MOROT_A == CONFIG_ENABLE  )
+	const char commandToFront[  ]	= "MAF";
+	const char commandToBack[  ]	= "MAB";
+	const char commandStop[  ]	= "MAS";
+	#endif
+
+	#if( CONFIG_MOROT_B == CONFIG_ENABLE  )
+	const char commandToFront[  ]	= "MBF";
+	const char commandToBack[  ]	= "MBB";
+	const char commandStop[  ]	= "MBS";
+
+	#endif
+
+	
 	while (true) {
-		// loopSec();
-		loopMain();
+
+		if( rs485_uGetBufferSize( CONFIG_RS485_INTERFACE ) > 0 ){
+			
+			gpio_put( HARDWARE_LED_GPIO, false );
+
+			sleep_ms( 10 );
+
+			char pcBuffer[ 100 ] = "";
+
+			if ( textp_bFindString (pcReceiverBuffer, commandStop ) == true ){
+				
+				Motor motor = { 0,  _Stop };
+
+				queue_add_blocking( &sendToCore1Queue, &motor );
+
+			} else if ( textp_bGetLabelInfo (pcReceiverBuffer, commandToBack, 0, pcBuffer ) == true ){
+				
+				Motor motor = { atoff( pcBuffer ), _Back };
+				
+				if( motor.velocity <= 0 ){
+					motor.velocity = 0;
+					motor.direction = _Stop;
+				}
+				
+				queue_add_blocking( &sendToCore1Queue, &motor );
+
+			} else if ( textp_bGetLabelInfo (pcReceiverBuffer, commandToFront, 0, pcBuffer ) == true ){
+				Motor motor = { atoff( pcBuffer ), _Front };
+
+				if( motor.velocity <= 0 ){
+					motor.velocity = 0;
+					motor.direction = _Stop;
+				}
+
+				queue_add_blocking( &sendToCore1Queue, &motor );
+			}
+
+
+			rs458_vCleanBuffer( CONFIG_RS485_INTERFACE );
+
+			gpio_put( HARDWARE_LED_GPIO, true );
+
+		}
 	}
 }
 
 
+void core1_entry( void ){
+	servo motor1 = { HARDWARE_MOTOR1_GPIO, 0 }; 
+	servo motor2 = { HARDWARE_MOTOR2_GPIO, 0 }; 
+
+
+	#if( CONFIG_MOROT_A == CONFIG_ENABLE  )
+	sleep_ms( 3000 ); 
+
+	motor_vBind( &motor1 );
+
+	sleep_ms( 1000 ); 
+
+	motor_vBind( &motor2 );
+
+	sleep_ms( 1000 );
+	#endif
+
+	#if( CONFIG_MOROT_B == CONFIG_ENABLE  )
+	sleep_ms( 5000 ); 
+
+	motor_vBind( &motor1 );
+
+	sleep_ms( 3000 ); 
+
+	motor_vBind( &motor2 );
+
+	sleep_ms( 1000 );
+	#endif
+
+	Motor motor;
+	Direction currentDirection = _Stop;
+
+	pid pid_ma1 = {
+		.fKp = CONFIG_KP,
+		.fKi = CONFIG_KI,
+		.fKd = CONFIG_KD,
+	};
+
+	pid pid_ma2 = {
+		.fKp = CONFIG_KP,
+		.fKi = CONFIG_KI,
+		.fKd = CONFIG_KD,
+	};
+
+	while ( true ) {
+
+		if( queue_try_remove(&sendToCore1Queue, &motor) == true ){
+			pid_ma1.fSetPoint = motor.velocity;
+			pid_ma2.fSetPoint = motor.velocity;
+
+			if(  currentDirection != motor.direction ){
+				
+				currentDirection = motor.direction;
+
+				if( currentDirection == _Back ){
+					motor_vPreoareToBack( &motor1 );
+					motor_vPreoareToBack( &motor2 );
+				}
+			}
+
+
+		}
+
+		switch ( currentDirection ) {
+			case _Stop: {
+				motor_vStop( &motor1 );
+				motor_vStop( &motor2 );
+			} break;
+
+			case _Front: {
+				motor_vToFront( &motor1, pid_ma1.fOutput );
+				motor_vToFront( &motor2, pid_ma2.fOutput );
+			} break;
+
+			case _Back: {
+				motor_vToBack( &motor1, pid_ma1.fOutput );
+				motor_vToBack( &motor2, pid_ma2.fOutput );
+			} break;
+
+		}
+
+		pid_ma1.fInput =  pid_fRun( &pid_ma1 );
+		pid_ma2.fInput =  pid_fRun( &pid_ma2 );
+
+		sleep_ms( 1 );
+
+	}
+	
+}

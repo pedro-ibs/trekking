@@ -1,14 +1,13 @@
 /**
- * pid.h
+ * simple_uart.h
  *
- *  @date Created at:	05/12/2022 23:50:32
+ *  @date Created at:	07/08/2022 10:49:42
  *	@author:	Pedro Igor B. S.
- *	@email:		pibscontato@gmail.com
+ *	@email:		pedro.igor.ifsp@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
  * 	tabSize:	8
  *
  * #######################################################################
- *
  *   Copyright (C) Pedro Igor B. S 2021
  * -------------------------------------------------------------------
  *
@@ -32,36 +31,30 @@
  */
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
-#include <stdio.h>
-#include <stdlib.h>
-
-#ifndef pid_H_
-#define pid_H_
+#include <config.h>
 
 
-typedef struct {
-	float fKp;
-	float fKi;
-	float fKd;
-
-	float fP;
-	float fI;
-	float fD;
-
-	float fSetPoint;
-	float fInput;
-	float fLastInput;
-	float fOutput;
-	float fError;
-
-	float xLastTime;
-} pid;
-
-
-float pid_fRun( pid *pxPid );
+#ifndef simple_uart_H_
+#define simple_uart_H_
 
 /* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
+typedef enum {
+	_idxUart0 = 0,
+	_idxUart1,
+} uart_index;
 
-#endif /* pid_H_ */
+
+void uart_vSetup( uint uart, uint baudrate, uint tx, uint rx );
+
+void uart_vCleanBuffer( uint uart );
+size_t uart_uGetBufferSize( uint uart );
+const char *uart_pcGetBuffer( uint uart );
+
+void uart_vSendChar( uint uart, const char ch) ;
+void uart_vSendString( uint uart, const char *str ) ;
+void uart_vSendStringLn( uint uart, const char *str ) ;
+
+
+#endif /* simple_uart_H_ */

@@ -1,14 +1,13 @@
 /**
- * pid.h
+ * motor.h
  *
- *  @date Created at:	05/12/2022 23:50:32
+ *  @date Created at:	02/07/2024, 21:19:46
  *	@author:	Pedro Igor B. S.
  *	@email:		pibscontato@gmail.com
  * 	GitHub:		https://github.com/pedro-ibs
  * 	tabSize:	8
  *
- * #######################################################################
- *
+ * ########################################################
  *   Copyright (C) Pedro Igor B. S 2021
  * -------------------------------------------------------------------
  *
@@ -24,44 +23,36 @@
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *   GNU General Public License for more details.
  * -------------------------------------------------------------------
- * #######################################################################
+ * ########################################################
  *
- *
- * TODO: documentation or resume or Abstract
+ * Baseado em:
+ * 	https://github.com/pedro-ibs/bdesc-s10e-rtr-example-control/tree/main
+ * 
+ * Controle dos motores utilizando o bdesc-s10e-rtr
  *
  */
 
 /* Includes ---------------------------------------------------------------------------------------------------------------------------------------------*/
-#include <stdio.h>
-#include <stdlib.h>
+#include <config.h>
+#include <hardware.h>
+#include <servo.h>
+#include <pid.h>
 
-#ifndef pid_H_
-#define pid_H_
+#ifndef motor_H_
+#define motor_H_
 
-
-typedef struct {
-	float fKp;
-	float fKi;
-	float fKd;
-
-	float fP;
-	float fI;
-	float fD;
-
-	float fSetPoint;
-	float fInput;
-	float fLastInput;
-	float fOutput;
-	float fError;
-
-	float xLastTime;
-} pid;
-
-
-float pid_fRun( pid *pxPid );
-
-/* settings ----------------------------------------------------------------------------------------------------------------------------------------------*/
+/* macro ------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Definition --------------------------------------------------------------------------------------------------------------------------------------------*/
 
+void motor_vBind( servo *motor );
 
-#endif /* pid_H_ */
+void motor_vToFront( servo *motor,  float v );
+void motor_vPreoareToBack( servo *motor );
+void motor_vToBack( servo *motor,  float v );
+
+
+void motor_vStop( servo *motor );
+
+
+
+#endif /* motor_H_ */

@@ -37,6 +37,7 @@
 #include <string.h>
 
 #include "pico/stdlib.h"
+#include "pico/cyw43_arch.h"
 
 
 #include "hardware.h"
@@ -52,6 +53,11 @@
 #define CONFIG_ENABLE			( 1			)
 #define CONFIG_DISABLE			( 0			)
 
+/* ************************************************************************************************************ */
+/* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL e SECUNDARIA							*/
+/* ************************************************************************************************************ */
+#define CONFIG_ENABLE_WIFI_MODULE	( CONFIG_ENABLE		)
+
 
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES DA INTERFACE SERIAL PRINCIPAL e SECUNDARIA							*/
@@ -66,17 +72,9 @@
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES DO SERVO/BDESC MOTORES										*/
 /* ************************************************************************************************************ */
-#define CONFIG_MOROT_A			( CONFIG_ENABLE		)
-#define CONFIG_MOROT_B			( CONFIG_DISABLE	)
-
+#define CONFIG_PWM_SYS_FREQUENCY_HZ	( 125000000		)
 #define CONFIG_PWM_FREQUENCY_HZ		( 400			)
 #define CONFIG_PWM_DUTY_CYCLE_START	( 0			)
-#define CONFIG_MOTOR_VELOCITY_MAX	( ( float ) 100.00 	)
-#define CONFIG_KP			( 0.0400		)
-#define CONFIG_KI			( 0.0010		)
-#define CONFIG_KD			( 0.0003		)
-
-
 
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES REDE												*/

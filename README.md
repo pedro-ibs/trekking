@@ -11,8 +11,6 @@ terá nova documentação em breve
 <br> <br> <br>
 
 
-
-
 ### **Robô versão 4**: 
 
 embreve
