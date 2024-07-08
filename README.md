@@ -11,7 +11,9 @@ terá nova documentação em breve
 <br> <br> <br>
 
 
-### **Robô versão 4**: 
+### **Robô versão 3**:
+![Robô versão 2](./rv3.jpg)
+ 
 
 embreve
 
