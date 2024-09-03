@@ -66,15 +66,15 @@
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES DO SERVO/BDESC MOTORES										*/
 /* ************************************************************************************************************ */
-#define CONFIG_MOROT_A			( CONFIG_DISABLE	)
-#define CONFIG_MOROT_B			( CONFIG_ENABLE	        )
+#define CONFIG_MOROT_FRENTE		( CONFIG_ENABLE		)
+#define CONFIG_MOROT_TRAS		( CONFIG_DISABLE	)
 
 #define CONFIG_PWM_FREQUENCY_HZ		( 400			)
 #define CONFIG_PWM_DUTY_CYCLE_START	( 0			)
 #define CONFIG_MOTOR_VELOCITY_MAX	( ( float ) 100.00 	)
-#define CONFIG_KP			( 0.0400		)
-#define CONFIG_KI			( 0.0010		)
-#define CONFIG_KD			( 0.0003		)
+#define CONFIG_KP			( 0.0300		)
+#define CONFIG_KI			( 0.0009		)
+#define CONFIG_KD			( 0.0002		)
 
 
 
