@@ -66,8 +66,9 @@
 /* ************************************************************************************************************ */
 /* CONFIGURAÇÕES DO SERVO/BDESC MOTORES										*/
 /* ************************************************************************************************************ */
-#define CONFIG_MOROT_FRONT		( CONFIG_DISABLE	)
-#define CONFIG_MOROT_BACK		( CONFIG_ENABLE		)
+#define CONFIG_MOROT_A			( CONFIG_DISABLE	)
+#define CONFIG_MOROT_B			( CONFIG_ENABLE		)
+
 
 #define CONFIG_PWM_FREQUENCY_HZ		( 400			)
 #define CONFIG_PWM_DUTY_CYCLE_START	( 0			)
