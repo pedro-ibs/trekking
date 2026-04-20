@@ -3,6 +3,7 @@ Todas as peças do projeto foram desenvolvidas utilizado o software [FreeCad](ht
 
  * *[Medidas](./medidas)*
  * *[Peças 3D](./stl)*
+ * Cor da montagem HEX: ```#380054``` 
 
 ### *Peças externas*
 
